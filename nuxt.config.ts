@@ -25,10 +25,11 @@ export default defineNuxtConfig({
 			{ code: 'hy', iso: 'hy-AM', file: 'hy.json', name: 'Հայերեն' },
 		],
 		defaultLocale: 'hy',
-		strategy: 'prefix_and_default',
-		customRoutes: 'config',
+		strategy: 'prefix_except_default',
 		detectBrowserLanguage: {
 			useCookie: true,
+			cookieKey: 'i18n_redirected',
+			redirectOn: 'root',
 		},
 	},
 })
