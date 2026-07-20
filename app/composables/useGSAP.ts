@@ -49,7 +49,8 @@ export const useGSAP = () => {
 		onMounted(() => {
 			const scopeElement = toValue(scope)
 			mm = gsap.matchMedia(scopeElement || undefined)
-			mm.add(queries, fn as gsap.ContextFunc)
+			// 'all' keeps the callback active when no other query matches
+			mm.add({ all: 'all', ...queries }, fn as gsap.ContextFunc)
 		})
 
 		onBeforeUnmount(() => {
