@@ -29,8 +29,7 @@ Type is a **single family — Manrope** — with hierarchy carried entirely by s
 
 - **Indigo / Primary** (`--primary`, `--ring` — #818cf8): The single brand accent. Hero headline gradient origin, status dots, focus rings, hero corner brackets, glow shadows (`shadow-[0_0_1rem_rgba(129,140,248,0.65)]`). Also the Three.js wireframe accent.
 - **Indigo Light** (#c7d2fe — `indigo-200`): The terminal stop of the hero headline gradient (`linear-gradient(to right, #818cf8, #c7d2fe)`). Not used elsewhere.
-- **Gold** (`--color-gold` — #e8c382): **Vestigial.** Appears only in text selection background and scrollbar-thumb hover. It is a warm counterpoint inherited from the source template and is currently doing no real work. See Known Gaps.
-- **Umber** (`--color-umber` — #351e10): Selection text color, paired with gold. Same vestigial status.
+Indigo is the **only** chromatic accent. The source template carried a warm gold (#e8c382) and umber pairing; both were removed — a warm accent fights the cold instrument aesthetic, and they had decayed to a single scrollbar-hover rule. Text selection and scrollbar hover now use indigo.
 
 ### Surface
 
@@ -59,7 +58,13 @@ Border emphasis ladder: `border-white/5` (barely there) → **`border-white/10` 
 
 ### Semantic
 
-The system has **no semantic color layer**. There are no success / warning / error tones in the marketing surface, and `--destructive` (#f87171) exists only because shadcn requires it. Introducing status colors is a design decision, not a fill-in-the-blank — see Known Gaps.
+Three status tones, all at the same 400-level saturation as indigo so they sit correctly on the dark canvas:
+
+- **Success** (`--color-success` — #34d399): Emerald, chosen over a pure green to stay cold alongside indigo.
+- **Warning** (`--color-warning` — #fbbf24): Amber. The only warm tone in the system — warmth is what makes a warning legible, so it is a deliberate exception rather than a second accent.
+- **Danger** (`--color-danger` — #f87171): Red. shadcn's `--destructive` aliases to this so the two systems can't drift.
+
+These are defined but **not yet used** — no surface currently has a status state. Use them when one appears; don't invent new tones.
 
 ## Typography
 
@@ -158,11 +163,11 @@ Four fixed decorative layers, all owned by `SiteBackdrop` and `FrameSection` —
 | `rounded-sm` | 8px | 2px | — |
 | `rounded-md` | 10px | 6px | — |
 | `rounded-lg` | **12px** | 8px | Small buttons (`h-10`), numeric badges |
-| `rounded-xl` | **16px** | 12px | Large buttons (`h-12`), label pills, cards |
-| `rounded-2xl` | 16px | 16px | Operator panel — *collides with `rounded-xl`* |
+| `rounded-xl` | **16px** | 12px | Large buttons (`h-12`), label pills, cards, panels |
+| `rounded-2xl` | **20px** | 16px | Unused — available for a larger container |
 | `rounded-full` | 9999px | 9999px | Status dots, avatars, progress bars, pills |
 
-Two consequences worth internalizing: `rounded-lg` here is what `rounded-xl` is in stock Tailwind, and `rounded-xl` and `rounded-2xl` currently render identically. Prefer `rounded-xl` and treat `rounded-2xl` as deprecated.
+The scale is derived from `--radius` and is monotonic, but it is **shifted one step up from stock Tailwind** — `rounded-lg` here is what `rounded-xl` is elsewhere. Don't port radius values from other Tailwind projects by name.
 
 **Frame sections themselves are never rounded.** The sharp outer rectangle against rounded inner controls is the intended tension.
 
@@ -188,7 +193,9 @@ Two consequences worth internalizing: `rounded-lg` here is what `rounded-xl` is 
 
 ### Frames
 
-**`FrameSection`** — The core container. Props: `as`, `variant` (`hero` | `panel` | `soft`), `overflow`. Renders the surface class, `border border-white/10`, four corner brackets, and owns its own scroll-triggered entrance animation. **Every section must be wrapped in one.**
+**`FrameSection`** — The core container. Props: `as`, `variant` (`hero` | `panel` | `soft`), `overflow`, `entrance`. Renders the surface class, `border border-white/10`, four corner brackets, and owns its own scroll-triggered entrance animation. **Every section must be wrapped in one.**
+
+Set `:entrance="false"` when the section runs its own intro sequence — the hero does this, because a section-level fade competing with the masked line reveal reads as muddy.
 
 **`FrameHeading`** — Eyebrow + h2 + optional description. Props: `eyebrow`, `eyebrowStyle` (`plain` | `pill`), `title`, `description`. Owns its SplitText word-reveal and re-splits on locale change. **Never hand-roll a section h2** — you lose the reveal and the revert-on-locale-change handling.
 
@@ -261,7 +268,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - Don't add a locale-reactive font class. Per-glyph fallback already handles all three locales.
 - Don't leave `filter` set after a tween — always `clearProps: 'filter'`.
 - Don't hardcode English in a component.
-- Don't use `rounded-2xl`; it duplicates `rounded-xl` under this project's radius overrides.
+- Don't assume Tailwind's stock radius values by name — this project's scale is shifted one step up.
 
 ## Responsive Behavior
 
@@ -299,11 +306,10 @@ The architecture bento collapses from 12-column spans to full width at `md`. The
 
 ## Known Gaps
 
-- **Gold (`--color-gold` #e8c382) is orphaned.** It survives only in text selection and scrollbar hover, inherited from the source template. It is either an unexploited warm accent or dead weight; it should be deliberately adopted or removed, not left ambiguous.
 - **Two parallel token systems.** shadcn's semantic variables (`--primary`, `--card`, `--muted`) coexist with the bespoke `--color-*` / `.surface-*` layer, and only Sheet / Input / Avatar consume the shadcn side. Anyone adding a shadcn component must theme it into the bespoke palette manually.
-- **`rounded-xl` and `rounded-2xl` render identically** (both 16px) because `@theme inline` overrides `--radius-xl` but not `--radius-2xl`.
-- **No semantic color layer** — no success / warning / error tones exist for forms or status.
+- **The semantic tones are unproven.** Success / warning / danger are defined but no surface uses them yet, so they haven't been checked for contrast against `.surface-panel` in context.
 - **No form system.** The only input is asset search. Validation, labels, error states, and multi-field layout are all undefined.
+- **No hover convention.** Only the ghost button and asset images define hover states; there is no shared rule for nav links, cards, or footer links.
 - **Architecture cards are CSS placeholders**, standing in for four Three.js scenes that were removed for performance. They are intentionally unfaithful to the source template and are the most likely thing to be replaced.
 - **Nothing here has been visually verified in a browser.** Values were extracted from source. Heading sizes in particular were ported verbatim from the source template and have not been tuned against rendered Manrope.
 - **Hover states are documented only where they already exist** (ghost button, asset image). The system has no general hover convention.

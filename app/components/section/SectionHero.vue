@@ -11,7 +11,7 @@ const { t } = useI18n()
 
 const { gsap, motion, revealTo } = useGSAP()
 
-motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
+motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 	if (context.conditions.reduced) return
 	gsap.from('.hero-line', {
 		yPercent: 115,
@@ -54,27 +54,33 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 </script>
 
 <template>
-	<FrameSection id="model" variant="hero" overflow>
-		<div class="grid min-h-[calc(100vh-8rem)] grid-cols-1 lg:grid-cols-[0.72fr_1.28fr]">
-			<aside class="relative border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r">
+	<FrameSection id="model" variant="hero" overflow :entrance="false">
+		<div
+			class="grid min-h-[calc(100vh-8rem)] grid-cols-1 lg:grid-cols-[0.72fr_1.28fr]"
+		>
+			<aside
+				class="relative border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r"
+			>
 				<div class="reveal-block max-w-xl">
 					<StatusPill :label="t('hero.eyebrow')" class="mb-8" />
 
-					<p class="mb-4 text-xs font-medium uppercase tracking-widest text-neutral-500">
-						{{ t('hero.kicker') }}
-					</p>
 					<h1
 						class="hero-title max-w-2xl text-5xl font-normal leading-[1.1] tracking-tighter text-white sm:text-6xl lg:text-7xl"
 					>
-						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
-							<span class="hero-line inline-block">{{ t('hero.titleLine1') }}</span>
+						<span class="inline-block overflow-hidden align-bottom">
+							<span class="hero-line inline-block">{{
+								t('hero.titleLine1')
+							}}</span>
 						</span>
-						<br>
-						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
+						<span class="inline-block overflow-hidden align-bottom">
 							<span
 								class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
 								style="
-									background: linear-gradient(to right, #818cf8, #c7d2fe);
+									background: linear-gradient(
+										to right,
+										#818cf8,
+										#c7d2fe
+									);
 									-webkit-background-clip: text;
 									-webkit-text-fill-color: transparent;
 								"
@@ -82,48 +88,86 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 								{{ t('hero.titleHighlight') }}
 							</span>
 						</span>
-						<br>
-						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
-							<span class="hero-line inline-block">{{ t('hero.titleLine3') }}</span>
+						<span class="inline-block overflow-hidden align-bottom">
+							<span class="hero-line inline-block">{{
+								t('hero.titleLine3')
+							}}</span>
 						</span>
 					</h1>
-					<p class="mt-6 max-w-lg text-sm leading-6 text-neutral-400 sm:text-base">
+					<p
+						class="mt-6 max-w-lg text-sm leading-6 text-neutral-400 sm:text-base"
+					>
 						{{ t('hero.description') }}
 					</p>
 
-					<div class="mt-8 grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2">
-						<HeroFeature v-for="feature in heroFeatures" :key="feature.key" :feature-key="feature.key" />
+					<div
+						class="mt-8 grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2"
+					>
+						<HeroFeature
+							v-for="feature in heroFeatures"
+							:key="feature.key"
+							:feature-key="feature.key"
+						/>
 					</div>
 
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-						<AppButton variant="solid" size="lg" icon="solar:map-arrow-right-linear">
+						<AppButton
+							variant="solid"
+							size="lg"
+							icon="solar:map-arrow-right-linear"
+						>
 							{{ t('hero.ctaPrimary') }}
 						</AppButton>
-						<AppButton href="#assets" variant="ghost" size="lg" icon="solar:magnifer-linear">
+						<AppButton
+							href="#assets"
+							variant="ghost"
+							size="lg"
+							icon="solar:magnifer-linear"
+						>
 							{{ t('hero.ctaSecondary') }}
 						</AppButton>
 					</div>
 				</div>
 
 				<div
-					class="mt-10 rounded-2xl border border-white/10 p-4"
+					class="mt-10 rounded-xl border border-white/10 p-4"
 					style="
-						background: linear-gradient(to bottom, rgba(255, 255, 255, 0.075), rgba(0, 0, 0, 0.2));
+						background: linear-gradient(
+							to bottom,
+							rgba(255, 255, 255, 0.075),
+							rgba(0, 0, 0, 0.2)
+						);
 						box-shadow:
 							inset 0 1px 0 rgba(255, 255, 255, 0.1),
 							inset 0 -1px 0 rgba(0, 0, 0, 0.9);
 					"
 				>
-					<div class="flex items-center justify-between border-b border-white/10 pb-3">
-						<p class="text-xs font-medium uppercase tracking-widest text-zinc-400">
+					<div
+						class="flex items-center justify-between border-b border-white/10 pb-3"
+					>
+						<p
+							class="text-xs font-medium uppercase tracking-widest text-zinc-400"
+						>
 							{{ t('hero.operators.label') }}
 						</p>
-						<span class="text-xs text-zinc-500">{{ t('hero.operators.onlineCount') }}</span>
+						<span class="text-xs text-zinc-500">{{
+							t('hero.operators.onlineCount')
+						}}</span>
 					</div>
 					<AvatarGroup class="mt-4">
-						<Avatar v-for="operator in heroOperators" :key="operator.key" class="size-9">
-							<AvatarImage :src="operator.image" :alt="t(`hero.operators.${operator.key}`)" class="grayscale" />
-							<AvatarFallback>{{ operator.key.slice(0, 2).toUpperCase() }}</AvatarFallback>
+						<Avatar
+							v-for="operator in heroOperators"
+							:key="operator.key"
+							class="size-9"
+						>
+							<AvatarImage
+								:src="operator.image"
+								:alt="t(`hero.operators.${operator.key}`)"
+								class="grayscale"
+							/>
+							<AvatarFallback>{{
+								operator.key.slice(0, 2).toUpperCase()
+							}}</AvatarFallback>
 						</Avatar>
 						<AvatarGroupCount class="size-9 text-xs">
 							{{ t('hero.operators.overflow') }}
@@ -133,7 +177,9 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 			</aside>
 
 			<div class="relative min-h-[38rem] overflow-hidden">
-				<div class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]" />
+				<div
+					class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]"
+				/>
 
 				<ThreeStage />
 
@@ -178,56 +224,94 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 				</svg>
 
 				<div class="absolute left-6 top-6 z-20 flex items-center gap-3">
-					<div class="h-2 w-2 animate-pulse rounded-full bg-indigo-500 shadow-[0_0_10px_#818cf8]" />
-					<span class="text-xs font-medium uppercase tracking-widest text-indigo-400/80">
+					<div
+						class="h-2 w-2 animate-pulse rounded-full bg-indigo-500 shadow-[0_0_10px_#818cf8]"
+					/>
+					<span
+						class="text-xs font-medium uppercase tracking-widest text-indigo-400/80"
+					>
 						{{ t('hero.simulation') }}
 					</span>
 				</div>
 
 				<LabelPill class="right-5 top-12 w-52 sm:right-8">
 					<div class="flex items-center justify-between">
-						<p class="text-xs font-medium uppercase tracking-widest text-zinc-300">
+						<p
+							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+						>
 							{{ t('hero.panels.syncMesh.label') }}
 						</p>
-						<span class="text-xs text-zinc-500">{{ t('hero.panels.syncMesh.value') }}</span>
+						<span class="text-xs text-zinc-500">{{
+							t('hero.panels.syncMesh.value')
+						}}</span>
 					</div>
 					<div class="mt-3 grid grid-cols-8 gap-1">
-						<span v-for="(bar, i) in heroSyncMeshBars" :key="i" :class="['rounded', bar.height, bar.tone]" />
+						<span
+							v-for="(bar, i) in heroSyncMeshBars"
+							:key="i"
+							:class="['rounded', bar.height, bar.tone]"
+						/>
 					</div>
 				</LabelPill>
 
 				<LabelPill class="bottom-24 left-5 w-52 sm:left-8">
-					<p class="text-xs font-medium uppercase tracking-widest text-zinc-300">
+					<p
+						class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+					>
 						{{ t('hero.panels.routeMemory.label') }}
 					</p>
 					<p class="mt-2 text-2xl font-normal tracking-tight text-white">
 						{{ t('hero.panels.routeMemory.value') }}
 					</p>
-					<p class="mt-1 text-xs text-zinc-500">{{ t('hero.panels.routeMemory.caption') }}</p>
+					<p class="mt-1 text-xs text-zinc-500">
+						{{ t('hero.panels.routeMemory.caption') }}
+					</p>
 				</LabelPill>
 
 				<LabelPill class="bottom-16 right-5 w-60 sm:right-8">
 					<div class="flex items-center justify-between">
-						<p class="text-xs font-medium uppercase tracking-widest text-zinc-300">
+						<p
+							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+						>
 							{{ t('hero.panels.canvasLoad.label') }}
 						</p>
 						<Icon name="solar:cpu-linear" class="text-lg text-zinc-400" />
 					</div>
 					<div class="mt-3 space-y-2">
-						<div v-for="row in heroCanvasLoadRows" :key="row.key" class="flex items-center gap-2">
-							<span class="w-16 text-xs text-zinc-500">{{ t(`hero.panels.canvasLoad.${row.key}`) }}</span>
+						<div
+							v-for="row in heroCanvasLoadRows"
+							:key="row.key"
+							class="flex items-center gap-2"
+						>
+							<span class="w-16 text-xs text-zinc-500">{{
+								t(`hero.panels.canvasLoad.${row.key}`)
+							}}</span>
 							<span class="h-1.5 flex-1 rounded-full bg-black/60">
-								<span :class="['block h-full rounded-full', row.width, row.tone]" />
+								<span
+									:class="[
+										'block h-full rounded-full',
+										row.width,
+										row.tone,
+									]"
+								/>
 							</span>
 						</div>
 					</div>
 				</LabelPill>
 
-				<div class="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/35 px-5 py-4 backdrop-blur-xl sm:px-8">
-					<div class="grid grid-cols-2 gap-3 text-xs text-zinc-500 sm:grid-cols-4">
+				<div
+					class="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/35 px-5 py-4 backdrop-blur-xl sm:px-8"
+				>
+					<div
+						class="grid grid-cols-2 gap-3 text-xs text-zinc-500 sm:grid-cols-4"
+					>
 						<div v-for="stat in heroStats" :key="stat.key">
-							<span class="block uppercase tracking-widest">{{ t(`hero.stats.${stat.key}.label`) }}</span>
-							<strong class="mt-1 block font-medium text-zinc-200">{{ t(`hero.stats.${stat.key}.value`) }}</strong>
+							<span class="block uppercase tracking-widest">{{
+								t(`hero.stats.${stat.key}.label`)
+							}}</span>
+							<strong class="mt-1 block font-medium text-zinc-200">{{
+								t(`hero.stats.${stat.key}.value`)
+							}}</strong>
 						</div>
 					</div>
 				</div>

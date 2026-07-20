@@ -1,18 +1,19 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		as?: string
 		variant?: 'hero' | 'panel' | 'soft'
 		overflow?: boolean
+		entrance?: boolean
 	}>(),
-	{ as: 'section', variant: 'panel', overflow: false },
+	{ as: 'section', variant: 'panel', overflow: false, entrance: true },
 )
 
 const { gsap, motion, revealFrom, revealTo } = useGSAP()
 const root = ref<HTMLElement | null>(null)
 
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
-	if (context.conditions.reduced || !root.value) return
+	if (context.conditions.reduced || !props.entrance || !root.value) return
 	gsap.fromTo(root.value, { ...revealFrom, filter: 'blur(8px)' }, {
 		...revealTo,
 		clearProps: 'filter',
