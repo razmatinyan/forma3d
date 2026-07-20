@@ -14,7 +14,7 @@ function closeAndNavigate() {
 			<button
 				type="button"
 				:aria-label="$t('common.openMenu')"
-				class="bezel my-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-zinc-300 lg:hidden"
+				class="bezel my-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-zinc-300 outline-none lg:hidden focus-visible:ring-2 focus-visible:ring-indigo-400"
 			>
 				<Icon name="solar:hamburger-menu-linear" class="text-xl" />
 			</button>
@@ -32,7 +32,7 @@ function closeAndNavigate() {
 					v-for="link in navLinks"
 					:key="link.key"
 					:href="link.href"
-					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium uppercase tracking-widest text-zinc-400 transition hover:bg-white/5 hover:text-white"
+					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium uppercase tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 					@click="closeAndNavigate"
 				>
 					<Icon :name="link.icon" class="text-lg" />

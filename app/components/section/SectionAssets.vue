@@ -38,7 +38,7 @@ const filtered = computed(() => {
 						type="search"
 						:placeholder="t('assets.searchPlaceholder')"
 						:aria-label="t('assets.searchAriaLabel')"
-						class="h-12 rounded-xl border-white/10 bg-black/40 pl-11 pr-4 text-sm text-zinc-300 placeholder:text-zinc-600 focus-visible:border-white/25 focus-visible:ring-0"
+						class="h-12 rounded-xl border-white/10 bg-black/40 pl-11 pr-4 text-sm text-zinc-300 placeholder:text-zinc-600 focus-visible:border-white/25 focus-visible:ring-2 focus-visible:ring-indigo-400/50"
 						style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.9)"
 					/>
 				</div>

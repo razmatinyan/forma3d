@@ -15,6 +15,7 @@ withDefaults(
 		:href="href"
 		:class="[
 			'inline-flex items-center justify-center gap-2 border text-xs font-medium uppercase tracking-widest',
+			'outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black',
 			size === 'lg' ? 'h-12 rounded-xl px-5' : 'h-10 rounded-lg px-4',
 			variant === 'solid'
 				? 'btn-solid border-white/20 text-black'

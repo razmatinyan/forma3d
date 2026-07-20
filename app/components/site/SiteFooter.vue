@@ -19,7 +19,7 @@ import { footerCompanyLinks } from '~/data/sections'
 					</h3>
 					<ul class="space-y-3">
 						<li v-for="link in navLinks" :key="link.key">
-							<a :href="link.href" class="text-sm text-zinc-500 transition hover:text-white">
+							<a :href="link.href" class="text-sm text-zinc-500 outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">
 								{{ $t(`nav.${link.key}`) }}
 							</a>
 						</li>
@@ -31,7 +31,7 @@ import { footerCompanyLinks } from '~/data/sections'
 					</h3>
 					<ul class="space-y-3">
 						<li v-for="link in footerCompanyLinks" :key="link.key">
-							<a :href="link.href" class="text-sm text-zinc-500 transition hover:text-white">
+							<a :href="link.href" class="text-sm text-zinc-500 outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">
 								{{ $t(`footer.company.${link.key}`) }}
 							</a>
 						</li>
@@ -45,8 +45,8 @@ import { footerCompanyLinks } from '~/data/sections'
 		>
 			<p>{{ $t('footer.legal') }}</p>
 			<div class="flex flex-wrap gap-4">
-				<a href="#" class="transition hover:text-white">{{ $t('footer.privacy') }}</a>
-				<a href="#" class="transition hover:text-white">{{ $t('footer.terms') }}</a>
+				<a href="#" class="outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">{{ $t('footer.privacy') }}</a>
+				<a href="#" class="outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">{{ $t('footer.terms') }}</a>
 			</div>
 		</div>
 	</footer>
