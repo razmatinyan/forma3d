@@ -7,11 +7,26 @@ withDefaults(
 	}>(),
 	{ as: 'section', variant: 'panel', overflow: false },
 )
+
+const { gsap, motion } = useGSAP()
+const root = ref<HTMLElement | null>(null)
+
+motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
+	if (context.conditions.reduced || !root.value) return
+	gsap.from(root.value, {
+		y: 28,
+		opacity: 0,
+		duration: 0.9,
+		ease: 'power3.out',
+		scrollTrigger: { trigger: root.value, start: 'top 85%' },
+	})
+})
 </script>
 
 <template>
 	<component
 		:is="as"
+		ref="root"
 		:class="[
 			'frame-section relative border border-white/10',
 			overflow ? 'overflow-hidden' : '',

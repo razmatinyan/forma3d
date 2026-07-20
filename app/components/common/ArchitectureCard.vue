@@ -29,7 +29,7 @@ defineProps<{ cardKey: string; icon: string; colSpan: 5 | 7; border: string }>()
 			</div>
 		</div>
 
-		<div class="relative z-10 mt-auto border-t border-white/5 bg-black/20 p-5 pt-4 sm:p-8 sm:pt-4">
+		<div data-reveal class="relative z-10 mt-auto border-t border-white/5 bg-black/20 p-5 pt-4 sm:p-8 sm:pt-4">
 			<h3 class="text-lg font-light tracking-tighter text-neutral-200">
 				{{ $t(`architecture.cards.${cardKey}.title`) }}
 			</h3>

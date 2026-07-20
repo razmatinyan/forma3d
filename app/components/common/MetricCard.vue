@@ -4,6 +4,7 @@ withDefaults(defineProps<{ metricKey: string; icon: string; last?: boolean }>(),
 
 <template>
 	<article
+		data-reveal
 		:class="['metric-card p-5 sm:p-6', last ? '' : 'border-b border-white/10 sm:border-b-0 sm:border-r']"
 	>
 		<Icon :name="icon" class="text-2xl text-zinc-300" />

@@ -8,6 +8,30 @@ import {
 } from '~/data/sections'
 
 const { t } = useI18n()
+
+const { gsap, motion } = useGSAP()
+
+motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
+	if (context.conditions.reduced) return
+	gsap.from('.hero-line', { y: 40, opacity: 0, duration: 1, stagger: 0.12, ease: 'power4.out' })
+	gsap.from('.reveal-block > *', {
+		y: 24,
+		opacity: 0,
+		duration: 0.9,
+		stagger: 0.08,
+		delay: 0.2,
+		ease: 'power3.out',
+	})
+	gsap.from('.label-pill', { y: 18, opacity: 0, duration: 0.9, stagger: 0.12, delay: 0.4, ease: 'power3.out' })
+	gsap.from('.connector-line', {
+		strokeDashoffset: 80,
+		opacity: 0,
+		duration: 1.2,
+		stagger: 0.12,
+		delay: 0.6,
+		ease: 'power2.out',
+	})
+})
 </script>
 
 <template>

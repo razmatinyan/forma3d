@@ -3,7 +3,7 @@ defineProps<{ stepKey: string; index: number }>()
 </script>
 
 <template>
-	<div class="protocol-row flex items-start gap-4 p-5 sm:p-6">
+	<div data-reveal class="protocol-row flex items-start gap-4 p-5 sm:p-6">
 		<span
 			class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 text-xs font-medium text-zinc-200"
 			style="
