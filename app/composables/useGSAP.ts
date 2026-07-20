@@ -9,6 +9,15 @@ if (import.meta.client) {
 	gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase, Draggable)
 }
 
+const revealFrom = { y: 32, opacity: 0, filter: 'blur(12px)' }
+const revealTo = {
+	y: 0,
+	opacity: 1,
+	filter: 'blur(0px)',
+	duration: 1.1,
+	ease: 'expo.out',
+}
+
 export const useGSAP = () => {
 	const animate = (
 		fn: (ctx: gsap.Context) => void,
@@ -30,7 +39,9 @@ export const useGSAP = () => {
 
 	const motion = (
 		queries: Record<string, string>,
-		fn: (context: gsap.Context & { conditions: Record<string, boolean> }) => void | (() => void),
+		fn: (
+			context: gsap.Context & { conditions: gsap.Conditions },
+		) => void | (() => void),
 		scope?: MaybeRefOrGetter<HTMLElement | null | undefined>,
 	) => {
 		let mm: gsap.MatchMedia
@@ -38,7 +49,7 @@ export const useGSAP = () => {
 		onMounted(() => {
 			const scopeElement = toValue(scope)
 			mm = gsap.matchMedia(scopeElement || undefined)
-			mm.add(queries, fn)
+			mm.add(queries, fn as gsap.ContextFunc)
 		})
 
 		onBeforeUnmount(() => {
@@ -46,5 +57,15 @@ export const useGSAP = () => {
 		})
 	}
 
-	return { gsap, SplitText, ScrollTrigger, CustomEase, Draggable, animate, motion }
+	return {
+		gsap,
+		SplitText,
+		ScrollTrigger,
+		CustomEase,
+		Draggable,
+		animate,
+		motion,
+		revealFrom,
+		revealTo,
+	}
 }

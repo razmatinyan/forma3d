@@ -8,16 +8,14 @@ withDefaults(
 	{ as: 'section', variant: 'panel', overflow: false },
 )
 
-const { gsap, motion } = useGSAP()
+const { gsap, motion, revealFrom, revealTo } = useGSAP()
 const root = ref<HTMLElement | null>(null)
 
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced || !root.value) return
-	gsap.from(root.value, {
-		y: 28,
-		opacity: 0,
-		duration: 0.9,
-		ease: 'power3.out',
+	gsap.fromTo(root.value, { ...revealFrom, filter: 'blur(8px)' }, {
+		...revealTo,
+		clearProps: 'filter',
 		scrollTrigger: { trigger: root.value, start: 'top 85%' },
 	})
 })

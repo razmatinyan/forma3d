@@ -5,16 +5,20 @@ useHead({
 	htmlAttrs: { lang: locale },
 })
 
-const { gsap, ScrollTrigger } = useGSAP()
+const { gsap, ScrollTrigger, revealFrom, revealTo } = useGSAP()
 
 onMounted(() => {
 	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-	gsap.set('[data-reveal]', { opacity: 0, y: 24 })
+	gsap.set('[data-reveal]', { ...revealFrom, willChange: 'transform, filter, opacity' })
 	ScrollTrigger.batch('[data-reveal]', {
 		start: 'top 92%',
 		once: true,
-		onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out' }),
+		onEnter: batch => gsap.to(batch, {
+			...revealTo,
+			stagger: 0.08,
+			clearProps: 'willChange,filter',
+		}),
 	})
 })
 </script>

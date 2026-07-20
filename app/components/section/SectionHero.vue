@@ -9,20 +9,39 @@ import {
 
 const { t } = useI18n()
 
-const { gsap, motion } = useGSAP()
+const { gsap, motion, revealTo } = useGSAP()
 
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced) return
-	gsap.from('.hero-line', { y: 40, opacity: 0, duration: 1, stagger: 0.12, ease: 'power4.out' })
-	gsap.from('.reveal-block > *', {
-		y: 24,
+	gsap.from('.hero-line', {
+		yPercent: 115,
 		opacity: 0,
-		duration: 0.9,
-		stagger: 0.08,
-		delay: 0.2,
-		ease: 'power3.out',
+		filter: 'blur(14px)',
+		duration: 1.3,
+		stagger: 0.11,
+		ease: 'expo.out',
+		clearProps: 'filter',
 	})
-	gsap.from('.label-pill', { y: 18, opacity: 0, duration: 0.9, stagger: 0.12, delay: 0.4, ease: 'power3.out' })
+	gsap.from('.reveal-block > *:not(.hero-title)', {
+		y: 26,
+		opacity: 0,
+		filter: 'blur(10px)',
+		duration: 1,
+		stagger: 0.07,
+		delay: 0.25,
+		ease: 'expo.out',
+		clearProps: 'filter',
+	})
+	gsap.from('.label-pill', {
+		y: 20,
+		opacity: 0,
+		filter: 'blur(10px)',
+		duration: 1,
+		stagger: 0.12,
+		delay: 0.45,
+		ease: revealTo.ease,
+		clearProps: 'filter',
+	})
 	gsap.from('.connector-line', {
 		strokeDashoffset: 80,
 		opacity: 0,
@@ -47,20 +66,26 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 					<h1
 						class="hero-title max-w-2xl text-5xl font-normal leading-[1.1] tracking-tighter text-white sm:text-6xl lg:text-7xl"
 					>
-						<span class="hero-line inline-block">{{ t('hero.titleLine1') }}</span>
-						<br>
-						<span
-							class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
-							style="
-								background: linear-gradient(to right, #818cf8, #c7d2fe);
-								-webkit-background-clip: text;
-								-webkit-text-fill-color: transparent;
-							"
-						>
-							{{ t('hero.titleHighlight') }}
+						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
+							<span class="hero-line inline-block">{{ t('hero.titleLine1') }}</span>
 						</span>
 						<br>
-						<span class="hero-line inline-block">{{ t('hero.titleLine3') }}</span>
+						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
+							<span
+								class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
+								style="
+									background: linear-gradient(to right, #818cf8, #c7d2fe);
+									-webkit-background-clip: text;
+									-webkit-text-fill-color: transparent;
+								"
+							>
+								{{ t('hero.titleHighlight') }}
+							</span>
+						</span>
+						<br>
+						<span class="inline-block overflow-hidden pb-[0.12em] align-bottom">
+							<span class="hero-line inline-block">{{ t('hero.titleLine3') }}</span>
+						</span>
 					</h1>
 					<p class="mt-6 max-w-lg text-sm leading-6 text-neutral-400 sm:text-base">
 						{{ t('hero.description') }}

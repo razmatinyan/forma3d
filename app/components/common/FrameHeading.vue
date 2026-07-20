@@ -23,11 +23,13 @@ function reveal() {
 	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
 	tween = gsap.from(split.words, {
-		yPercent: 100,
+		yPercent: 110,
 		opacity: 0,
-		duration: 0.9,
-		stagger: 0.08,
-		ease: 'power3.out',
+		filter: 'blur(10px)',
+		duration: 1.1,
+		stagger: 0.055,
+		ease: 'expo.out',
+		clearProps: 'filter',
 		scrollTrigger: { trigger: heading.value, start: 'top 90%' },
 	})
 }
