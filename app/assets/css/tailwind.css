@@ -9,9 +9,6 @@
 	--color-gold: #e8c382;
 	--color-umber: #351e10;
 
-	/* Reusable box-shadow recipes — the ~40 inline gradient/shadow blobs in
-	   template.html reduce to these tokens, composed into the surface/bezel/
-	   btn classes below. */
 	--shadow-bezel: inset 0 1px 0 rgba(255, 255, 255, 0.12),
 		inset 0 -1px 0 rgba(0, 0, 0, 0.7);
 	--shadow-bezel-strong: inset 0 1px 0 rgba(255, 255, 255, 0.25),
@@ -30,9 +27,6 @@
 		inset 0 -1px 0 rgba(0, 0, 0, 0.85);
 }
 
-/* shadcn-vue primitives (Sheet, Input, Avatar) resolve colors through these
-   tokens. The app has no light/dark toggle, so this is the only palette —
-   tuned to the template's zinc/indigo chrome instead of shadcn's defaults. */
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -114,10 +108,6 @@
 		background: var(--color-gold);
 	}
 
-	/* Bebas Neue is Latin-only; Armenian falls through to Noto Sans Armenian,
-	   which has no condensed variant. Loosen tracking there instead of
-	   letting glyphs collide. Server-rendered via i18n's htmlAttrs.lang, so
-	   there is no hydration risk. */
 	html:lang(hy) h1,
 	html:lang(hy) h2,
 	html:lang(hy) h3 {
@@ -126,7 +116,6 @@
 }
 
 @layer components {
-	/* Surfaces — frame-section panel backgrounds */
 	.surface-hero {
 		background: linear-gradient(180deg, rgba(39, 39, 42, 0.72), rgba(10, 10, 10, 0.88));
 		box-shadow: var(--shadow-hero);
@@ -144,7 +133,6 @@
 		box-shadow: var(--shadow-soft);
 	}
 
-	/* Bezels — glass pill/badge/logo chrome */
 	.bezel {
 		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025));
 		box-shadow: var(--shadow-bezel);
@@ -155,7 +143,6 @@
 		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
 	}
 
-	/* Buttons */
 	.btn-solid {
 		background: linear-gradient(to bottom, #fafafa, #a3a3a3);
 		box-shadow: var(--shadow-btn-solid);
@@ -165,7 +152,6 @@
 		box-shadow: var(--shadow-btn-ghost);
 	}
 
-	/* Grid overlays — empty decorative divs, no component needed */
 	.grid-overlay {
 		background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
 			linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);

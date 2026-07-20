@@ -12,6 +12,18 @@ export default defineNuxtConfig({
 		'shadcn-nuxt',
 	],
 	css: ['~/assets/css/tailwind.css'],
+	components: [{ path: '~/components/common', pathPrefix: false }, '~/components'],
+	shadcn: {
+		prefix: '',
+		componentDir: '~/components/ui',
+	},
+	app: {
+		head: {
+			bodyAttrs: {
+				class: 'bg-ink text-white antialiased selection:bg-gold selection:text-umber overflow-x-hidden min-h-screen',
+			},
+		},
+	},
 	email: {
 		provider: 'console',
 		from: 'App <noreply@myapp.com>',
@@ -37,7 +49,6 @@ export default defineNuxtConfig({
 			{ code: 'hy', iso: 'hy-AM', file: 'hy.json', name: 'Հայերեն' },
 		],
 		defaultLocale: 'en',
-		fallbackLocale: 'en',
 		strategy: 'prefix_except_default',
 		detectBrowserLanguage: {
 			useCookie: true,
