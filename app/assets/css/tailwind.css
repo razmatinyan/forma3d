@@ -2,7 +2,6 @@
 @import 'tw-animate-css';
 
 @theme {
-	--font-heading: 'Bebas Neue', 'Oswald', 'Noto Sans Armenian', sans-serif;
 	--font-sans: 'Manrope', 'Noto Sans Armenian', ui-sans-serif, system-ui, sans-serif;
 
 	--color-ink: #070707;

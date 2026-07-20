@@ -36,8 +36,6 @@ export default defineNuxtConfig({
 	},
 	fonts: {
 		families: [
-			{ name: 'Bebas Neue', provider: 'google', weights: [400] },
-			{ name: 'Oswald', provider: 'google', weights: [400, 500, 600, 700] },
 			{ name: 'Manrope', provider: 'google', weights: [300, 400, 500, 600, 700, 800] },
 			{ name: 'Noto Sans Armenian', provider: 'google', weights: [400, 500, 600, 700, 800] },
 		],

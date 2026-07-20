@@ -18,7 +18,7 @@ withDefaults(
 		</p>
 		<h2
 			:class="[
-				'font-heading font-normal text-3xl tracking-tighter text-white sm:text-4xl',
+				'font-normal text-3xl tracking-tighter text-white sm:text-4xl',
 				eyebrowStyle === 'plain' ? 'mt-3' : '',
 			]"
 		>

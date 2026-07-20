@@ -22,7 +22,7 @@ const filtered = computed(() => {
 					<p class="text-xs font-medium uppercase tracking-[0.32em] text-zinc-500">
 						{{ t('assets.eyebrow') }}
 					</p>
-					<h2 class="mt-3 font-heading text-3xl font-normal tracking-tighter text-white sm:text-4xl">
+					<h2 class="mt-3 text-3xl font-normal tracking-tighter text-white sm:text-4xl">
 						{{ t('assets.title') }}
 					</h2>
 				</div>

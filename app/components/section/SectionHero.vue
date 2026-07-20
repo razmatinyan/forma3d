@@ -21,12 +21,12 @@ const { t } = useI18n()
 						{{ t('hero.kicker') }}
 					</p>
 					<h1
-						class="hero-title max-w-2xl font-heading text-5xl font-normal leading-[1.1] tracking-tighter text-white sm:text-6xl lg:text-7xl"
+						class="hero-title max-w-2xl text-5xl font-normal leading-[1.1] tracking-tighter text-white sm:text-6xl lg:text-7xl"
 					>
 						<span class="hero-line inline-block">{{ t('hero.titleLine1') }}</span>
 						<br>
 						<span
-							class="hero-line inline-block font-heading font-normal tracking-tighter text-indigo-400"
+							class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
 							style="
 								background: linear-gradient(to right, #818cf8, #c7d2fe);
 								-webkit-background-clip: text;
@@ -151,7 +151,7 @@ const { t } = useI18n()
 					<p class="text-xs font-medium uppercase tracking-widest text-zinc-300">
 						{{ t('hero.panels.routeMemory.label') }}
 					</p>
-					<p class="mt-2 font-heading text-2xl font-normal tracking-tight text-white">
+					<p class="mt-2 text-2xl font-normal tracking-tight text-white">
 						{{ t('hero.panels.routeMemory.value') }}
 					</p>
 					<p class="mt-1 text-xs text-zinc-500">{{ t('hero.panels.routeMemory.caption') }}</p>

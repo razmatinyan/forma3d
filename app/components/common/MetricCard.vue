@@ -10,7 +10,7 @@ withDefaults(defineProps<{ metricKey: string; icon: string; last?: boolean }>(),
 		<p class="mt-5 text-xs uppercase tracking-widest text-zinc-500">
 			{{ $t(`signals.metrics.${metricKey}.label`) }}
 		</p>
-		<p class="mt-2 font-heading text-3xl font-normal tracking-tight text-white">
+		<p class="mt-2 text-3xl font-normal tracking-tight text-white">
 			{{ $t(`signals.metrics.${metricKey}.value`) }}
 		</p>
 		<p class="mt-2 text-xs leading-5 text-zinc-500">
