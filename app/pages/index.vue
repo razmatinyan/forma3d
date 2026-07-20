@@ -9,6 +9,7 @@ useSeoMeta({
 
 <template>
 	<div>
+		<SectionHero />
 		<SectionArchitecture />
 		<SectionSignals />
 		<SectionAssets />
