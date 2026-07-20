@@ -8,5 +8,11 @@ useSeoMeta({
 </script>
 
 <template>
-	<div />
+	<div>
+		<SectionArchitecture />
+		<SectionSignals />
+		<SectionAssets />
+		<SectionProtocol />
+		<SectionDeployment />
+	</div>
 </template>
