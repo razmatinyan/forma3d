@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			bodyAttrs: {
-				class: 'bg-ink text-white antialiased selection:bg-gold selection:text-umber overflow-x-hidden min-h-screen',
+				class: 'bg-ink text-white antialiased overflow-x-hidden min-h-screen',
 			},
 		},
 	},
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 			{ code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' },
 			{ code: 'hy', iso: 'hy-AM', file: 'hy.json', name: 'Հայերեն' },
 		],
-		defaultLocale: 'en',
+		defaultLocale: 'hy',
 		strategy: 'prefix_except_default',
 		detectBrowserLanguage: {
 			useCookie: true,
