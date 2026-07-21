@@ -13,6 +13,8 @@ const form = reactive({
 	website: '',
 })
 
+const selectedCourse = computed(() => courseOptions.find(o => o.value === form.course))
+
 const errors = ref<Record<string, string>>({})
 const status = ref<'idle' | 'submitting' | 'success'>('idle')
 const submitError = ref('')
@@ -77,11 +79,21 @@ async function onSubmit() {
 							:aria-invalid="!!errors.course"
 							:aria-describedby="errors.course ? `${ids.course}-error` : undefined"
 						>
-							<SelectValue :placeholder="t('register.form.course.placeholder')" />
+							<span class="flex items-center gap-2.5">
+								<Icon
+									v-if="selectedCourse"
+									:name="selectedCourse.icon"
+									class="size-4 shrink-0 text-zinc-400"
+								/>
+								<SelectValue :placeholder="t('register.form.course.placeholder')" />
+							</span>
 						</SelectTrigger>
 						<SelectContent>
 							<SelectItem v-for="option in courseOptions" :key="option.value" :value="option.value">
-								{{ t(`register.form.course.options.${option.key}`) }}
+								<span class="flex items-center gap-2.5">
+									<Icon :name="option.icon" class="size-4 shrink-0" />
+									{{ t(`register.form.course.options.${option.key}`) }}
+								</span>
 							</SelectItem>
 						</SelectContent>
 					</Select>
@@ -102,7 +114,7 @@ async function onSubmit() {
 						class="h-12 rounded-xl border-white/10 bg-black/40 px-4 text-sm text-zinc-300 placeholder:text-zinc-600 focus-visible:border-white/25 focus-visible:ring-2 focus-visible:ring-indigo-400/50"
 						style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.9)"
 						@input="clearError('fullName')"
-					>
+					/>
 					<p v-if="errors.fullName" :id="`${ids.fullName}-error`" class="mt-2 text-xs text-red-400">
 						{{ errors.fullName }}
 					</p>
@@ -120,7 +132,7 @@ async function onSubmit() {
 						class="h-12 rounded-xl border-white/10 bg-black/40 px-4 text-sm text-zinc-300 placeholder:text-zinc-600 focus-visible:border-white/25 focus-visible:ring-2 focus-visible:ring-indigo-400/50"
 						style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.9)"
 						@input="clearError('phone')"
-					>
+					/>
 					<p v-if="errors.phone" :id="`${ids.phone}-error`" class="mt-2 text-xs text-red-400">
 						{{ errors.phone }}
 					</p>
@@ -138,7 +150,7 @@ async function onSubmit() {
 						class="h-12 rounded-xl border-white/10 bg-black/40 px-4 text-sm text-zinc-300 placeholder:text-zinc-600 focus-visible:border-white/25 focus-visible:ring-2 focus-visible:ring-indigo-400/50"
 						style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.9)"
 						@input="clearError('email')"
-					>
+					/>
 					<p v-if="errors.email" :id="`${ids.email}-error`" class="mt-2 text-xs text-red-400">
 						{{ errors.email }}
 					</p>

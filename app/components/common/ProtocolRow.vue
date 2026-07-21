@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ stepKey: string; index: number }>()
+withDefaults(defineProps<{ stepKey: string; index: number; params?: Record<string, unknown> }>(), {
+	params: () => ({}),
+})
 </script>
 
 <template>
@@ -17,7 +19,7 @@ defineProps<{ stepKey: string; index: number }>()
 		</span>
 		<div>
 			<h3 class="text-sm font-medium text-white">{{ $t(`how.steps.${stepKey}.title`) }}</h3>
-			<p class="mt-1 text-xs leading-5 text-zinc-500">{{ $t(`how.steps.${stepKey}.description`) }}</p>
+			<p class="mt-1 text-xs leading-5 text-zinc-500">{{ $t(`how.steps.${stepKey}.description`, params) }}</p>
 		</div>
 	</div>
 </template>

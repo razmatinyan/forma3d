@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 		<h2
 			ref="heading"
 			:class="[
-				'font-normal text-3xl tracking-tighter text-white sm:text-4xl',
+				'font-normal text-3xl leading-[1.25] tracking-tighter text-white sm:text-4xl',
 				eyebrow && eyebrowStyle === 'plain' ? 'mt-3' : '',
 			]"
 		>

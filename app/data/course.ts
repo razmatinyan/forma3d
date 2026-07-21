@@ -74,9 +74,25 @@ export const faqItems: { key: string }[] = [
 export interface CourseOption {
 	value: string
 	key: string
+	icon: string
 }
 
-export const courseOptions: CourseOption[] = [{ value: '3ds-max-photoshop', key: 'threeDsMaxPhotoshop' }]
+// no 3ds Max glyph exists in iconify, autodesk is the vendor mark
+export const programIcons = {
+	threeDsMax: 'simple-icons:autodesk',
+	photoshop: 'simple-icons:adobephotoshop',
+} as const
+
+export type ProgramKey = keyof typeof programIcons
+
+export const courseOptions: CourseOption[] = [
+	{ value: '3ds-max-photoshop', key: 'threeDsMax', icon: programIcons.threeDsMax },
+]
+
+export const coursePrograms: { key: ProgramKey; icon: string }[] = [
+	{ key: 'threeDsMax', icon: programIcons.threeDsMax },
+	{ key: 'photoshop', icon: programIcons.photoshop },
+]
 
 export const contactRows: { key: 'phone' | 'email' | 'instagram' | 'address'; icon: string; href: string; value?: string }[] = [
 	{ key: 'phone', icon: 'solar:phone-linear', href: site.phoneHref, value: site.phone },

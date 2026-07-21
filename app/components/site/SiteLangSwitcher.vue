@@ -2,10 +2,18 @@
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
+const flags: Record<string, string> = {
+	hy: 'circle-flags:am',
+	ru: 'circle-flags:ru',
+	en: 'circle-flags:uk',
+}
+
 const availableLocales = computed(() => {
 	const list = locales.value
 	return (typeof list[0] === 'string' ? [] : list) as { code: string; name?: string }[]
 })
+
+const currentFlag = computed(() => flags[locale.value] ?? 'solar:global-linear')
 </script>
 
 <template>
@@ -16,7 +24,7 @@ const availableLocales = computed(() => {
 				:aria-label="$t('common.languageLabel')"
 				class="btn-ghost inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-white/10 px-4 text-xs font-medium uppercase tracking-widest text-zinc-300 outline-none transition hover:border-white/25 hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
 			>
-				<Icon name="solar:global-linear" class="text-base" />
+				<Icon :name="currentFlag" class="size-4 shrink-0 rounded-full" />
 				{{ locale }}
 			</button>
 		</DropdownMenuTrigger>

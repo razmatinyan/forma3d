@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { enrollmentSteps } from '~/data/course'
-const { t } = useI18n()
+import { site } from '~/data/site'
+
+const { t, locale } = useI18n()
+
+const stepParams = computed<Record<string, Record<string, unknown>>>(() => ({
+	confirm: { price: new Intl.NumberFormat(locale.value).format(site.course.priceAmd) },
+}))
 </script>
 
 <template>
@@ -19,6 +25,7 @@ const { t } = useI18n()
 					:key="step.key"
 					:step-key="step.key"
 					:index="i + 1"
+					:params="stepParams[step.key]"
 				/>
 			</div>
 		</div>

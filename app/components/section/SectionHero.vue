@@ -66,14 +66,14 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					<StatusPill :label="t('hero.eyebrow')" class="mb-8" />
 
 					<h1
-						class="hero-title max-w-2xl text-5xl font-normal leading-[1.1] tracking-tighter text-white sm:text-6xl lg:text-7xl"
+						class="hero-title max-w-2xl text-5xl font-normal leading-[1.2] tracking-tighter text-white sm:text-6xl lg:text-7xl"
 					>
-						<span class="inline-block overflow-hidden align-bottom">
+						<span class="inline-block overflow-hidden pb-[0.15em] align-bottom">
 							<span class="hero-line inline-block">{{
 								t('hero.titleLine1')
 							}}</span>
 						</span>
-						<span class="inline-block overflow-hidden align-bottom">
+						<span class="inline-block overflow-hidden pb-[0.15em] align-bottom">
 							<span
 								class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
 								style="
@@ -89,7 +89,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 								{{ t('hero.titleHighlight') }}
 							</span>
 						</span>
-						<span class="inline-block overflow-hidden align-bottom">
+						<span class="inline-block overflow-hidden pb-[0.15em] align-bottom">
 							<span class="hero-line inline-block">{{
 								t('hero.titleLine3')
 							}}</span>

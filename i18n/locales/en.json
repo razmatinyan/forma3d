@@ -1,192 +1,293 @@
 {
 	"meta": {
-		"title": "Vectorline | Context Before Canvas",
-		"description": "Vectorline turns planning sessions into annotated structures: live frames, spatial notes, asset references, ownership signals, and route-level context rendered in one calm workspace."
+		"title": "3ds Max Course in Yerevan | 3D Modeling School Forma 3D",
+		"description": "Learn 3D modeling with 3ds Max and Adobe Photoshop at Forma 3D, a 3D modeling course in Yerevan, Armenia. Offline classes, small groups, certificate included."
 	},
 	"common": {
-		"brandName": "Vectorline",
-		"brandTagline": "Spec console",
-		"brandHomeLabel": "Vectorline home",
-		"logIn": "Log in",
-		"openConsole": "Open console",
+		"brandName": "Forma 3D",
+		"brandTagline": "3D modeling school",
+		"brandHomeLabel": "Forma 3D home",
+		"ctaCourse": "See the course",
 		"openMenu": "Open menu",
 		"primaryNav": "Primary navigation",
 		"menuTitle": "Menu",
-		"menuDescription": "Navigate to a section of the Vectorline console."
+		"menuDescription": "Navigate to a section of the Forma 3D page.",
+		"languageLabel": "Change language"
 	},
 	"nav": {
-		"model": "Model",
-		"signals": "Signals",
-		"assets": "Assets",
-		"protocol": "Protocol"
+		"course": "Course",
+		"how": "How it works",
+		"faq": "FAQ",
+		"contact": "Contact"
 	},
 	"hero": {
-		"eyebrow": "Diagnostic layer active",
-		"kicker": "Build node 08.42 / viewport 1366",
-		"titleLine1": "Map ideas as a",
-		"titleHighlight": "measured",
-		"titleLine3": "system.",
-		"description": "Vectorline turns planning sessions into annotated structures: live frames, spatial notes, asset references, ownership signals, and route-level context rendered in one calm workspace.",
+		"eyebrow": "Enrolling now",
+		"titleLine1": "Learn 3D modeling,",
+		"titleHighlight": "hands on,",
+		"titleLine3": "in Yerevan.",
+		"description": "Forma 3D teaches 3ds Max and Adobe Photoshop in a small offline group. You leave with a finished piece for your portfolio.",
 		"features": {
-			"latency": {
-				"title": "Latency Limits",
-				"description": "Optimized 12ms target allocation across environments."
+			"groups": {
+				"title": "Small groups",
+				"description": "Up to {max} students per group, so the instructor has time to check your screen directly."
 			},
-			"topology": {
-				"title": "Frame Topology",
-				"description": "Uncovering 624 hidden data vectors for decisions."
+			"portfolio": {
+				"title": "Portfolio ready",
+				"description": "Every module ends with a rendered piece you can put in your portfolio."
 			}
 		},
-		"ctaPrimary": "Start mapping",
-		"ctaSecondary": "Inspect assets",
-		"operators": {
-			"label": "Session operators",
-			"onlineCount": "05 online",
-			"overflow": "+2",
-			"maya": "Operator Maya headshot",
-			"theo": "Operator Theo headshot",
-			"ilya": "Operator Ilya headshot"
-		},
-		"simulation": "Active Simulation",
-		"wireframeAlt": "Animated structural wireframe model",
+		"ctaPrimary": "Pre-register",
+		"ctaSecondary": "See the curriculum",
+		"simulation": "3D viewport",
+		"wireframeAlt": "Animated 3ds Max style wireframe model",
 		"panels": {
-			"syncMesh": { "label": "Sync mesh", "value": "98%" },
-			"routeMemory": {
-				"label": "Route memory",
-				"value": "41.8k",
-				"caption": "visible relations indexed"
+			"practiceLoad": {
+				"label": "Practice load",
+				"value": "72%"
 			},
-			"canvasLoad": {
-				"label": "Canvas load",
-				"notes": "Notes",
-				"media": "Media",
-				"tasks": "Tasks"
+			"nextGroup": {
+				"label": "Next group",
+				"caption": "{max} seats per group"
+			},
+			"courseLoad": {
+				"label": "Course load",
+				"modeling": "Modeling",
+				"materials": "Lighting",
+				"post": "Photoshop"
 			}
 		},
 		"stats": {
-			"grid": { "label": "Grid", "value": "128 × 72" },
-			"vectors": { "label": "Vectors", "value": "7,504" },
-			"assets": { "label": "Assets", "value": "319" },
-			"revision": { "label": "Revision", "value": "R-27C" }
-		}
-	},
-	"architecture": {
-		"eyebrow": "System Active",
-		"title": "Core Architecture Mapping",
-		"description": "Distributed network topology utilizing isometric spatial consensus and multi-tier cryptographic layers.",
-		"cards": {
-			"lattice": {
-				"title": "Quantum Lattice Array",
-				"description": "Military-grade isometric encryption protocols ensuring zero-knowledge spatial security across all nodes."
+			"duration": {
+				"label": "Duration",
+				"value": "{months} months"
 			},
-			"consensus": {
-				"title": "Distributed Node Consensus",
-				"description": "Automated propagation and validation of credentials across the decentralized subnet. Eliminates single points of failure."
+			"format": {
+				"label": "Format",
+				"value": "Offline, Yerevan"
 			},
-			"access": {
-				"title": "Multi-Tenant Access Control",
-				"description": "Granular role-based permissions governing secure inter-team structural sharing and logic segregation."
+			"groupSize": {
+				"label": "Group size",
+				"value": "Up to {max}"
 			},
-			"audit": {
-				"title": "Immutable Audit Trails",
-				"description": "Continuous cryptographic logging of all volumetric operations, stored in non-volatile structural arrays."
+			"certificate": {
+				"label": "Certificate",
+				"value": "Included"
 			}
 		}
 	},
-	"signals": {
-		"eyebrow": "Signal overview",
-		"title": "A workspace with measurable intent.",
-		"description": "Every object carries state, ownership, and history. Instead of scattered sticky notes, the console exposes how ideas connect and where decisions are slowing down.",
+	"course": {
+		"eyebrow": "Curriculum",
+		"title": "One course, four modules.",
+		"description": "3ds Max and Adobe Photoshop, taught in sequence so each module builds on the last. You finish able to model, light, render, and retouch a scene end to end.",
+		"modules": {
+			"modeling": {
+				"title": "Modeling",
+				"description": "Poly modeling and modifiers in 3ds Max, from primitives to a finished object."
+			},
+			"materials": {
+				"title": "Materials and lighting",
+				"description": "Physical materials, UVs, and scene lighting that reads correctly at render time."
+			},
+			"rendering": {
+				"title": "Rendering",
+				"description": "Camera setup, render settings, and passes you can control instead of guess at."
+			},
+			"post": {
+				"title": "Photoshop post-production",
+				"description": "Color correction, compositing, and the retouching pass that turns a render into a portfolio piece."
+			}
+		}
+	},
+	"facts": {
+		"eyebrow": "Course facts",
+		"title": "What you are signing up for.",
+		"description": "No hidden requirements. This is the group size, the length of the course, and what you walk away with.",
 		"metrics": {
-			"collaborators": {
-				"label": "Collaborators",
-				"value": "86",
-				"caption": "across four planning rooms"
+			"groupSize": {
+				"label": "Group size",
+				"value": "Up to {max}",
+				"caption": "students per group, maximum"
 			},
-			"routes": {
-				"label": "Decision routes",
-				"value": "1,248",
-				"caption": "mapped with source context"
+			"duration": {
+				"label": "Duration",
+				"value": "{months} months",
+				"caption": "{sessions} sessions a week"
 			},
-			"time": {
-				"label": "Time recovered",
-				"value": "34h",
-				"caption": "per product cycle average"
+			"certificate": {
+				"label": "Certificate",
+				"value": "Yes",
+				"caption": "Forma 3D certificate on completion"
 			}
 		}
 	},
-	"assets": {
-		"eyebrow": "Asset acquisition",
-		"title": "Five candidate visuals indexed for the board.",
-		"searchLabel": "Search asset library",
-		"searchAriaLabel": "Search assets",
-		"searchPlaceholder": "abstract architecture headshot",
-		"emptyState": "No assets match your search.",
-		"items": {
-			"abstractWave": {
-				"title": "Abstract wave",
-				"alt": "Abstract neon light wave on black",
-				"filename": "fa51902b..._1600w.jpg"
-			},
-			"glassHabitat": {
-				"title": "Glass habitat",
-				"alt": "Modern glass villa at dusk in lush landscape",
-				"filename": "005600e5..._1600w.jpg"
-			},
-			"pyramidStudy": {
-				"title": "Pyramid study",
-				"alt": "Futuristic deconstructed pyramid in grayscale",
-				"filename": "724142aa..._1600w.jpg"
-			},
-			"studioSubject": {
-				"title": "Studio subject",
-				"alt": "Studio portrait of woman with striking blue eyes",
-				"filename": "77415a2e..._1600w.jpg"
-			},
-			"duskWaveform": {
-				"title": "Dusk waveform",
-				"alt": "Abstract blue wave at dusk",
-				"filename": "e534354d..._1600w.jpg"
-			}
-		}
-	},
-	"protocol": {
-		"eyebrow": "Operating protocol",
-		"title": "From workshop noise to structured output.",
-		"description": "Use frames as containers, attach assets as evidence, assign paths to owners, then export a decision map with the metadata still intact.",
+	"how": {
+		"eyebrow": "Enrollment",
+		"title": "From application to your first class.",
+		"description": "Four steps, no waiting room. Most applicants hear back within a day.",
 		"steps": {
-			"capture": {
-				"title": "Capture signals",
-				"description": "Import sketches, notes, product screenshots, and reference visuals without flattening context."
+			"apply": {
+				"title": "Submit the form",
+				"description": "Fill in the pre-registration form below with your name, phone, and email."
 			},
-			"connect": {
-				"title": "Connect dependencies",
-				"description": "Route issues, assumptions, and commitments through visible relationship lines."
+			"call": {
+				"title": "We call you",
+				"description": "Our team calls to confirm the group, the schedule, and answer any questions."
 			},
-			"export": {
-				"title": "Export decisions",
-				"description": "Generate a clean spec trail for stakeholders, engineering, design, and operations."
+			"confirm": {
+				"title": "Confirm your seat",
+				"description": "Pay {price} AMD to reserve your place in the next group."
+			},
+			"start": {
+				"title": "Start the course",
+				"description": "Show up to your first session and start modeling in week one."
 			}
 		}
 	},
-	"deployment": {
-		"eyebrow": "System deployment",
-		"title": "Push structural changes directly to production.",
-		"description": "Export decision vectors seamlessly. Vectorline generates ready-to-deploy metadata that syncs directly with your existing pipeline and infrastructure.",
-		"cta": "Initialize sync"
+	"faq": {
+		"title": "Questions people actually ask.",
+		"description": "If your question is not here, contact us directly and we will answer it before you register.",
+		"items": {
+			"experience": {
+				"question": "Do I need prior 3D experience?",
+				"answer": "No. The course starts from the 3ds Max interface and basic modeling. If you can use a computer comfortably, you can start."
+			},
+			"software": {
+				"question": "Do I need to buy 3ds Max and Photoshop myself?",
+				"answer": "You need access to both during the course. We can point you to student licensing options when you enroll."
+			},
+			"schedule": {
+				"question": "What is the weekly schedule?",
+				"answer": "Classes run {sessions} times a week, {hours} hours per session, at our studio in Yerevan."
+			},
+			"groupSize": {
+				"question": "How many people are in a group?",
+				"answer": "Up to {max} students. We keep groups small so everyone gets time with the instructor."
+			},
+			"certificate": {
+				"question": "Do I get a certificate?",
+				"answer": "Yes, a Forma 3D certificate once you complete all four modules and your final piece."
+			},
+			"payment": {
+				"question": "How much does the course cost, and can I pay in parts?",
+				"answer": "The course is {price} AMD. Ask about installment options when you speak with our team after registering."
+			}
+		}
+	},
+	"cta": {
+		"title": "Seats are limited per group.",
+		"description": "Pre-register now to hold a spot in the next intake. We will call you to confirm before you pay anything.",
+		"nextGroupLabel": "Next group starts",
+		"button": "Pre-register"
+	},
+	"contact": {
+		"title": "Talk to us before you enroll.",
+		"description": "Call, message us on Instagram, or come by the studio. We are happy to answer questions before you register.",
+		"mapTitle": "Forma 3D studio location",
+		"rows": {
+			"phone": {
+				"label": "Phone",
+				"value": "+374 55 123 456"
+			},
+			"email": {
+				"label": "Email",
+				"value": "info{'@'}forma3d.am"
+			},
+			"instagram": {
+				"label": "Instagram",
+				"value": "{'@'}forma3d.am"
+			},
+			"address": {
+				"label": "Studio address",
+				"value": "12 Mashtots Avenue, Yerevan, Armenia"
+			}
+		}
+	},
+	"register": {
+		"title": "Pre-register for the next group.",
+		"description": "Leave your details and we will call you to confirm your seat. No payment is required to pre-register.",
+		"form": {
+			"course": {
+				"label": "Course",
+				"placeholder": "Select a course",
+				"options": {
+					"threeDsMax": "3ds Max and Adobe Photoshop"
+				}
+			},
+			"fields": {
+				"fullName": {
+					"label": "Full name",
+					"placeholder": "Your full name"
+				},
+				"phone": {
+					"label": "Phone",
+					"placeholder": "+374 XX XXX XXX"
+				},
+				"email": {
+					"label": "Email",
+					"placeholder": "you{'@'}example.com"
+				}
+			},
+			"consent": {
+				"label": "I agree to the {link} and consent to being contacted about my application.",
+				"linkText": "privacy policy"
+			},
+			"errors": {
+				"course": "Select a course.",
+				"fullName": "Enter your full name.",
+				"phone": "Enter a valid phone number.",
+				"email": "Enter a valid email address.",
+				"consent": "You must agree to the privacy policy to continue.",
+				"generic": "Something went wrong. Please try again or contact us directly."
+			},
+			"submit": "Pre-register",
+			"submitting": "Sending..."
+		},
+		"success": {
+			"title": "Application received",
+			"description": "You will receive a confirmation email at the address you provided. We will call you soon to confirm your seat."
+		}
 	},
 	"footer": {
-		"blurb": "Vectorline turns planning sessions into annotated structures: live frames, spatial notes, and route-level context rendered in one workspace.",
-		"platformHeading": "Platform",
-		"companyHeading": "Company",
-		"company": {
-			"about": "About",
-			"changelog": "Changelog",
-			"careers": "Careers",
-			"contact": "Contact"
+		"blurb": "Forma 3D is an offline 3D modeling school in Yerevan, teaching 3ds Max and Adobe Photoshop in small groups.",
+		"platformHeading": "Sections",
+		"contactHeading": "Contact",
+		"legal": "Forma 3D 3D modeling school, Yerevan",
+		"privacy": "Privacy policy"
+	},
+	"privacy": {
+		"meta": {
+			"title": "Privacy Policy for the Forma 3D Pre-Registration Form",
+			"description": "How Forma 3D collects, uses, and stores the personal information you submit through the pre-registration form on this website, and how to reach us about it."
 		},
-		"legal": "Vectorline structural console / build 08.42",
-		"privacy": "Privacy Policy",
-		"terms": "Terms of Service"
+		"eyebrow": "Legal",
+		"title": "Privacy policy",
+		"intro": "This page explains what information Forma 3D collects through this website, why we collect it, and how you can contact us about it.",
+		"sections": {
+			"dataCollected": {
+				"title": "What we collect",
+				"body": "When you submit the pre-registration form, we collect your full name, phone number, email address, and the course you selected."
+			},
+			"purpose": {
+				"title": "Why we collect it",
+				"body": "We use this information to contact you about your application, confirm your seat in a group, and send you a confirmation email."
+			},
+			"retention": {
+				"title": "How long we keep it",
+				"body": "We keep your application details for as long as needed to process your enrollment, and no longer than two years after your last contact with us."
+			},
+			"thirdParties": {
+				"title": "Who sees it",
+				"body": "Your details are used by Forma 3D staff only. We do not sell or share your information with third parties for marketing."
+			},
+			"rights": {
+				"title": "Your rights",
+				"body": "You can ask us to show you, correct, or delete the information we hold about you at any time by contacting us."
+			},
+			"contact": {
+				"title": "Contact us",
+				"body": "For any question about your data, write to info{'@'}forma3d.am or call +374 55 123 456."
+			}
+		},
+		"lastUpdated": "Last updated: July 2026"
 	}
 }
