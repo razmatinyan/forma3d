@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { architectureCards } from '~/data/sections'
+import { courseModules } from '~/data/course'
 const { t } = useI18n()
 </script>
 
 <template>
-	<FrameSection id="core-architecture" class="mt-6">
+	<FrameSection id="course" class="mt-6 scroll-mt-24">
 		<div class="border-b border-white/10 p-5 sm:p-8">
 			<FrameHeading
 				eyebrow-style="pill"
-				:eyebrow="t('architecture.eyebrow')"
-				:title="t('architecture.title')"
-				:description="t('architecture.description')"
+				:eyebrow="t('course.eyebrow')"
+				:title="t('course.title')"
+				:description="t('course.description')"
 			/>
 		</div>
 
 		<div class="grid auto-rows-fr grid-cols-1 md:grid-cols-12">
-			<ArchitectureCard
-				v-for="card in architectureCards"
-				:key="card.key"
-				:card-key="card.key"
-				:icon="card.icon"
-				:col-span="card.colSpan"
-				:border="card.border"
+			<CourseModuleCard
+				v-for="module_ in courseModules"
+				:key="module_.key"
+				:module-key="module_.key"
+				:icon="module_.icon"
+				:col-span="module_.colSpan"
+				:border="module_.border"
 			/>
 		</div>
 	</FrameSection>

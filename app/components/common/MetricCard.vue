@@ -1,5 +1,8 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ metricKey: string; icon: string; last?: boolean }>(), { last: false })
+withDefaults(
+	defineProps<{ metricKey: string; icon: string; last?: boolean; params?: Record<string, unknown> }>(),
+	{ last: false, params: () => ({}) },
+)
 </script>
 
 <template>
@@ -9,13 +12,13 @@ withDefaults(defineProps<{ metricKey: string; icon: string; last?: boolean }>(),
 	>
 		<Icon :name="icon" class="text-2xl text-zinc-300" />
 		<p class="mt-5 text-xs uppercase tracking-widest text-zinc-500">
-			{{ $t(`signals.metrics.${metricKey}.label`) }}
+			{{ $t(`facts.metrics.${metricKey}.label`) }}
 		</p>
 		<p class="mt-2 text-3xl font-normal tracking-tight text-white">
-			{{ $t(`signals.metrics.${metricKey}.value`) }}
+			{{ $t(`facts.metrics.${metricKey}.value`, params) }}
 		</p>
 		<p class="mt-2 text-xs leading-5 text-zinc-500">
-			{{ $t(`signals.metrics.${metricKey}.caption`) }}
+			{{ $t(`facts.metrics.${metricKey}.caption`, params) }}
 		</p>
 	</article>
 </template>

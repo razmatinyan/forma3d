@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import {
-	heroCanvasLoadRows,
-	heroFeatures,
-	heroOperators,
-	heroStats,
-	heroSyncMeshBars,
-} from '~/data/sections'
+import { heroCourseLoadRows, heroFeatures, heroStats, heroSyncMeshBars } from '~/data/course'
+import { site } from '~/data/site'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+const nextStartLabel = computed(() =>
+	new Intl.DateTimeFormat(locale.value, { day: 'numeric', month: 'long' }).format(
+		new Date(site.course.nextStartDate),
+	),
+)
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -54,7 +55,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 </script>
 
 <template>
-	<FrameSection id="model" variant="hero" overflow :entrance="false">
+	<FrameSection id="hero" variant="hero" overflow :entrance="false" class="scroll-mt-24">
 		<div
 			class="grid min-h-[calc(100vh-8rem)] grid-cols-1 lg:grid-cols-[0.72fr_1.28fr]"
 		>
@@ -112,6 +113,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<AppButton
+							href="#register"
 							variant="solid"
 							size="lg"
 							icon="solar:map-arrow-right-linear"
@@ -119,60 +121,14 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 							{{ t('hero.ctaPrimary') }}
 						</AppButton>
 						<AppButton
-							href="#assets"
+							href="#course"
 							variant="ghost"
 							size="lg"
-							icon="solar:magnifer-linear"
+							icon="solar:document-text-linear"
 						>
 							{{ t('hero.ctaSecondary') }}
 						</AppButton>
 					</div>
-				</div>
-
-				<div
-					class="mt-10 rounded-xl border border-white/10 p-4"
-					style="
-						background: linear-gradient(
-							to bottom,
-							rgba(255, 255, 255, 0.075),
-							rgba(0, 0, 0, 0.2)
-						);
-						box-shadow:
-							inset 0 1px 0 rgba(255, 255, 255, 0.1),
-							inset 0 -1px 0 rgba(0, 0, 0, 0.9);
-					"
-				>
-					<div
-						class="flex items-center justify-between border-b border-white/10 pb-3"
-					>
-						<p
-							class="text-xs font-medium uppercase tracking-widest text-zinc-400"
-						>
-							{{ t('hero.operators.label') }}
-						</p>
-						<span class="text-xs text-zinc-500">{{
-							t('hero.operators.onlineCount')
-						}}</span>
-					</div>
-					<AvatarGroup class="mt-4">
-						<Avatar
-							v-for="operator in heroOperators"
-							:key="operator.key"
-							class="size-9"
-						>
-							<AvatarImage
-								:src="operator.image"
-								:alt="t(`hero.operators.${operator.key}`)"
-								class="grayscale"
-							/>
-							<AvatarFallback>{{
-								operator.key.slice(0, 2).toUpperCase()
-							}}</AvatarFallback>
-						</Avatar>
-						<AvatarGroupCount class="size-9 text-xs">
-							{{ t('hero.operators.overflow') }}
-						</AvatarGroupCount>
-					</AvatarGroup>
 				</div>
 			</aside>
 
@@ -239,10 +195,10 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						<p
 							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
 						>
-							{{ t('hero.panels.syncMesh.label') }}
+							{{ t('hero.panels.practiceLoad.label') }}
 						</p>
 						<span class="text-xs text-zinc-500">{{
-							t('hero.panels.syncMesh.value')
+							t('hero.panels.practiceLoad.value')
 						}}</span>
 					</div>
 					<div class="mt-3 grid grid-cols-8 gap-1">
@@ -258,13 +214,13 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					<p
 						class="text-xs font-medium uppercase tracking-widest text-zinc-300"
 					>
-						{{ t('hero.panels.routeMemory.label') }}
+						{{ t('hero.panels.nextGroup.label') }}
 					</p>
 					<p class="mt-2 text-2xl font-normal tracking-tight text-white">
-						{{ t('hero.panels.routeMemory.value') }}
+						{{ nextStartLabel }}
 					</p>
 					<p class="mt-1 text-xs text-zinc-500">
-						{{ t('hero.panels.routeMemory.caption') }}
+						{{ t('hero.panels.nextGroup.caption', { max: site.course.groupSizeMax }) }}
 					</p>
 				</LabelPill>
 
@@ -273,18 +229,18 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						<p
 							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
 						>
-							{{ t('hero.panels.canvasLoad.label') }}
+							{{ t('hero.panels.courseLoad.label') }}
 						</p>
 						<Icon name="solar:cpu-linear" class="text-lg text-zinc-400" />
 					</div>
 					<div class="mt-3 space-y-2">
 						<div
-							v-for="row in heroCanvasLoadRows"
+							v-for="row in heroCourseLoadRows"
 							:key="row.key"
 							class="flex items-center gap-2"
 						>
 							<span class="w-16 text-xs text-zinc-500">{{
-								t(`hero.panels.canvasLoad.${row.key}`)
+								t(`hero.panels.courseLoad.${row.key}`)
 							}}</span>
 							<span class="h-1.5 flex-1 rounded-full bg-black/60">
 								<span
@@ -310,7 +266,10 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 								t(`hero.stats.${stat.key}.label`)
 							}}</span>
 							<strong class="mt-1 block font-medium text-zinc-200">{{
-								t(`hero.stats.${stat.key}.value`)
+								t(`hero.stats.${stat.key}.value`, {
+									months: site.course.durationMonths,
+									max: site.course.groupSizeMax,
+								})
 							}}</strong>
 						</div>
 					</div>

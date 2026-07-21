@@ -16,8 +16,8 @@ defineProps<{ stepKey: string; index: number }>()
 			{{ String(index).padStart(2, '0') }}
 		</span>
 		<div>
-			<h3 class="text-sm font-medium text-white">{{ $t(`protocol.steps.${stepKey}.title`) }}</h3>
-			<p class="mt-1 text-xs leading-5 text-zinc-500">{{ $t(`protocol.steps.${stepKey}.description`) }}</p>
+			<h3 class="text-sm font-medium text-white">{{ $t(`how.steps.${stepKey}.title`) }}</h3>
+			<p class="mt-1 text-xs leading-5 text-zinc-500">{{ $t(`how.steps.${stepKey}.description`) }}</p>
 		</div>
 	</div>
 </template>

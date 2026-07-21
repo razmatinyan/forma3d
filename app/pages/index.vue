@@ -12,8 +12,10 @@ useSeoMeta({
 		<SectionHero />
 		<SectionArchitecture />
 		<SectionSignals />
-		<SectionAssets />
 		<SectionProtocol />
-		<SectionDeployment />
+		<SectionFaq />
+		<SectionCta />
+		<SectionContact />
+		<SectionRegister />
 	</div>
 </template>
