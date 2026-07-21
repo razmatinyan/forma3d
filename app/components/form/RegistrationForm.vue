@@ -168,7 +168,7 @@ async function onSubmit() {
 				/>
 				<div>
 					<Label :for="ids.consent" class="text-sm font-normal tracking-normal text-zinc-400">
-						<i18n-t keypath="register.form.consent.label" tag="span">
+						<i18n-t keypath="register.form.consent.label" tag="span" scope="global">
 							<template #link>
 								<NuxtLink to="/privacy" class="text-indigo-300 underline underline-offset-2 hover:text-indigo-200">
 									{{ t('register.form.consent.linkText') }}
