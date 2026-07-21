@@ -16,7 +16,7 @@ const sections = ['dataCollected', 'purpose', 'retention', 'thirdParties', 'righ
 <template>
 	<div>
 		<FrameSection variant="soft" class="p-6 sm:p-10">
-			<p class="text-xs font-medium uppercase tracking-[0.32em] text-zinc-500">{{ t('privacy.eyebrow') }}</p>
+			<p class="text-xs font-medium tracking-[0.32em] text-zinc-500">{{ t('privacy.eyebrow') }}</p>
 			<h1 class="mt-3 text-3xl font-normal leading-[1.25] tracking-tighter text-white sm:text-4xl">
 				{{ t('privacy.title') }}
 			</h1>

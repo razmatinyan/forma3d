@@ -11,7 +11,7 @@
 		"openMenu": "Open menu",
 		"primaryNav": "Primary navigation",
 		"menuTitle": "Menu",
-		"menuDescription": "Navigate to a section of the Forma 3D page.",
+		"menuDescription": "Navigate to a section of the Forma 3D page",
 		"languageLabel": "Change language",
 		"programs": {
 			"threeDsMax": "3ds Max",
@@ -28,7 +28,7 @@
 		"eyebrow": "Enrolling now",
 		"titleLine1": "Learn 3D modeling,",
 		"titleHighlight": "hands on,",
-		"titleLine3": "in Yerevan.",
+		"titleLine3": "in Yerevan",
 		"description": "Forma 3D teaches 3ds Max and Adobe Photoshop in a small offline group. You leave with a finished piece for your portfolio.",
 		"features": {
 			"groups": {
@@ -81,7 +81,7 @@
 	},
 	"course": {
 		"eyebrow": "Curriculum",
-		"title": "One course, four modules.",
+		"title": "One course, four modules",
 		"description": "3ds Max and Adobe Photoshop, taught in sequence so each module builds on the last. You finish able to model, light, render, and retouch a scene end to end.",
 		"modules": {
 			"modeling": {
@@ -104,7 +104,7 @@
 	},
 	"facts": {
 		"eyebrow": "Course facts",
-		"title": "What you are signing up for.",
+		"title": "What you are signing up for",
 		"description": "No hidden requirements. This is the group size, the length of the course, and what you walk away with.",
 		"metrics": {
 			"groupSize": {
@@ -126,7 +126,7 @@
 	},
 	"how": {
 		"eyebrow": "Enrollment",
-		"title": "From application to your first class.",
+		"title": "From application to your first class",
 		"description": "Four steps, no waiting room. Most applicants hear back within a day.",
 		"steps": {
 			"apply": {
@@ -148,7 +148,7 @@
 		}
 	},
 	"faq": {
-		"title": "Questions people actually ask.",
+		"title": "Questions people actually ask",
 		"description": "If your question is not here, contact us directly and we will answer it before you register.",
 		"items": {
 			"experience": {
@@ -178,13 +178,13 @@
 		}
 	},
 	"cta": {
-		"title": "Seats are limited per group.",
+		"title": "Seats are limited per group",
 		"description": "Pre-register now to hold a spot in the next intake. We will call you to confirm before you pay anything.",
 		"nextGroupLabel": "Next group starts",
 		"button": "Pre-register"
 	},
 	"contact": {
-		"title": "Talk to us before you enroll.",
+		"title": "Talk to us before you enroll",
 		"description": "Call, message us on Instagram, or come by the studio. We are happy to answer questions before you register.",
 		"mapTitle": "Forma 3D studio location",
 		"rows": {
@@ -207,7 +207,7 @@
 		}
 	},
 	"register": {
-		"title": "Pre-register for the next group.",
+		"title": "Pre-register for the next group",
 		"description": "Leave your details and we will call you to confirm your seat. No payment is required to pre-register.",
 		"form": {
 			"course": {
@@ -232,15 +232,15 @@
 				}
 			},
 			"consent": {
-				"label": "I agree to the {link} and consent to being contacted about my application.",
+				"label": "I agree to the {link} and consent to being contacted about my application",
 				"linkText": "privacy policy"
 			},
 			"errors": {
-				"course": "Select a course.",
-				"fullName": "Enter your full name.",
-				"phone": "Enter a valid phone number.",
-				"email": "Enter a valid email address.",
-				"consent": "You must agree to the privacy policy to continue.",
+				"course": "Select a course",
+				"fullName": "Enter your full name",
+				"phone": "Enter a valid phone number",
+				"email": "Enter a valid email address",
+				"consent": "You must agree to the privacy policy to continue",
 				"generic": "Something went wrong. Please try again or contact us directly."
 			},
 			"submit": "Pre-register",

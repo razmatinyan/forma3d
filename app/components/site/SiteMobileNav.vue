@@ -40,7 +40,7 @@ function closeAndNavigate() {
 					v-for="link in navLinks"
 					:key="link.key"
 					:href="link.href"
-					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium uppercase tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
+					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 					@click="closeAndNavigate"
 				>
 					<Icon :name="link.icon" class="text-lg" />
@@ -54,7 +54,7 @@ function closeAndNavigate() {
 					:key="item.code"
 					:to="switchLocalePath(item.code)"
 					:class="[
-						'rounded-lg border px-3 py-2 text-xs font-medium uppercase tracking-widest outline-none transition focus-visible:ring-2 focus-visible:ring-indigo-400',
+						'rounded-lg border px-3 py-2 text-xs font-medium tracking-widest outline-none transition focus-visible:ring-2 focus-visible:ring-indigo-400',
 						item.code === locale
 							? 'border-indigo-400/40 text-indigo-300'
 							: 'border-white/10 text-zinc-400 hover:text-white',

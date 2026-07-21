@@ -18,8 +18,8 @@ const forwarded = useForwardProps(delegatedProps)
 			v-bind="forwarded"
 			:class="
 				cn(
-					'group flex flex-1 items-center justify-between gap-4 py-5 text-left text-sm font-medium text-white outline-none transition',
-					'focus-visible:text-indigo-300',
+					'group flex flex-1 items-center justify-between gap-4 rounded-lg py-5 text-left text-sm font-medium text-white outline-none transition',
+					'focus-visible:text-indigo-300 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black',
 					props.class,
 				)
 			"

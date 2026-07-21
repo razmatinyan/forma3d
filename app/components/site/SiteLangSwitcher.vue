@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { LocaleCode } from '~/types/i18n'
+
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
@@ -10,7 +12,10 @@ const flags: Record<string, string> = {
 
 const availableLocales = computed(() => {
 	const list = locales.value
-	return (typeof list[0] === 'string' ? [] : list) as { code: string; name?: string }[]
+	return (typeof list[0] === 'string' ? [] : list) as {
+		code: LocaleCode
+		name?: string
+	}[]
 })
 
 const currentFlag = computed(() => flags[locale.value] ?? 'solar:global-linear')
@@ -29,12 +34,22 @@ const currentFlag = computed(() => flags[locale.value] ?? 'solar:global-linear')
 			</button>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent>
-			<DropdownMenuItem v-for="item in availableLocales" :key="item.code" as-child>
+			<DropdownMenuItem
+				v-for="item in availableLocales"
+				:key="item.code"
+				as-child
+			>
 				<NuxtLink
 					:to="switchLocalePath(item.code)"
-					:class="['flex items-center gap-2.5', item.code === locale ? 'text-indigo-300' : '']"
+					:class="[
+						'flex items-center gap-2.5',
+						item.code === locale ? 'text-indigo-300' : '',
+					]"
 				>
-					<Icon :name="flags[item.code] ?? 'solar:global-linear'" class="size-4 shrink-0 rounded-full" />
+					<Icon
+						:name="flags[item.code] ?? 'solar:global-linear'"
+						class="size-4 shrink-0 rounded-full"
+					/>
 					{{ item.name }}
 				</NuxtLink>
 			</DropdownMenuItem>

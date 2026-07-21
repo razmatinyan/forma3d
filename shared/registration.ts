@@ -13,7 +13,8 @@ export const registrationSchema = z.object({
 	email: z.string().trim().min(1).email(),
 	consent: z.boolean().refine(value => value === true),
 	locale: z.enum(localeCodes),
-	website: z.string().max(0).optional().default(''),
+	// intentionally unconstrained: honeypot rejection happens in the handler, not here
+	website: z.string().optional().default(''),
 })
 
 export type RegistrationInput = z.infer<typeof registrationSchema>

@@ -17,7 +17,7 @@ const nextStartLabel = computed(() =>
 				<FrameHeading :title="t('cta.title')" :description="t('cta.description')" />
 			</div>
 			<div class="flex min-h-[16rem] flex-col items-start justify-center gap-4 p-5 sm:p-8">
-				<p class="text-xs font-medium uppercase tracking-widest text-zinc-500">{{ t('cta.nextGroupLabel') }}</p>
+				<p class="text-xs font-medium tracking-widest text-zinc-500">{{ t('cta.nextGroupLabel') }}</p>
 				<p class="text-2xl font-normal tracking-tight text-white">{{ nextStartLabel }}</p>
 				<AppButton href="#register" variant="solid" size="lg" icon="solar:arrow-right-linear">
 					{{ t('cta.button') }}

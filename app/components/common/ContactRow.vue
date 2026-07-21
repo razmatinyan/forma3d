@@ -18,7 +18,7 @@ const isExternal = computed(() => props.href.startsWith('http'))
 			<Icon :name="icon" class="text-lg" />
 		</span>
 		<div>
-			<p class="text-xs font-medium uppercase tracking-widest text-zinc-500">
+			<p class="text-xs font-medium tracking-widest text-zinc-500">
 				{{ $t(`contact.rows.${rowKey}.label`) }}
 			</p>
 			<p class="mt-1 text-sm text-zinc-200 transition group-hover:text-white">

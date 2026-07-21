@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
 <template>
 	<div>
 		<StatusPill v-if="eyebrow && eyebrowStyle === 'pill'" :label="eyebrow" pulse class="mb-6" />
-		<p v-else-if="eyebrow" class="text-xs font-medium uppercase tracking-[0.32em] text-zinc-500">
+		<p v-else-if="eyebrow" class="text-xs font-medium tracking-[0.32em] text-zinc-500">
 			{{ eyebrow }}
 		</p>
 		<h2

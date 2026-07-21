@@ -14,7 +14,7 @@ import { navLinks } from '~/data/nav'
 					</p>
 				</div>
 				<div>
-					<h3 class="mb-5 text-xs font-medium uppercase tracking-widest text-zinc-300">
+					<h3 class="mb-5 text-xs font-medium tracking-widest text-zinc-300">
 						{{ $t('footer.platformHeading') }}
 					</h3>
 					<ul class="space-y-3">
@@ -26,7 +26,7 @@ import { navLinks } from '~/data/nav'
 					</ul>
 				</div>
 				<div>
-					<h3 class="mb-5 text-xs font-medium uppercase tracking-widest text-zinc-300">
+					<h3 class="mb-5 text-xs font-medium tracking-widest text-zinc-300">
 						{{ $t('footer.contactHeading') }}
 					</h3>
 					<ul class="space-y-3">

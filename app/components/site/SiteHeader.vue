@@ -12,7 +12,7 @@ import { navLinks } from '~/data/nav'
 					v-for="link in navLinks"
 					:key="link.key"
 					:href="link.href"
-					class="flex items-center gap-2 border-r border-white/10 px-5 text-xs font-medium uppercase tracking-widest text-zinc-400 outline-none transition hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
+					class="flex items-center gap-2 border-r border-white/10 px-5 text-xs font-medium tracking-widest text-zinc-400 outline-none transition hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 				>
 					<Icon :name="link.icon" class="text-lg" />
 					{{ $t(`nav.${link.key}`) }}

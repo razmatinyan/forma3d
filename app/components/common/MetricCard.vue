@@ -11,7 +11,7 @@ withDefaults(
 		:class="['metric-card p-5 sm:p-6', last ? '' : 'border-b border-white/10 sm:border-b-0 sm:border-r']"
 	>
 		<Icon :name="icon" class="text-2xl text-zinc-300" />
-		<p class="mt-5 text-xs uppercase tracking-widest text-zinc-500">
+		<p class="mt-5 text-xs tracking-widest text-zinc-500">
 			{{ $t(`facts.metrics.${metricKey}.label`) }}
 		</p>
 		<p class="mt-2 text-3xl font-normal tracking-tight text-white">

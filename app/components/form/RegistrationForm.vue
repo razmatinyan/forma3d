@@ -167,7 +167,7 @@ async function onSubmit() {
 					@update:model-value="clearError('consent')"
 				/>
 				<div>
-					<Label :for="ids.consent" class="normal-case text-sm font-normal tracking-normal text-zinc-400">
+					<Label :for="ids.consent" class="text-sm font-normal tracking-normal text-zinc-400">
 						<i18n-t keypath="register.form.consent.label" tag="span">
 							<template #link>
 								<NuxtLink to="/privacy" class="text-indigo-300 underline underline-offset-2 hover:text-indigo-200">

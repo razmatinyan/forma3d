@@ -11,7 +11,7 @@ const props = defineProps<LabelProps & { class?: HTMLAttributes['class'] }>()
 	<Label
 		data-slot="label"
 		v-bind="props"
-		:class="cn('text-xs font-medium uppercase tracking-widest text-zinc-400', props.class)"
+		:class="cn('text-xs font-medium tracking-widest text-zinc-400', props.class)"
 	>
 		<slot />
 	</Label>

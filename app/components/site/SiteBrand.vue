@@ -26,7 +26,7 @@ withDefaults(defineProps<{ variant?: 'header' | 'footer' }>(), { variant: 'heade
 			<span class="block text-sm font-medium tracking-tight text-white">
 				{{ $t('common.brandName') }}
 			</span>
-			<span class="mt-1 block text-xs font-normal uppercase tracking-widest text-zinc-500">
+			<span class="mt-1 block text-xs font-normal tracking-widest text-zinc-500">
 				{{ $t('common.brandTagline') }}
 			</span>
 		</span>

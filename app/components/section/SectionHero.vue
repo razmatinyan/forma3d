@@ -105,7 +105,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						<span
 							v-for="program in coursePrograms"
 							:key="program.key"
-							class="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500"
+							class="flex items-center gap-2 text-xs font-medium tracking-widest text-zinc-500"
 						>
 							<Icon :name="program.icon" class="size-4 shrink-0 text-zinc-400" />
 							{{ t(`common.programs.${program.key}`) }}
@@ -195,7 +195,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						class="h-2 w-2 animate-pulse rounded-full bg-indigo-500 shadow-[0_0_10px_#818cf8]"
 					/>
 					<span
-						class="text-xs font-medium uppercase tracking-widest text-indigo-400/80"
+						class="text-xs font-medium tracking-widest text-indigo-400/80"
 					>
 						{{ t('hero.simulation') }}
 					</span>
@@ -204,7 +204,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 				<LabelPill class="right-5 top-12 w-52 sm:right-8">
 					<div class="flex items-center justify-between">
 						<p
-							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+							class="text-xs font-medium tracking-widest text-zinc-300"
 						>
 							{{ t('hero.panels.practiceLoad.label') }}
 						</p>
@@ -223,7 +223,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 
 				<LabelPill class="bottom-24 left-5 w-52 sm:left-8">
 					<p
-						class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+						class="text-xs font-medium tracking-widest text-zinc-300"
 					>
 						{{ t('hero.panels.nextGroup.label') }}
 					</p>
@@ -238,7 +238,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 				<LabelPill class="bottom-16 right-5 w-60 sm:right-8">
 					<div class="flex items-center justify-between">
 						<p
-							class="text-xs font-medium uppercase tracking-widest text-zinc-300"
+							class="text-xs font-medium tracking-widest text-zinc-300"
 						>
 							{{ t('hero.panels.courseLoad.label') }}
 						</p>
@@ -273,7 +273,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						class="grid grid-cols-2 gap-3 text-xs text-zinc-500 sm:grid-cols-4"
 					>
 						<div v-for="stat in heroStats" :key="stat.key">
-							<span class="block uppercase tracking-widest">{{
+							<span class="block tracking-widest">{{
 								t(`hero.stats.${stat.key}.label`)
 							}}</span>
 							<strong class="mt-1 block font-medium text-zinc-200">{{
