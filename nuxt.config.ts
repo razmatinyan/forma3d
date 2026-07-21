@@ -4,6 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 	devtools: { enabled: true },
+	nitro: {
+		alias: {
+			nodemailer: '~~/stubs/nodemailer.mjs',
+		},
+	},
 	modules: [
 		'@razmatinyan/nuxt-email',
 		'@nuxtjs/i18n',
@@ -49,10 +54,6 @@ export default defineNuxtConfig({
 		],
 		defaultLocale: 'hy',
 		strategy: 'prefix_except_default',
-		detectBrowserLanguage: {
-			useCookie: true,
-			cookieKey: 'i18n_redirected',
-			redirectOn: 'root',
-		},
+		detectBrowserLanguage: false,
 	},
 })
