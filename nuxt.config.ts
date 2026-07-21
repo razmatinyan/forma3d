@@ -41,10 +41,11 @@ export default defineNuxtConfig({
 		],
 	},
 	i18n: {
+		baseUrl: 'https://forma3d.am',
 		locales: [
-			{ code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
-			{ code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' },
-			{ code: 'hy', iso: 'hy-AM', file: 'hy.json', name: 'Հայերեն' },
+			{ code: 'en', language: 'en-US', file: 'en.json', name: 'English' },
+			{ code: 'ru', language: 'ru-RU', file: 'ru.json', name: 'Русский' },
+			{ code: 'hy', language: 'hy-AM', file: 'hy.json', name: 'Հայերեն' },
 		],
 		defaultLocale: 'hy',
 		strategy: 'prefix_except_default',
