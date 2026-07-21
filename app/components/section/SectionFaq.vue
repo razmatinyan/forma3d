@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { faqItems, getFaqParams } from '~/data/course'
+import { site } from '~/data/site'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
-const faqParams = computed(() => getFaqParams(locale.value))
+const price = useLocaleNumber(site.course.priceAmd, 'price')
+
+const faqParams = computed(() => getFaqParams(price.value))
 </script>
 
 <template>

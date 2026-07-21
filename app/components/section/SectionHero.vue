@@ -2,13 +2,9 @@
 import { coursePrograms, heroCourseLoadRows, heroFeatures, heroStats, heroSyncMeshBars } from '~/data/course'
 import { site } from '~/data/site'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
-const nextStartLabel = computed(() =>
-	new Intl.DateTimeFormat(locale.value, { day: 'numeric', month: 'long' }).format(
-		new Date(site.course.nextStartDate),
-	),
-)
+const nextStartLabel = useLocaleDate(site.course.nextStartDate, { day: 'numeric', month: 'long' }, 'heroStart')
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -75,16 +71,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						</span>
 						<span class="inline-block overflow-hidden pb-[0.15em] align-bottom">
 							<span
-								class="hero-line inline-block font-normal tracking-tighter text-indigo-400"
-								style="
-									background: linear-gradient(
-										to right,
-										#818cf8,
-										#c7d2fe
-									);
-									-webkit-background-clip: text;
-									-webkit-text-fill-color: transparent;
-								"
+								class="hero-line text-gradient-accent inline-block font-normal tracking-tighter"
 							>
 								{{ t('hero.titleHighlight') }}
 							</span>

@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { site } from '~/data/site'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
-const nextStartLabel = computed(() =>
-	new Intl.DateTimeFormat(locale.value, { day: 'numeric', month: 'long', year: 'numeric' }).format(
-		new Date(site.course.nextStartDate),
-	),
-)
+const nextStartLabel = useLocaleDate(site.course.nextStartDate, { day: 'numeric', month: 'long', year: 'numeric' }, 'ctaStart')
 </script>
 
 <template>

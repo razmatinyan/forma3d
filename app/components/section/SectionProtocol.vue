@@ -2,10 +2,12 @@
 import { enrollmentSteps } from '~/data/course'
 import { site } from '~/data/site'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+
+const price = useLocaleNumber(site.course.priceAmd, 'price')
 
 const stepParams = computed<Record<string, Record<string, unknown>>>(() => ({
-	confirm: { price: new Intl.NumberFormat(locale.value).format(site.course.priceAmd) },
+	confirm: { price: price.value },
 }))
 </script>
 

@@ -79,11 +79,11 @@ export const faqItems: { key: string }[] = [
 	{ key: 'payment' },
 ]
 
-export function getFaqParams(localeCode: string): Record<string, Record<string, unknown>> {
+export function getFaqParams(price: string): Record<string, Record<string, unknown>> {
 	return {
 		schedule: { sessions: site.course.sessionsPerWeek, hours: site.course.sessionHours },
 		groupSize: { max: site.course.groupSizeMax },
-		payment: { price: new Intl.NumberFormat(localeCode).format(site.course.priceAmd) },
+		payment: { price },
 	}
 }
 
