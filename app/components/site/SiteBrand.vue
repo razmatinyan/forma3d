@@ -4,7 +4,7 @@ withDefaults(defineProps<{ variant?: 'header' | 'footer' }>(), { variant: 'heade
 
 <template>
 	<NuxtLink
-		to="#"
+		to="/"
 		:aria-label="$t('common.brandHomeLabel')"
 		:class="[
 			'group relative items-center gap-3',
@@ -20,7 +20,7 @@ withDefaults(defineProps<{ variant?: 'header' | 'footer' }>(), { variant: 'heade
 		<span
 			class="bezel-strong flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 text-sm font-medium text-white"
 		>
-			VL
+			F3D
 		</span>
 		<span :class="['leading-none', variant === 'header' ? 'hidden sm:block' : 'block']">
 			<span class="block text-sm font-medium tracking-tight text-white">

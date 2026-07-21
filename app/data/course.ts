@@ -85,8 +85,8 @@ export const contactRows: { key: 'phone' | 'email' | 'instagram' | 'address'; ic
 	{ key: 'address', icon: 'solar:map-point-linear', href: site.mapUrl },
 ]
 
-export const footerContactLinks: { key: 'phone' | 'email' | 'instagram'; href: string; icon: string }[] = [
-	{ key: 'phone', href: site.phoneHref, icon: 'solar:phone-linear' },
-	{ key: 'email', href: `mailto:${site.email}`, icon: 'solar:letter-linear' },
-	{ key: 'instagram', href: site.instagramUrl, icon: 'solar:hashtag-linear' },
+export const footerContactLinks: { key: 'phone' | 'email' | 'instagram'; href: string; icon: string; value: string }[] = [
+	{ key: 'phone', href: site.phoneHref, icon: 'solar:phone-linear', value: site.phone },
+	{ key: 'email', href: `mailto:${site.email}`, icon: 'solar:letter-linear', value: site.email },
+	{ key: 'instagram', href: site.instagramUrl, icon: 'solar:hashtag-linear', value: site.instagramHandle },
 ]

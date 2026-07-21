@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { footerContactLinks } from '~/data/course'
 import { navLinks } from '~/data/nav'
-import { footerCompanyLinks } from '~/data/sections'
 </script>
 
 <template>
@@ -27,12 +27,13 @@ import { footerCompanyLinks } from '~/data/sections'
 				</div>
 				<div>
 					<h3 class="mb-5 text-xs font-medium uppercase tracking-widest text-zinc-300">
-						{{ $t('footer.companyHeading') }}
+						{{ $t('footer.contactHeading') }}
 					</h3>
 					<ul class="space-y-3">
-						<li v-for="link in footerCompanyLinks" :key="link.key">
-							<a :href="link.href" class="text-sm text-zinc-500 outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">
-								{{ $t(`footer.company.${link.key}`) }}
+						<li v-for="link in footerContactLinks" :key="link.key">
+							<a :href="link.href" class="flex items-center gap-2 text-sm text-zinc-500 outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">
+								<Icon :name="link.icon" class="text-base" />
+								{{ link.value }}
 							</a>
 						</li>
 					</ul>
@@ -45,8 +46,7 @@ import { footerCompanyLinks } from '~/data/sections'
 		>
 			<p>{{ $t('footer.legal') }}</p>
 			<div class="flex flex-wrap gap-4">
-				<a href="#" class="outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">{{ $t('footer.privacy') }}</a>
-				<a href="#" class="outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">{{ $t('footer.terms') }}</a>
+				<NuxtLink to="/privacy" class="outline-none transition hover:text-white focus-visible:text-white focus-visible:underline">{{ $t('footer.privacy') }}</NuxtLink>
 			</div>
 		</div>
 	</footer>

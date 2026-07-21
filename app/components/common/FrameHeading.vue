@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(
 	defineProps<{
-		eyebrow: string
+		eyebrow?: string
 		eyebrowStyle?: 'pill' | 'plain'
 		title: string
 		description?: string
@@ -46,15 +46,15 @@ onBeforeUnmount(() => {
 
 <template>
 	<div>
-		<StatusPill v-if="eyebrowStyle === 'pill'" :label="eyebrow" pulse class="mb-6" />
-		<p v-else class="text-xs font-medium uppercase tracking-[0.32em] text-zinc-500">
+		<StatusPill v-if="eyebrow && eyebrowStyle === 'pill'" :label="eyebrow" pulse class="mb-6" />
+		<p v-else-if="eyebrow" class="text-xs font-medium uppercase tracking-[0.32em] text-zinc-500">
 			{{ eyebrow }}
 		</p>
 		<h2
 			ref="heading"
 			:class="[
 				'font-normal text-3xl tracking-tighter text-white sm:text-4xl',
-				eyebrowStyle === 'plain' ? 'mt-3' : '',
+				eyebrow && eyebrowStyle === 'plain' ? 'mt-3' : '',
 			]"
 		>
 			{{ title }}
