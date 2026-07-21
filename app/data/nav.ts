@@ -1,12 +1,12 @@
 export interface NavLink {
-	key: 'model' | 'signals' | 'assets' | 'protocol'
+	key: 'course' | 'how' | 'faq' | 'contact'
 	href: string
 	icon: string
 }
 
 export const navLinks: NavLink[] = [
-	{ key: 'model', href: '#model', icon: 'solar:box-minimalistic-linear' },
-	{ key: 'signals', href: '#signals', icon: 'solar:chart-square-linear' },
-	{ key: 'assets', href: '#assets', icon: 'solar:gallery-wide-linear' },
-	{ key: 'protocol', href: '#protocol', icon: 'solar:code-square-linear' },
+	{ key: 'course', href: '#course', icon: 'solar:box-minimalistic-linear' },
+	{ key: 'how', href: '#how', icon: 'solar:route-linear' },
+	{ key: 'faq', href: '#faq', icon: 'solar:question-circle-linear' },
+	{ key: 'contact', href: '#contact', icon: 'solar:map-point-linear' },
 ]

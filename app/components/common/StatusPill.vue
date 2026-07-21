@@ -4,7 +4,7 @@ withDefaults(defineProps<{ label: string; pulse?: boolean }>(), { pulse: false }
 
 <template>
 	<div
-		class="bezel inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs font-medium uppercase tracking-widest text-zinc-400"
+		class="bezel inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs font-medium tracking-widest text-zinc-400"
 	>
 		<span
 			:class="[

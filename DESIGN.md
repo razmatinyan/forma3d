@@ -1,4 +1,4 @@
-# Forma3D Design System
+# Forma 3D Design System
 
 ## Overview
 
@@ -10,7 +10,7 @@ Brand voltage comes from **indigo** (`--primary` — #818cf8), used with deliber
 
 Depth is **physical, not floated**. Surfaces use inset top-highlight / bottom-shadow pairs (`--shadow-bezel`, `--shadow-panel`) that simulate machined metal edges rather than drop shadows suggesting elevation above a page. Buttons look pressed into the surface, not resting on it.
 
-Type is a **single family — Manrope** — with hierarchy carried entirely by size, weight, and tracking. The signature typographic move is the **uppercase micro-label**: `text-xs font-medium uppercase tracking-widest` in zinc-500, used for every eyebrow, stat label, and button. It appears more than 15 times across the system and does more identity work than the headlines.
+Type is a **single family, Manrope**, with hierarchy carried entirely by size, weight, and tracking. The signature typographic move is the **wide-tracked micro-label**: `text-xs font-medium tracking-widest` in zinc-500, used for every eyebrow, stat label, and button. It appears more than 15 times across the system and does more identity work than the headlines.
 
 **Key Characteristics:**
 
@@ -19,7 +19,7 @@ Type is a **single family — Manrope** — with hierarchy carried entirely by s
 - Frame sections have **zero border radius**. Sharpness at the container level is intentional; radius appears only on inner controls.
 - Indigo `#818cf8` is the only chromatic accent, used scarcely.
 - Single font family (Manrope). No display face, no serif, no mono.
-- Uppercase `tracking-widest` micro-labels in zinc-500 are the dominant type texture.
+- Wide-tracked `tracking-widest` micro-labels in zinc-500 are the dominant type texture. Sentence case, never uppercase.
 - Inset bezel shadows over drop shadows. Depth reads as machined hardware.
 - A fixed decorative backdrop (noise, grid, top glow) sits behind all content via `SiteBackdrop`.
 
@@ -78,28 +78,32 @@ These are defined but **not yet used** — no surface currently has a status sta
 
 Locale coverage resolves by **per-glyph fallback**, not by swapping classes. Manrope covers Latin and Cyrillic; Armenian codepoints fall through to Noto Sans Armenian automatically. Never add a locale-reactive font class — it breaks mixed-language content (an Armenian page with a Latin brand name) and risks hydration mismatch.
 
-There is no display face and no monospace face. Technical texture comes from uppercase + wide tracking, not from a mono family.
+There is no display face and no monospace face. Technical texture comes from wide tracking at small sizes, not from a mono family or from uppercasing.
 
 ### Hierarchy
 
 | Role | Classes | Use |
 | --- | --- | --- |
-| Hero display | `text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.1] tracking-tighter text-white` | The h1 only |
-| Section heading | `text-3xl sm:text-4xl font-normal tracking-tighter text-white` | Every `FrameHeading` h2 |
+| Hero display | `text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.2] tracking-tighter text-white` | The h1 only |
+| Section heading | `text-3xl sm:text-4xl font-normal leading-[1.25] tracking-tighter text-white` | Every `FrameHeading` h2 |
 | Stat value | `text-3xl font-normal tracking-tight text-white` | `MetricCard` values |
 | Panel value | `text-2xl font-normal tracking-tight text-white` | Label-pill figures |
-| Card title | `text-sm font-medium text-white` | `ProtocolRow`, `ArchitectureCard`, `HeroFeature` h3 |
+| Card title | `text-sm font-medium text-white` | `ProtocolRow`, `CourseModuleCard`, `HeroFeature` h3 |
 | Body | `text-sm leading-6 text-zinc-400` | Section descriptions, lede paragraphs |
 | Caption | `text-xs leading-5 text-zinc-500` | Card descriptions, captions |
-| **Micro-label** | `text-xs font-medium uppercase tracking-widest text-zinc-500` | Eyebrows, stat labels, panel headers. **The signature.** |
-| Eyebrow (wide) | `text-xs font-medium uppercase tracking-[0.32em] text-zinc-500` | `FrameHeading` plain eyebrow only |
-| Button | `text-xs font-medium uppercase tracking-widest` | All `AppButton` labels |
+| **Micro-label** | `text-xs font-medium tracking-widest text-zinc-500` | Eyebrows, stat labels, panel headers. **The signature.** |
+| Eyebrow (wide) | `text-xs font-medium tracking-[0.32em] text-zinc-500` | `FrameHeading` plain eyebrow only |
+| Button | `text-xs font-medium tracking-widest` | All `AppButton` labels |
 
 ### Principles
 
 **Weight never exceeds 500.** Headings are `font-normal` (400); labels and titles are `font-medium` (500). There is no bold anywhere in the system. Emphasis comes from size, color, and tracking — never weight. A `font-bold` heading reads as a different product.
 
-**Tracking is bidirectional and load-bearing.** Large type gets `tracking-tighter` (-0.05em) to feel engineered and dense. Small uppercase type gets `tracking-widest` (0.1em) to feel like instrument labeling. The contrast between these two extremes *is* the typographic identity. Mid-size type gets no tracking at all.
+**Tracking is bidirectional and load-bearing.** Large type gets `tracking-tighter` (-0.05em) to feel engineered and dense. Small label type gets `tracking-widest` (0.1em) to feel like instrument labeling. The contrast between these two extremes *is* the typographic identity. Mid-size type gets no tracking at all.
+
+**Leading is explicit on every heading**, never inherited from Tailwind's size defaults. Those defaults tighten as type grows (1.2 at `text-3xl`, 1.11 at `text-4xl`), which is backwards for a trilingual site: Armenian and Russian both need more vertical room than English, not less. Headings set `leading-[1.2]` (h1) and `leading-[1.25]` (h2).
+
+This also protects the hero's masked line reveal. Each line sits in an `overflow-hidden` wrapper, and half-leading alone does not clear Manrope's descender depth of roughly 0.21em, so the wrappers carry `pb-[0.15em]`. Tighten the leading or drop that padding and descenders clip on `y g j p q`, Cyrillic `у р ф д`, and Armenian `ը ղ ջ փ ց`.
 
 **Armenian opts out of tight tracking** via `html:lang(hy) h1,h2,h3 { letter-spacing: normal }` — Armenian letterforms break down under negative tracking. This is server-rendered from the i18n `lang` attribute, so it carries no hydration risk.
 
@@ -120,10 +124,9 @@ The section rhythm is **tight (24px), not airy**. This is deliberate — consecu
 
 - **Asymmetric two-column splits** are the dominant section layout, and the ratios are deliberately uneven:
   - Hero: `lg:grid-cols-[0.72fr_1.28fr]` — narrow copy, wide visual
-  - Signals: `lg:grid-cols-[0.8fr_1.2fr]`
-  - Protocol / Deployment: `lg:grid-cols-[1fr_1fr]`
-- **Architecture bento:** `md:grid-cols-12` with cards spanning 5 / 7 / 7 / 5.
-- **Assets grid:** `md:grid-cols-5`, using `md:divide-x md:divide-white/10` rather than per-card borders, so filtering doesn't strand a dangling edge.
+  - Facts, FAQ: `lg:grid-cols-[0.8fr_1.2fr]`
+  - How it works, CTA, Contact, Register: `lg:grid-cols-[1fr_1fr]`
+- **Course bento:** `md:grid-cols-12` with `CourseModuleCard`s spanning 5 / 7 / 7 / 5.
 - **Internal division uses borders, not gaps.** Grid cells butt against each other and are separated by `border-b` / `sm:border-r` on `border-white/10`. This is what makes sections read as a single machined panel instead of floating cards. Preserve it.
 
 ### Whitespace Philosophy
@@ -173,11 +176,9 @@ The scale is derived from `--radius` and is monotonic, but it is **shifted one s
 
 ### Imagery
 
-- Asset images render `grayscale opacity-80` by default and `hover:grayscale-0` over a 500ms transition. Color is a hover reward, never a default state.
-- Images are `object-cover` inside `overflow-hidden` wrappers and carry a scroll-scrubbed parallax (`yPercent -12 → 12`).
-- Avatars are `size-9` circles, also grayscale.
-- All images need explicit `width` / `height`, `loading="lazy"`, `decoding="async"`.
+- The page currently has **no `<img>` elements at all** — the stock asset gallery and operator headshots from the source template were deleted (fake students on a real school's page is dishonest, and there are no real ones yet). If a real photo returns (staff, workspace, student work), give it explicit `width` / `height`, `loading="lazy"`, `decoding="async"`, and default to `grayscale opacity-80` with `hover:grayscale-0` over 500ms, matching the removed `AssetCard` convention. Color as a hover reward, never a default state.
 - There is no photography in a hero role. The hero visual is a live Three.js wireframe.
+- Program identity (3ds Max, Photoshop) is carried by monochrome vendor glyphs from `~/data/course.ts`'s `programIcons` (`simple-icons:autodesk`, `simple-icons:adobephotoshop`), not by screenshots or box art. Iconify has no dedicated 3ds Max mark, so the Autodesk mark stands in for it. Both inherit `currentColor` like every other icon in the system — never swap to the full-color `logos:` collection.
 
 ## Components
 
@@ -185,11 +186,13 @@ The scale is derived from `--radius` and is monotonic, but it is **shifted one s
 
 **`SiteBackdrop`** — Fixed decorative layers (noise, grid, top glow). Renders once in the layout. Never duplicate its effects inside a section.
 
-**`SiteHeader`** — `border-b border-white/10` bar with `bg-neutral-950/80 backdrop-blur-xl`. Carries `SiteBrand`, a 4-item icon nav (hidden below `lg`), a login text link, a solid CTA, and a hamburger that opens `SiteMobileNav`.
+**`SiteHeader`** — `sticky top-0 z-30` bar (not `fixed` — no body padding compensation, no layout shift) with `bg-neutral-950/80 backdrop-blur-xl`. Carries `SiteBrand`, a 4-item icon nav (hidden below `lg`), `SiteLangSwitcher`, a solid CTA that scrolls to `#course`, and a hamburger that opens `SiteMobileNav`.
 
-**`SiteMobileNav`** — shadcn `Sheet`. The **only** shadcn component used in a layout role. Requires a `SheetTitle` for accessibility (use `sr-only` if visually hidden).
+**`SiteMobileNav`** — shadcn `Sheet`. Requires a `SheetTitle` for accessibility (use `sr-only` if visually hidden). Mirrors the header's language switching inline (a row of `NuxtLink`s, not a nested dropdown) plus the same course CTA.
 
-**`SiteBrand`** — The "VL" mark + wordmark + tagline lockup. Used identically in header and footer. Never re-create it inline.
+**`SiteLangSwitcher`** — shadcn `DropdownMenu` over `useSwitchLocalePath()`. Trigger and each item show a `circle-flags:*` icon per locale (`hy` → `am`, `ru` → `ru`, `en` → `uk`) next to the language name. The active locale gets `text-indigo-300`.
+
+**`SiteBrand`** — The "F3D" mark + wordmark + tagline lockup. Used identically in header and footer. Never re-create it inline.
 
 ### Frames
 
@@ -197,37 +200,46 @@ The scale is derived from `--radius` and is monotonic, but it is **shifted one s
 
 Set `:entrance="false"` when the section runs its own intro sequence — the hero does this, because a section-level fade competing with the masked line reveal reads as muddy.
 
-**`FrameHeading`** — Eyebrow + h2 + optional description. Props: `eyebrow`, `eyebrowStyle` (`plain` | `pill`), `title`, `description`. Owns its SplitText word-reveal and re-splits on locale change. **Never hand-roll a section h2** — you lose the reveal and the revert-on-locale-change handling.
+**`FrameHeading`** — Optional eyebrow + h2 + optional description. Props: `eyebrow` (optional), `eyebrowStyle` (`plain` | `pill`), `title`, `description`. Owns its SplitText word-reveal and re-splits on locale change. **Never hand-roll a section h2** — you lose the reveal and the revert-on-locale-change handling.
+
+`eyebrow` is optional by deliberate decision, not an oversight. The original spec required one on every `FrameHeading`, but an eyebrow above every single heading is the templated-AI rhythm the anti-slop guidance warns against. On the course page, roughly half the sections carry one (Hero, Course, Facts, How it works) and half don't (FAQ, CTA, Contact, Register) — enough to keep the instrument-label signature legible without it reading as a tic. When `eyebrow` is omitted, the h2's `mt-3` top margin also drops, since it existed to clear the eyebrow line.
 
 ### Controls
 
-**`AppButton`** — The only button. Props: `href`, `variant` (`solid` | `ghost`), `size` (`sm` | `lg`), `icon`.
+**`AppButton`** — The only button. Props: `href`, `variant` (`solid` | `ghost`), `size` (`sm` | `lg`), `icon`, `type` (`button` | `submit`), `disabled`.
 - `solid`: `.btn-solid` (light `#fafafa → #a3a3a3` gradient), `border-white/20`, black text. Primary CTAs only.
 - `ghost`: `.btn-ghost`, `border-white/10`, zinc-300 text, hovering to `border-white/25` + white.
 - `sm` = `h-10 rounded-lg px-4`; `lg` = `h-12 rounded-xl px-5`.
 - Focus: `focus-visible:ring-2 ring-indigo-400 ring-offset-2 ring-offset-black`.
+- Polymorphic root: renders `<a>` when `href` is set, otherwise a real `<button>` (using `type`/`disabled`). This is what lets the registration form submit through the same component that styles every link CTA — don't reach for shadcn's `Button` just because you need a native submit control.
 
 Do **not** use shadcn's `Button`. It exists only as a transitive dependency inside `SheetContent`.
 
-**`StatusPill`** — Bezel pill with an indigo dot and an uppercase label. Prop `pulse` adds `animate-pulse`. Used for "Diagnostic layer active" / "System Active".
+**`StatusPill`** — Bezel pill with an indigo dot and a wide-tracked label. Prop `pulse` adds `animate-pulse`. Used for the hero eyebrow.
 
-**`Input`** (shadcn) — Used once, for asset search. Filters client-side on title + tags with an empty state.
+**`Input`** / **`Label`** / **`Checkbox`** / **`Select`** / **`Accordion`** / **`DropdownMenu`** (shadcn, `~/components/ui/*`) — Themed into the bespoke palette: `surface-panel` popovers, `border-white/10`, indigo focus rings and checked states, `rounded-xl` panels / `rounded-lg` items per the radius scale. `Input` and `Checkbox` back the registration form; `Select` backs the course picker; `Accordion` backs the FAQ; `DropdownMenu` backs `SiteLangSwitcher`.
 
 ### Content Cards
 
-**`MetricCard`** — Icon, micro-label, `text-3xl` value, caption. Prop `last` drops the trailing border.
+**`MetricCard`** — Icon, micro-label, `text-3xl` value, caption. Prop `last` drops the trailing border. Accepts a `params` prop for i18n interpolation so `site.ts` numbers (group size, duration) can populate the translated string instead of being duplicated as text.
 
-**`AssetCard`** — Grayscale image with parallax, title, filename caption.
+**`ProtocolRow`** — Zero-padded index badge (derived from array index, never stored), title, description. Also accepts `params` for interpolation (used by the "confirm your seat" enrollment step to interpolate price).
 
-**`ProtocolRow`** — Zero-padded index badge (derived from array index, never stored), title, description.
-
-**`ArchitectureCard`** — Bento cell with a CSS placeholder panel, icon, title, description. Layout classes (`col-span`, borders) are passed in from `~/data/sections.ts`.
+**`CourseModuleCard`** — Bento cell with a CSS placeholder panel, icon, title, description. Layout classes (`col-span`, borders) are passed in from `~/data/course.ts`. Replaces the source template's `ArchitectureCard`; two of its four icons come from `programIcons` (3ds Max, Photoshop) rather than a generic glyph, since those cards name a specific program.
 
 **`HeroFeature`** — Icon ring, title, description. Hero left column only.
+
+**`FaqItem`** — Wraps one `AccordionItem` with a translated question/answer pair. Also accepts `params` for interpolation. The "software" question additionally renders both `programIcons` inline before the question text.
+
+**`ContactRow`** — Icon chip + label + value, as a full-row link. `value` is optional: pass it to source a site.ts value (phone, email, Instagram) directly, or omit it to fall back to a translated i18n string (used for the address, which is prose).
 
 **`LabelPill`** — `.surface-deep` absolutely-positioned floating panel. Shell only; the body is a slot. Position via a `class` prop.
 
 **`ThreeStage`** — Mount point for the hero wireframe. Owns lazy init, resize, offscreen pause, reduced-motion, and full WebGL disposal. **The only WebGL context in the app.** Do not add more.
+
+### Forms
+
+**`RegistrationForm`** (`~/components/form/RegistrationForm.vue`) — The one form in the system, and the reference for any future one: label above input, error below in `text-xs text-red-400`, `aria-invalid` + `aria-describedby` wired per field, honeypot field visually hidden off-canvas (not `display:none`, so bots that skip hidden-input heuristics still fill it). States are `idle` / `submitting` / `success`, with the success state swapping the whole form for a confirmation panel rather than showing a toast. Validates client-side with the same zod schema (`#shared/registration`) the server route uses, so the two cannot drift.
 
 ## Motion
 
@@ -251,7 +263,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - Use `border-white/10` for every structural line.
 - Divide grid cells with borders, not gaps.
 - Use the `.surface-*` / `.bezel` / `.btn-*` classes for fills. They exist so gradients live in one place.
-- Reach for the uppercase `tracking-widest` micro-label for any label, eyebrow, or stat name.
+- Reach for the `tracking-widest` micro-label for any label, eyebrow, or stat name.
 - Keep indigo scarce — accent moments only.
 - Put prose in `i18n/locales/en.json` and structure (icons, hrefs, layout classes, keys) in `~/data/*.ts`.
 - Add `data-reveal` for entrance animation rather than writing a new ScrollTrigger.
@@ -269,6 +281,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - Don't leave `filter` set after a tween — always `clearProps: 'filter'`.
 - Don't hardcode English in a component.
 - Don't assume Tailwind's stock radius values by name — this project's scale is shifted one step up.
+- Don't add `uppercase`. Micro-labels get their character from wide tracking alone. Uppercasing was removed from the whole system: Armenian and Russian both suffer under it, since Armenian capitals are visually heavier and less familiar than their lowercase forms, and uppercase Cyrillic loses the ascender and descender variety that makes it scannable. **One deliberate exception:** the `SiteLangSwitcher` trigger, which renders a two-letter locale code where capitals are the convention (`HY` / `RU` / `EN`). That file should be the only `uppercase` match in the codebase.
 
 ## Responsive Behavior
 
@@ -287,7 +300,7 @@ Tailwind defaults. `sm` (640px) carries most of the internal-padding and grid wo
 
 Two-column sections collapse to single column at `lg`, and **the divider border flips axis** — `border-b border-white/10` on mobile becomes `lg:border-b-0 lg:border-r`. Reproduce this flip in any new split section; a divider stuck on the wrong axis is the most common visual bug in this system.
 
-The architecture bento collapses from 12-column spans to full width at `md`. The asset grid uses `md:divide-x` so filtered results never leave a stranded edge.
+The course bento collapses from 12-column spans to full width at `md`.
 
 ### Touch Targets
 
@@ -298,7 +311,7 @@ The architecture bento collapses from 12-column spans to full width at `md`. The
 1. Work on one component at a time. Reference it by filename (`FrameSection.vue`, `MetricCard.vue`).
 2. Before adding a component, check whether composition of existing primitives covers it. `FrameSection` + `FrameHeading` + a `v-for` covers most new sections.
 3. Never inline a gradient or inset shadow. Add a `@layer components` recipe in `app/assets/css/tailwind.css`.
-4. New content: prose → `en.json`, structure → `~/data/sections.ts`. A component should read both, hardcode neither.
+4. New content: prose → `en.json` (+ `ru.json` / `hy.json`), structure → `~/data/course.ts` or `~/data/site.ts`. A component should read both, hardcode neither. `site.ts` holds the one-off placeholder values (phone, email, price, dates) that aren't translatable; `course.ts` holds arrays and icon maps that repeat across cards.
 5. Reach for size and tracking before weight or color when you need emphasis.
 6. Dark + zinc + indigo is the whole palette. Don't introduce a fourth tone.
 7. New animation goes through `useGSAP()` and must handle reduced motion.
@@ -306,11 +319,10 @@ The architecture bento collapses from 12-column spans to full width at `md`. The
 
 ## Known Gaps
 
-- **Two parallel token systems.** shadcn's semantic variables (`--primary`, `--card`, `--muted`) coexist with the bespoke `--color-*` / `.surface-*` layer, and only Sheet / Input / Avatar consume the shadcn side. Anyone adding a shadcn component must theme it into the bespoke palette manually.
-- **The semantic tones are unproven.** Success / warning / danger are defined but no surface uses them yet, so they haven't been checked for contrast against `.surface-panel` in context.
-- **No form system.** The only input is asset search. Validation, labels, error states, and multi-field layout are all undefined.
-- **No hover convention.** Only the ghost button and asset images define hover states; there is no shared rule for nav links, cards, or footer links.
-- **Architecture cards are CSS placeholders**, standing in for four Three.js scenes that were removed for performance. They are intentionally unfaithful to the source template and are the most likely thing to be replaced.
-- **Nothing here has been visually verified in a browser.** Values were extracted from source. Heading sizes in particular were ported verbatim from the source template and have not been tuned against rendered Manrope.
-- **Hover states are documented only where they already exist** (ghost button, asset image). The system has no general hover convention.
+- **Two parallel token systems.** shadcn's semantic variables (`--primary`, `--card`, `--muted`) coexist with the bespoke `--color-*` / `.surface-*` layer, and only a handful of shadcn primitives (Sheet, Input, Checkbox, Select, Accordion, DropdownMenu, Avatar, Label) consume the shadcn side. Anyone adding a shadcn component must theme it into the bespoke palette manually — check its generated `data-*` state attributes against what reka-ui actually emits (`data-state="open"`, not `data-open`) before trusting the CLI output; four components shipped with dead open/close animations from exactly this mismatch.
+- **The semantic tones are unproven.** Success / warning / danger are defined but no surface uses them yet, so they haven't been checked for contrast against `.surface-panel` in context. The registration form's error state uses a plain `text-red-400`, not `--color-danger`, because the two were never reconciled.
+- **No general hover convention.** Ghost button, asset image (removed), and `ContactRow` define hover states ad hoc; there is no shared rule for nav links or cards generally.
+- **Course module cards are CSS placeholders**, standing in for four Three.js scenes that were removed for performance in the source template. Two of the four now carry real program icons (3ds Max, Photoshop) but the panel itself is still a gradient-and-glow placeholder, not a render.
+- **Heading sizes have not been tuned against rendered Manrope** in all three locales at once. The `leading` fix (see Typography) addressed descender clipping, but full-page visual verification at 375/768/1440 across `/`, `/ru`, `/en` is still the user's pass, not an automated one.
 - **Dark mode only.** There is no light theme, and the inset-bezel depth model assumes a dark canvas.
+- **Email templates (`server/emails/*.vue`) don't share the app's design tokens.** They're plain inline-styled HTML for email-client compatibility, deliberately disconnected from `tailwind.css`. Don't expect Tailwind classes to work there.

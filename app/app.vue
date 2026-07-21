@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const { locale } = useI18n()
+const i18nHead = useLocaleHead()
 
-useHead({
-	htmlAttrs: { lang: locale },
-})
+useHead(() => ({
+	htmlAttrs: i18nHead.value.htmlAttrs,
+	link: i18nHead.value.link,
+	meta: i18nHead.value.meta,
+}))
 
 const { gsap, ScrollTrigger, revealFrom, revealTo } = useGSAP()
 

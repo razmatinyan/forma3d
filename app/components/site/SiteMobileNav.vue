@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { navLinks } from '~/data/nav'
 
+const { locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+
+const availableLocales = computed(() => {
+	const list = locales.value
+	return (typeof list[0] === 'string' ? [] : list) as { code: string; name?: string }[]
+})
+
 const open = ref(false)
 
 function closeAndNavigate() {
@@ -32,7 +40,7 @@ function closeAndNavigate() {
 					v-for="link in navLinks"
 					:key="link.key"
 					:href="link.href"
-					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium uppercase tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
+					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 					@click="closeAndNavigate"
 				>
 					<Icon :name="link.icon" class="text-lg" />
@@ -40,10 +48,26 @@ function closeAndNavigate() {
 				</a>
 			</nav>
 
+			<div class="mt-2 flex flex-wrap gap-2 border-t border-white/10 px-2 pt-4">
+				<NuxtLink
+					v-for="item in availableLocales"
+					:key="item.code"
+					:to="switchLocalePath(item.code)"
+					:class="[
+						'rounded-lg border px-3 py-2 text-xs font-medium tracking-widest outline-none transition focus-visible:ring-2 focus-visible:ring-indigo-400',
+						item.code === locale
+							? 'border-indigo-400/40 text-indigo-300'
+							: 'border-white/10 text-zinc-400 hover:text-white',
+					]"
+					@click="closeAndNavigate"
+				>
+					{{ item.name }}
+				</NuxtLink>
+			</div>
+
 			<SheetFooter class="mt-auto flex-col gap-3">
-				<AppButton variant="ghost" size="sm">{{ $t('common.logIn') }}</AppButton>
-				<AppButton variant="solid" size="sm" icon="solar:arrow-right-linear">
-					{{ $t('common.openConsole') }}
+				<AppButton href="#course" variant="solid" size="sm" icon="solar:arrow-right-linear" @click="closeAndNavigate">
+					{{ $t('common.ctaCourse') }}
 				</AppButton>
 			</SheetFooter>
 		</SheetContent>

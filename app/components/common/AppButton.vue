@@ -5,17 +5,23 @@ withDefaults(
 		variant?: 'solid' | 'ghost'
 		size?: 'sm' | 'lg'
 		icon?: string
+		type?: 'button' | 'submit'
+		disabled?: boolean
 	}>(),
-	{ href: '#', variant: 'ghost', size: 'sm' },
+	{ variant: 'ghost', size: 'sm' },
 )
 </script>
 
 <template>
-	<a
+	<component
+		:is="href ? 'a' : 'button'"
 		:href="href"
+		:type="href ? undefined : (type ?? 'button')"
+		:disabled="href ? undefined : disabled"
 		:class="[
-			'inline-flex items-center justify-center gap-2 border text-xs font-medium uppercase tracking-widest',
+			'inline-flex items-center justify-center gap-2 border text-xs font-medium tracking-widest',
 			'outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black',
+			'disabled:cursor-not-allowed disabled:opacity-60',
 			size === 'lg' ? 'h-12 rounded-xl px-5' : 'h-10 rounded-lg px-4',
 			variant === 'solid'
 				? 'btn-solid border-white/20 text-black'
@@ -24,5 +30,5 @@ withDefaults(
 	>
 		<slot />
 		<Icon v-if="icon" :name="icon" :class="size === 'lg' ? 'text-lg' : 'text-base'" />
-	</a>
+	</component>
 </template>
