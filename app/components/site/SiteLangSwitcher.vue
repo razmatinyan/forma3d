@@ -32,8 +32,9 @@ const currentFlag = computed(() => flags[locale.value] ?? 'solar:global-linear')
 			<DropdownMenuItem v-for="item in availableLocales" :key="item.code" as-child>
 				<NuxtLink
 					:to="switchLocalePath(item.code)"
-					:class="item.code === locale ? 'text-indigo-300' : ''"
+					:class="['flex items-center gap-2.5', item.code === locale ? 'text-indigo-300' : '']"
 				>
+					<Icon :name="flags[item.code] ?? 'solar:global-linear'" class="size-4 shrink-0 rounded-full" />
 					{{ item.name }}
 				</NuxtLink>
 			</DropdownMenuItem>

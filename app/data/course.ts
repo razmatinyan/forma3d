@@ -1,5 +1,13 @@
 import { site } from './site'
 
+// no 3ds Max glyph exists in iconify, autodesk is the vendor mark
+export const programIcons = {
+	threeDsMax: 'simple-icons:autodesk',
+	photoshop: 'simple-icons:adobephotoshop',
+} as const
+
+export type ProgramKey = keyof typeof programIcons
+
 export interface HeroFeatureItem {
 	key: 'groups' | 'portfolio'
 }
@@ -38,7 +46,7 @@ export interface CourseModuleItem {
 }
 
 export const courseModules: CourseModuleItem[] = [
-	{ key: 'modeling', icon: 'solar:cube-linear', colSpan: 5, border: 'border-b border-white/10 md:border-r' },
+	{ key: 'modeling', icon: programIcons.threeDsMax, colSpan: 5, border: 'border-b border-white/10 md:border-r' },
 	{ key: 'materials', icon: 'solar:lightbulb-linear', colSpan: 7, border: 'border-b border-white/10' },
 	{
 		key: 'rendering',
@@ -46,7 +54,7 @@ export const courseModules: CourseModuleItem[] = [
 		colSpan: 7,
 		border: 'border-b border-white/10 md:border-b-0 md:border-r',
 	},
-	{ key: 'post', icon: 'solar:magic-stick-3-linear', colSpan: 5, border: '' },
+	{ key: 'post', icon: programIcons.photoshop, colSpan: 5, border: '' },
 ]
 
 export const courseFacts: { key: 'groupSize' | 'duration' | 'certificate'; icon: string }[] = [
@@ -71,19 +79,19 @@ export const faqItems: { key: string }[] = [
 	{ key: 'payment' },
 ]
 
+export function getFaqParams(localeCode: string): Record<string, Record<string, unknown>> {
+	return {
+		schedule: { sessions: site.course.sessionsPerWeek, hours: site.course.sessionHours },
+		groupSize: { max: site.course.groupSizeMax },
+		payment: { price: new Intl.NumberFormat(localeCode).format(site.course.priceAmd) },
+	}
+}
+
 export interface CourseOption {
 	value: string
 	key: string
 	icon: string
 }
-
-// no 3ds Max glyph exists in iconify, autodesk is the vendor mark
-export const programIcons = {
-	threeDsMax: 'simple-icons:autodesk',
-	photoshop: 'simple-icons:adobephotoshop',
-} as const
-
-export type ProgramKey = keyof typeof programIcons
 
 export const courseOptions: CourseOption[] = [
 	{ value: '3ds-max-photoshop', key: 'threeDsMax', icon: programIcons.threeDsMax },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { heroCourseLoadRows, heroFeatures, heroStats, heroSyncMeshBars } from '~/data/course'
+import { coursePrograms, heroCourseLoadRows, heroFeatures, heroStats, heroSyncMeshBars } from '~/data/course'
 import { site } from '~/data/site'
 
 const { t, locale } = useI18n()
@@ -100,6 +100,17 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					>
 						{{ t('hero.description') }}
 					</p>
+
+					<div class="mt-5 flex flex-wrap items-center gap-4">
+						<span
+							v-for="program in coursePrograms"
+							:key="program.key"
+							class="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500"
+						>
+							<Icon :name="program.icon" class="size-4 shrink-0 text-zinc-400" />
+							{{ t(`common.programs.${program.key}`) }}
+						</span>
+					</div>
 
 					<div
 						class="mt-8 grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2"

@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { faqItems } from '~/data/course'
-import { site } from '~/data/site'
+import { faqItems, getFaqParams } from '~/data/course'
 
 const { t, locale } = useI18n()
 
-const faqParams = computed<Record<string, Record<string, unknown>>>(() => ({
-	schedule: { sessions: site.course.sessionsPerWeek, hours: site.course.sessionHours },
-	groupSize: { max: site.course.groupSizeMax },
-	payment: { price: new Intl.NumberFormat(locale.value).format(site.course.priceAmd) },
-}))
+const faqParams = computed(() => getFaqParams(locale.value))
 </script>
 
 <template>

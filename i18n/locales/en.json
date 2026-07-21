@@ -12,7 +12,11 @@
 		"primaryNav": "Primary navigation",
 		"menuTitle": "Menu",
 		"menuDescription": "Navigate to a section of the Forma 3D page.",
-		"languageLabel": "Change language"
+		"languageLabel": "Change language",
+		"programs": {
+			"threeDsMax": "3ds Max",
+			"photoshop": "Adobe Photoshop"
+		}
 	},
 	"nav": {
 		"course": "Course",
@@ -210,7 +214,7 @@
 				"label": "Course",
 				"placeholder": "Select a course",
 				"options": {
-					"threeDsMax": "3ds Max and Adobe Photoshop"
+					"threeDsMax": "3ds Max"
 				}
 			},
 			"fields": {

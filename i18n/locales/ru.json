@@ -12,7 +12,11 @@
 		"primaryNav": "Основная навигация",
 		"menuTitle": "Меню",
 		"menuDescription": "Перейти к разделу страницы Forma 3D.",
-		"languageLabel": "Сменить язык"
+		"languageLabel": "Сменить язык",
+		"programs": {
+			"threeDsMax": "3ds Max",
+			"photoshop": "Adobe Photoshop"
+		}
 	},
 	"nav": {
 		"course": "Курс",
@@ -210,7 +214,7 @@
 				"label": "Курс",
 				"placeholder": "Выберите курс",
 				"options": {
-					"threeDsMax": "3ds Max и Adobe Photoshop"
+					"threeDsMax": "3ds Max"
 				}
 			},
 			"fields": {

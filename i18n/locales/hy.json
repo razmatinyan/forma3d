@@ -12,7 +12,11 @@
 		"primaryNav": "Հիմնական նավիգացիա",
 		"menuTitle": "Ընտրացանկ",
 		"menuDescription": "Անցեք Forma 3D էջի որևէ բաժին:",
-		"languageLabel": "Փոխել լեզուն"
+		"languageLabel": "Փոխել լեզուն",
+		"programs": {
+			"threeDsMax": "3ds Max",
+			"photoshop": "Adobe Photoshop"
+		}
 	},
 	"nav": {
 		"course": "Դասընթաց",
@@ -210,7 +214,7 @@
 				"label": "Դասընթաց",
 				"placeholder": "Ընտրեք դասընթաց",
 				"options": {
-					"threeDsMax": "3ds Max և Adobe Photoshop"
+					"threeDsMax": "3ds Max"
 				}
 			},
 			"fields": {
