@@ -22,7 +22,7 @@ withDefaults(defineProps<{ variant?: 'header' | 'footer' }>(), { variant: 'heade
 		>
 			F3D
 		</span>
-		<span :class="['leading-none', variant === 'header' ? 'hidden sm:block' : 'block']">
+		<span v-if="variant === 'footer'" class="block leading-none">
 			<span class="block text-sm font-medium tracking-tight text-white">
 				{{ $t('common.brandName') }}
 			</span>
