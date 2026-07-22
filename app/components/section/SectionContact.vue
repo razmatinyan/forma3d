@@ -61,7 +61,7 @@ const { stop } = useIntersectionObserver(
 				<iframe
 					v-if="mapLoaded"
 					:src="site.mapEmbedUrl"
-					class="absolute inset-0 h-full w-full grayscale-[35%]"
+					class="map-dark absolute inset-0 h-full w-full"
 					style="border: 0"
 					loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade"
