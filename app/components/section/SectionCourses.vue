@@ -12,11 +12,11 @@ const { gsap, motion, revealFrom, revealTo } = useGSAP()
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced || !root.value) return
 	gsap.fromTo(
-		root.value.querySelectorAll('.course-card'),
+		root.value.querySelectorAll('.course-card > *'),
 		revealFrom,
 		{
 			...revealTo,
-			stagger: 0.08,
+			stagger: 0.05,
 			clearProps: 'filter',
 			scrollTrigger: { trigger: root.value, start: 'top 78%', once: true },
 		},

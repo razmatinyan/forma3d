@@ -12,11 +12,11 @@ const { gsap, motion, revealFrom, revealTo } = useGSAP()
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced || !root.value) return
 	gsap.fromTo(
-		root.value.querySelectorAll('.contact-row'),
+		root.value.querySelectorAll('.contact-row > *'),
 		{ ...revealFrom, y: 16 },
 		{
 			...revealTo,
-			stagger: 0.06,
+			stagger: 0.04,
 			clearProps: 'filter',
 			scrollTrigger: { trigger: root.value, start: 'top 80%', once: true },
 		},

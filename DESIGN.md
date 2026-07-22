@@ -252,7 +252,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - **Section entrance** — `FrameSection` fades and un-blurs at `top 85%`.
 - **Headings** — `FrameHeading` uses SplitText `{ type: 'words', mask: 'words' }` with `yPercent: 110`, 0.055s stagger. SplitText instances must be `.revert()`-ed manually; GSAP context revert does not do it.
 - **Hero** — masked line reveal on `.hero-line`, then `.reveal-block > *:not(.hero-title)`, then `.label-pill`, then `.connector-line` stroke draw.
-- **Opt-in reveals** — add `data-reveal` to an element; a single batched `ScrollTrigger` in `app.vue` handles it. Never write a per-element ScrollTrigger.
+- **Opt-in reveals** — add `data-reveal` to a container; a single batched `ScrollTrigger` in `app.vue` animates its **children**, not the container itself. Cards must never move: shifting a card shifts its borders, and the borders are what make a section read as one machined panel. Never write a per-element ScrollTrigger.
 - **Reduced motion** — `motion()` receives `context.conditions.reduced`; return early. Content must remain fully visible.
 
 ⚠️ `motion()` internally injects an `all: 'all'` condition. GSAP's `matchMedia` only fires its callback when at least one query **matches**, so a lone `prefers-reduced-motion: reduce` condition silently never runs. Don't remove that key.
