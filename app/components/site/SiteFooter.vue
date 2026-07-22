@@ -4,7 +4,7 @@ import { navLinks } from '~/data/nav'
 </script>
 
 <template>
-	<footer class="relative z-10 mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-6 lg:px-8">
+	<footer class="relative z-10 mx-auto max-w-[90rem] px-4 pb-8 pt-12 sm:px-6 lg:px-8">
 		<FrameSection as="div" variant="soft" overflow class="mb-6 p-8 sm:p-12">
 			<div class="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-8">
 				<div class="md:col-span-2">

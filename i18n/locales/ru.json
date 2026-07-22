@@ -7,7 +7,7 @@
 		"brandName": "Forma 3D",
 		"brandTagline": "Школа 3D моделирования",
 		"brandHomeLabel": "Forma 3D, на главную",
-		"ctaCourse": "О курсе",
+		"ctaCourse": "Все курсы",
 		"openMenu": "Открыть меню",
 		"primaryNav": "Основная навигация",
 		"menuTitle": "Меню",
@@ -41,27 +41,7 @@
 			}
 		},
 		"ctaPrimary": "Записаться",
-		"ctaSecondary": "Смотреть программу",
-		"simulation": "3D просмотр",
 		"wireframeAlt": "Анимированная каркасная модель в стиле 3ds Max",
-		"stats": {
-			"duration": {
-				"label": "Длительность",
-				"value": "{months} месяца"
-			},
-			"format": {
-				"label": "Формат",
-				"value": "Офлайн, Ереван"
-			},
-			"groupSize": {
-				"label": "Размер группы",
-				"value": "До {max}"
-			},
-			"certificate": {
-				"label": "Диплом",
-				"value": "Есть"
-			}
-		},
 		"coursesLabel": "Курсы",
 		"coursesLink": "Все курсы"
 	},
@@ -296,11 +276,11 @@
 				"description": "Моделирование, свет и рендер интерьеров и объектов с нуля, затем обработка изображения в Photoshop. Четыре модуля, каждый заканчивается работой для портфолио."
 			},
 			"archviz": {
-				"title": "Архитектурная визуализация",
+				"title": "Architectural Visualization",
 				"description": "Экстерьерные сцены, работа с дневным светом и подача проектов для архитекторов и дизайнеров интерьера."
 			},
 			"gamedev": {
-				"title": "Моделирование для игр",
+				"title": "Game Dev Modeling",
 				"description": "Low poly моделирование, развертка UV и запекание карт для ассетов, работающих в игровом движке."
 			}
 		}

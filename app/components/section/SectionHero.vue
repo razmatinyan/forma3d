@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { coursePrograms, courses, heroFeatures, heroStats } from '~/data/course'
-import { site } from '~/data/site'
+import { coursePrograms, courses, heroFeatures } from '~/data/course'
 
 const { t } = useI18n()
 
@@ -116,14 +115,6 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						>
 							{{ t('hero.ctaPrimary') }}
 						</AppButton>
-						<AppButton
-							href="#courses"
-							variant="ghost"
-							size="lg"
-							icon="solar:document-text-linear"
-						>
-							{{ t('hero.ctaSecondary') }}
-						</AppButton>
 					</div>
 				</div>
 			</aside>
@@ -175,18 +166,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					/>
 				</svg>
 
-				<div class="absolute left-6 top-6 z-20 flex items-center gap-3">
-					<div
-						class="h-2 w-2 animate-pulse rounded-full bg-indigo-500 shadow-[0_0_10px_#818cf8]"
-					/>
-					<span
-						class="text-xs font-medium tracking-widest text-indigo-400/80"
-					>
-						{{ t('hero.simulation') }}
-					</span>
-				</div>
-
-				<div class="absolute inset-x-5 bottom-24 z-20 sm:inset-x-8 lg:left-auto lg:right-8 lg:w-80">
+				<div class="absolute inset-x-5 top-6 z-20 sm:inset-x-8 sm:top-8 lg:left-auto lg:right-8 lg:w-80">
 					<div class="label-pill surface-deep rounded-xl border border-white/10 p-4">
 						<div class="flex items-center justify-between border-b border-white/10 pb-3">
 							<p class="text-xs font-medium tracking-widest text-zinc-300">
@@ -227,25 +207,6 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					</div>
 				</div>
 
-				<div
-					class="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/35 px-5 py-4 backdrop-blur-xl sm:px-8"
-				>
-					<div
-						class="grid grid-cols-2 gap-3 text-xs text-zinc-500 sm:grid-cols-4"
-					>
-						<div v-for="stat in heroStats" :key="stat.key">
-							<span class="block tracking-widest">{{
-								t(`hero.stats.${stat.key}.label`)
-							}}</span>
-							<strong class="mt-1 block font-medium text-zinc-200">{{
-								t(`hero.stats.${stat.key}.value`, {
-									months: site.course.durationMonths,
-									max: site.course.groupSizeMax,
-								})
-							}}</strong>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</FrameSection>

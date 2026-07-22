@@ -29,13 +29,6 @@ export interface HeroFeatureItem {
 
 export const heroFeatures: HeroFeatureItem[] = [{ key: 'groups' }, { key: 'portfolio' }]
 
-export const heroStats: { key: 'duration' | 'format' | 'groupSize' | 'certificate' }[] = [
-	{ key: 'duration' },
-	{ key: 'format' },
-	{ key: 'groupSize' },
-	{ key: 'certificate' },
-]
-
 export interface CourseModuleItem {
 	key: 'modeling' | 'materials' | 'rendering' | 'post'
 	icon: string

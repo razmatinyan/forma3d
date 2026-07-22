@@ -7,7 +7,7 @@
 		"brandName": "Forma 3D",
 		"brandTagline": "3D modeling school",
 		"brandHomeLabel": "Forma 3D home",
-		"ctaCourse": "See the course",
+		"ctaCourse": "See the courses",
 		"openMenu": "Open menu",
 		"primaryNav": "Primary navigation",
 		"menuTitle": "Menu",
@@ -41,27 +41,7 @@
 			}
 		},
 		"ctaPrimary": "Pre-register",
-		"ctaSecondary": "See the curriculum",
-		"simulation": "3D viewport",
 		"wireframeAlt": "Animated 3ds Max style wireframe model",
-		"stats": {
-			"duration": {
-				"label": "Duration",
-				"value": "{months} months"
-			},
-			"format": {
-				"label": "Format",
-				"value": "Offline, Yerevan"
-			},
-			"groupSize": {
-				"label": "Group size",
-				"value": "Up to {max}"
-			},
-			"certificate": {
-				"label": "Certificate",
-				"value": "Included"
-			}
-		},
 		"coursesLabel": "Courses",
 		"coursesLink": "See all"
 	},
@@ -296,11 +276,11 @@
 				"description": "Model, light, and render interiors and objects from scratch, then finish the image in Photoshop. Four modules, each ending with a piece for your portfolio."
 			},
 			"archviz": {
-				"title": "Architectural visualization",
+				"title": "Architectural Visualization",
 				"description": "Exterior scenes, daylight studies, and presentation boards for architects and interior designers."
 			},
 			"gamedev": {
-				"title": "Game modeling",
+				"title": "Game Dev Modeling",
 				"description": "Low poly modeling, UV unwrapping, and baking for assets that run inside a game engine."
 			}
 		}
