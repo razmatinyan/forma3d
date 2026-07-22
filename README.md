@@ -36,6 +36,7 @@ The email provider is set to `console` in `nuxt.config.ts`, so the registration 
 | [`RULES.md`](RULES.md) | Hard rules, enforced by `npm run check` |
 | [`DESIGN.md`](DESIGN.md) | The UI contract |
 | [`docs/architecture.md`](docs/architecture.md) | Where everything lives |
+| [`docs/nuxt.md`](docs/nuxt.md) | Nuxt 4 conventions and framework behaviour |
 | [`docs/workflows.md`](docs/workflows.md) | Recipes for routine tasks |
 | [`docs/i18n.md`](docs/i18n.md) | Translation rules and traps |
 | [`docs/gotchas.md`](docs/gotchas.md) | Debugging notes that cost real time |

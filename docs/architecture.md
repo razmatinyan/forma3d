@@ -71,7 +71,7 @@ Anchor targets need `scroll-mt-24` because the header is sticky.
 
 ## Naming
 
-Nuxt path-prefixes component names, and `common/` is flat so files self-name: `common/MetricCard.vue` is `<MetricCard>`, not `<CommonMetricCard>`. `site/SiteHeader.vue` is `<SiteHeader>` because the directory and filename share a segment. `form/RegistrationForm.vue` is `<FormRegistrationForm>`.
+`common/` is registered with `pathPrefix: false` in `nuxt.config.ts`, so `common/MetricCard.vue` is `<MetricCard>` rather than `<CommonMetricCard>`. Everything else keeps path prefixing: `form/RegistrationForm.vue` is `<FormRegistrationForm>`. `site/SiteHeader.vue` is `<SiteHeader>` because the directory and filename already share a segment. See `docs/nuxt.md` for the full table.
 
 ## Registration flow
 

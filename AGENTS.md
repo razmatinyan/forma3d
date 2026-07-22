@@ -11,6 +11,7 @@ Read this file first. It tells you where everything else is.
 | `RULES.md` | Always. Hard rules that fail review if broken. |
 | `DESIGN.md` | Before any visual change. The UI contract. |
 | `docs/architecture.md` | Before adding or moving files. |
+| `docs/nuxt.md` | Nuxt 4 specifics: auto-imports, naming, SSR, server routes. |
 | `docs/workflows.md` | Before a routine task. Recipes for the common ones. |
 | `docs/i18n.md` | Before touching any user-facing string. |
 | `docs/gotchas.md` | When something behaves strangely. Every entry cost real debugging time. |
