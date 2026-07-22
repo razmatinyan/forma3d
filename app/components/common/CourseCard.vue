@@ -10,7 +10,6 @@ const isOpen = computed(() => props.course.status === 'open')
 
 <template>
 	<article
-		data-reveal
 		:class="[
 			'course-card group relative flex flex-col p-5 sm:p-8',
 			isOpen ? '' : 'opacity-70 transition hover:opacity-100',
