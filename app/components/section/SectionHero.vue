@@ -88,7 +88,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<AppButton
-							:href="localePath('/#register')"
+							:href="localePath('/#courses')"
 							variant="solid"
 							size="xl"
 							icon="solar:arrow-right-linear"
