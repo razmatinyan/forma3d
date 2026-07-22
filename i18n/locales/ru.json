@@ -222,8 +222,9 @@
 		"blurb": "Forma 3D, офлайн школа 3D моделирования в Ереване. Учим 3D's Max и Adobe Photoshop в небольших группах.",
 		"platformHeading": "Разделы",
 		"contactHeading": "Контакты",
-		"legal": "Forma 3D, школа 3D моделирования, Ереван",
-		"privacy": "Политика конфиденциальности"
+		"privacy": "Политика конфиденциальности",
+		"copyright": "{year} Forma 3D. Все права защищены.",
+		"developedBy": "Разработано {author}"
 	},
 	"privacy": {
 		"meta": {

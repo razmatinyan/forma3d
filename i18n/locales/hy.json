@@ -222,8 +222,9 @@
 		"blurb": "Forma 3D-ն Երևանում գործող դահլիճային 3D մոդելավորման դպրոց է, որտեղ դասավանդվում է 3D's Max և Adobe Photoshop փոքր խմբերով:",
 		"platformHeading": "Բաժիններ",
 		"contactHeading": "Կապ",
-		"legal": "Forma 3D, 3D մոդելավորման դպրոց, Երևան",
-		"privacy": "Գաղտնիության քաղաքականություն"
+		"privacy": "Գաղտնիության քաղաքականություն",
+		"copyright": "{year} Forma 3D. Բոլոր իրավունքները պաշտպանված են:",
+		"developedBy": "Մշակվել է {author}-ի կողմից"
 	},
 	"privacy": {
 		"meta": {

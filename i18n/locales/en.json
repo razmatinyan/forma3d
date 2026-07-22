@@ -222,8 +222,9 @@
 		"blurb": "Forma 3D is an offline 3D modeling school in Yerevan, teaching 3D's Max and Adobe Photoshop in small groups.",
 		"platformHeading": "Sections",
 		"contactHeading": "Contact",
-		"legal": "Forma 3D 3D modeling school, Yerevan",
-		"privacy": "Privacy policy"
+		"privacy": "Privacy policy",
+		"copyright": "{year} Forma 3D. All rights reserved.",
+		"developedBy": "Developed by {author}"
 	},
 	"privacy": {
 		"meta": {
