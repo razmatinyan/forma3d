@@ -42,8 +42,10 @@ useHead(() => ({
 <template>
 	<div v-if="course">
 		<FrameSection id="overview" variant="hero" overflow :entrance="false">
-			<div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-				<div class="reveal-block border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r">
+			<div class="relative">
+				<div class="grid-overlay pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay [background-size:4rem_4rem]" />
+
+				<div class="reveal-block relative mx-auto flex max-w-3xl flex-col items-center px-5 py-16 text-center sm:px-8 sm:py-24">
 					<NuxtLink
 						:to="localePath('/')"
 						class="inline-flex items-center gap-2 text-xs font-medium tracking-widest text-zinc-500 outline-none transition hover:text-white focus-visible:text-white"
@@ -52,25 +54,23 @@ useHead(() => ({
 						{{ t('courseDetail.back') }}
 					</NuxtLink>
 
-					<div class="mt-8 flex items-center gap-3">
+					<span
+						:class="[
+							'mt-8 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium tracking-widest',
+							isOpen
+								? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'
+								: 'border-white/10 text-zinc-500',
+						]"
+					>
 						<span
-							:class="[
-								'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium tracking-widest',
-								isOpen
-									? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'
-									: 'border-white/10 text-zinc-500',
-							]"
-						>
-							<span
-								v-if="isOpen"
-								class="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_0.75rem_rgba(52,211,153,0.8)]"
-							/>
-							<Icon v-else name="solar:lock-keyhole-minimalistic-linear" class="text-sm" />
-							{{ t(`courses.status.${course.status}`) }}
-						</span>
-					</div>
+							v-if="isOpen"
+							class="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_0.75rem_rgba(52,211,153,0.8)]"
+						/>
+						<Icon v-else name="solar:lock-keyhole-minimalistic-linear" class="text-sm" />
+						{{ t(`courses.status.${course.status}`) }}
+					</span>
 
-					<h1 class="mt-6 max-w-2xl text-4xl font-normal leading-[1.2] tracking-tighter text-white sm:text-5xl lg:text-6xl">
+					<h1 class="mt-6 text-4xl font-normal leading-[1.2] tracking-tighter text-white sm:text-5xl lg:text-6xl">
 						{{ title }}
 					</h1>
 
@@ -78,21 +78,14 @@ useHead(() => ({
 						{{ description }}
 					</p>
 
-					<div v-if="isOpen" class="mt-8">
+					<div v-if="isOpen" class="mt-10">
 						<AppButton href="#register" variant="solid" size="xl" icon="solar:arrow-right-linear">
 							{{ t('courses.enroll') }}
 						</AppButton>
 					</div>
-					<p v-else class="mt-8 text-xs font-medium tracking-widest text-zinc-600">
+					<p v-else class="mt-10 text-xs font-medium tracking-widest text-zinc-600">
 						{{ t('courses.notifyHint') }}
 					</p>
-				</div>
-
-				<div class="relative min-h-[22rem] overflow-hidden">
-					<div class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]" />
-					<div class="absolute inset-0 flex items-center justify-center">
-						<Icon :name="course.icon" class="text-[10rem] text-white/5" />
-					</div>
 				</div>
 			</div>
 		</FrameSection>
