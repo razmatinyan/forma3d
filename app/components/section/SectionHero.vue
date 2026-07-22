@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import { useMediaQuery } from '@vueuse/core'
 import { courses } from '~/data/course'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+// never mount the canvas on mobile, hiding it with css would still cost a webgl context
+const mounted = ref(false)
+onMounted(() => { mounted.value = true })
+const isDesktop = useMediaQuery('(min-width: 1024px)')
+const showCanvas = computed(() => mounted.value && isDesktop.value)
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -99,15 +106,15 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 				</div>
 			</aside>
 
-			<div class="relative min-h-[30rem] overflow-hidden">
+			<div class="relative overflow-hidden lg:min-h-[30rem]">
 				<div
 					class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]"
 				/>
 
-				<ThreeStage />
+				<ThreeStage v-if="showCanvas" />
 
 				<svg
-					class="pointer-events-none absolute inset-0 h-full w-full text-zinc-300/50"
+					class="pointer-events-none absolute inset-0 hidden h-full w-full text-zinc-300/50 lg:block"
 					viewBox="0 0 1000 700"
 					preserveAspectRatio="none"
 					aria-hidden="true"
@@ -146,7 +153,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					/>
 				</svg>
 
-				<div class="absolute inset-x-5 top-6 z-20 sm:inset-x-8 sm:top-8 lg:left-auto lg:right-8 lg:w-96">
+				<div class="relative z-20 p-5 sm:p-8 lg:absolute lg:right-8 lg:top-8 lg:w-96 lg:p-0">
 					<div class="label-pill surface-deep rounded-xl border border-white/10 px-5 pt-5">
 						<div class="flex items-center justify-between border-b border-white/10 pb-4">
 							<p class="text-sm font-medium tracking-widest text-zinc-200">
