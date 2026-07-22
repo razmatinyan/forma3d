@@ -27,14 +27,14 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 		ease: 'expo.out',
 		clearProps: 'filter',
 	})
-	gsap.from('.label-pill', {
-		y: 20,
+	gsap.from(gsap.utils.toArray('.label-pill > div, .label-pill li'), {
+		y: 18,
 		opacity: 0,
-		filter: 'blur(10px)',
-		duration: 1,
-		stagger: 0.12,
-		delay: 0.45,
+		filter: 'blur(4px)',
+		duration: revealTo.duration,
 		ease: revealTo.ease,
+		delay: 0.45,
+		stagger: 0.08,
 		clearProps: 'filter',
 	})
 })
