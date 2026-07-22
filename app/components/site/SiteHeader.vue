@@ -21,7 +21,7 @@ import { navLinks } from '~/data/nav'
 
 			<div class="hidden items-center gap-3 py-4 lg:flex">
 				<SiteLangSwitcher />
-				<AppButton href="#course" variant="solid" size="sm" icon="solar:arrow-right-linear">
+				<AppButton href="#courses" variant="solid" size="sm" icon="solar:arrow-right-linear">
 					{{ $t('common.ctaCourse') }}
 				</AppButton>
 			</div>

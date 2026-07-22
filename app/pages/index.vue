@@ -29,6 +29,7 @@ useSeoMeta({
 <template>
 	<div>
 		<SectionHero />
+		<SectionCourses />
 		<SectionArchitecture />
 		<SectionSignals />
 		<SectionProtocol />

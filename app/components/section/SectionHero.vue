@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { coursePrograms, heroCourseLoadRows, heroFeatures, heroStats, heroSyncMeshBars } from '~/data/course'
+import { coursePrograms, courses, heroFeatures, heroStats } from '~/data/course'
 import { site } from '~/data/site'
 
 const { t } = useI18n()
-
-const nextStartLabel = useLocaleDate(site.course.nextStartDate, { day: 'numeric', month: 'long' }, 'heroStart')
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -119,7 +117,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 							{{ t('hero.ctaPrimary') }}
 						</AppButton>
 						<AppButton
-							href="#course"
+							href="#courses"
 							variant="ghost"
 							size="lg"
 							icon="solar:document-text-linear"
@@ -188,70 +186,46 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					</span>
 				</div>
 
-				<LabelPill class="right-5 top-12 w-52 sm:right-8">
-					<div class="flex items-center justify-between">
-						<p
-							class="text-xs font-medium tracking-widest text-zinc-300"
-						>
-							{{ t('hero.panels.practiceLoad.label') }}
-						</p>
-						<span class="text-xs text-zinc-500">{{
-							t('hero.panels.practiceLoad.value')
-						}}</span>
-					</div>
-					<div class="mt-3 grid grid-cols-8 gap-1">
-						<span
-							v-for="(bar, i) in heroSyncMeshBars"
-							:key="i"
-							:class="['rounded', bar.height, bar.tone]"
-						/>
-					</div>
-				</LabelPill>
-
-				<LabelPill class="bottom-24 left-5 w-52 sm:left-8">
-					<p
-						class="text-xs font-medium tracking-widest text-zinc-300"
-					>
-						{{ t('hero.panels.nextGroup.label') }}
-					</p>
-					<p class="mt-2 text-2xl font-normal tracking-tight text-white">
-						{{ nextStartLabel }}
-					</p>
-					<p class="mt-1 text-xs text-zinc-500">
-						{{ t('hero.panels.nextGroup.caption', { max: site.course.groupSizeMax }) }}
-					</p>
-				</LabelPill>
-
-				<LabelPill class="bottom-16 right-5 w-60 sm:right-8">
-					<div class="flex items-center justify-between">
-						<p
-							class="text-xs font-medium tracking-widest text-zinc-300"
-						>
-							{{ t('hero.panels.courseLoad.label') }}
-						</p>
-						<Icon name="solar:cpu-linear" class="text-lg text-zinc-400" />
-					</div>
-					<div class="mt-3 space-y-2">
-						<div
-							v-for="row in heroCourseLoadRows"
-							:key="row.key"
-							class="flex items-center gap-2"
-						>
-							<span class="w-16 text-xs text-zinc-500">{{
-								t(`hero.panels.courseLoad.${row.key}`)
-							}}</span>
-							<span class="h-1.5 flex-1 rounded-full bg-black/60">
-								<span
-									:class="[
-										'block h-full rounded-full',
-										row.width,
-										row.tone,
-									]"
-								/>
-							</span>
+				<div class="absolute inset-x-5 bottom-24 z-20 sm:inset-x-8 lg:left-auto lg:right-8 lg:w-80">
+					<div class="label-pill surface-deep rounded-xl border border-white/10 p-4">
+						<div class="flex items-center justify-between border-b border-white/10 pb-3">
+							<p class="text-xs font-medium tracking-widest text-zinc-300">
+								{{ t('hero.coursesLabel') }}
+							</p>
+							<NuxtLink
+								to="#courses"
+								class="text-xs text-zinc-500 outline-none transition hover:text-white focus-visible:text-white"
+							>
+								{{ t('hero.coursesLink') }}
+							</NuxtLink>
 						</div>
+
+						<ul class="mt-1">
+							<li
+								v-for="course in courses"
+								:key="course.key"
+								class="flex items-center gap-3 border-b border-white/5 py-3 last:border-b-0"
+							>
+								<Icon
+									:name="course.icon"
+									:class="['shrink-0 text-lg', course.status === 'open' ? 'text-indigo-300' : 'text-zinc-600']"
+								/>
+								<span
+									:class="['flex-1 text-sm', course.status === 'open' ? 'text-white' : 'text-zinc-500']"
+								>
+									{{ t(`courses.items.${course.key}.title`) }}
+								</span>
+								<span
+									v-if="course.status === 'open'"
+									class="size-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_0.75rem_rgba(52,211,153,0.8)]"
+								/>
+								<span v-else class="shrink-0 text-xs tracking-widest text-zinc-600">
+									{{ t('courses.status.soon') }}
+								</span>
+							</li>
+						</ul>
 					</div>
-				</LabelPill>
+				</div>
 
 				<div
 					class="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/35 px-5 py-4 backdrop-blur-xl sm:px-8"

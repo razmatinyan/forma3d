@@ -66,7 +66,7 @@ function closeAndNavigate() {
 			</div>
 
 			<SheetFooter class="mt-auto flex-col gap-3">
-				<AppButton href="#course" variant="solid" size="sm" icon="solar:arrow-right-linear" @click="closeAndNavigate">
+				<AppButton href="#courses" variant="solid" size="sm" icon="solar:arrow-right-linear" @click="closeAndNavigate">
 					{{ $t('common.ctaCourse') }}
 				</AppButton>
 			</SheetFooter>

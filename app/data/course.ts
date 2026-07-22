@@ -8,28 +8,26 @@ export const programIcons = {
 
 export type ProgramKey = keyof typeof programIcons
 
+export type CourseStatus = 'open' | 'soon'
+
+export interface CourseItem {
+	key: 'threeDsMax' | 'archviz' | 'gamedev'
+	status: CourseStatus
+	icon: string
+	featured: boolean
+}
+
+export const courses: CourseItem[] = [
+	{ key: 'threeDsMax', status: 'open', icon: programIcons.threeDsMax, featured: true },
+	{ key: 'archviz', status: 'soon', icon: 'solar:buildings-2-linear', featured: false },
+	{ key: 'gamedev', status: 'soon', icon: 'solar:gamepad-linear', featured: false },
+]
+
 export interface HeroFeatureItem {
 	key: 'groups' | 'portfolio'
 }
 
 export const heroFeatures: HeroFeatureItem[] = [{ key: 'groups' }, { key: 'portfolio' }]
-
-export const heroSyncMeshBars: { height: string; tone: string }[] = [
-	{ height: 'h-8', tone: 'bg-zinc-300/70' },
-	{ height: 'h-6 self-end', tone: 'bg-zinc-500/70' },
-	{ height: 'h-10 self-end', tone: 'bg-zinc-200/80' },
-	{ height: 'h-5 self-end', tone: 'bg-zinc-600/70' },
-	{ height: 'h-9 self-end', tone: 'bg-zinc-400/80' },
-	{ height: 'h-7 self-end', tone: 'bg-zinc-500/70' },
-	{ height: 'h-11 self-end', tone: 'bg-zinc-200/80' },
-	{ height: 'h-4 self-end', tone: 'bg-zinc-700' },
-]
-
-export const heroCourseLoadRows: { key: 'modeling' | 'materials' | 'post'; width: string; tone: string }[] = [
-	{ key: 'modeling', width: 'w-9/12', tone: 'bg-zinc-200' },
-	{ key: 'materials', width: 'w-6/12', tone: 'bg-zinc-400' },
-	{ key: 'post', width: 'w-7/12', tone: 'bg-zinc-300' },
-]
 
 export const heroStats: { key: 'duration' | 'format' | 'groupSize' | 'certificate' }[] = [
 	{ key: 'duration' },
