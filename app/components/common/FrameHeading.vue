@@ -5,8 +5,9 @@ const props = withDefaults(
 		eyebrowStyle?: 'pill' | 'plain'
 		title: string
 		description?: string
+		center?: boolean
 	}>(),
-	{ eyebrowStyle: 'plain' },
+	{ eyebrowStyle: 'plain', center: false },
 )
 
 const { gsap, SplitText } = useGSAP()
@@ -45,7 +46,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-	<div>
+	<div :class="center ? 'flex flex-col items-center text-center' : ''">
 		<StatusPill v-if="eyebrow && eyebrowStyle === 'pill'" :label="eyebrow" pulse class="mb-6" />
 		<p v-else-if="eyebrow" class="text-xs font-medium tracking-[0.32em] text-zinc-500">
 			{{ eyebrow }}

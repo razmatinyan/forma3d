@@ -144,11 +144,9 @@
 		}
 	},
 	"cta": {
-		"title": "Small groups, limited seats",
-		"description": "Every course we run is capped so the mentor can actually look at your work each session. That cap is the reason places go quickly.",
-		"button": "Choose a course",
-		"groupSizeLabel": "Maximum group size",
-		"groupSizeValue": "{max} students"
+		"title": "Start your career in 3D",
+		"description": "Forma 3D teaches modeling, lighting, and rendering in Yerevan. Small groups, real portfolio work, and a mentor who looks at your scene every session.",
+		"button": "Choose a course"
 	},
 	"contact": {
 		"title": "Talk to us before you enroll",
