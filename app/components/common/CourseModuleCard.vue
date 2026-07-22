@@ -11,7 +11,7 @@ defineProps<{ moduleKey: string; icon: string; colSpan: 5 | 7; border: string }>
 		]"
 	>
 		<div
-			class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+			class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"
 		/>
 
 		<div class="surface-panel relative flex h-[240px] w-full items-center justify-center overflow-hidden">

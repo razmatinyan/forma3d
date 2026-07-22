@@ -177,7 +177,7 @@ The scale is derived from `--radius` and is monotonic, but it is **shifted one s
 
 ### Imagery
 
-- The page currently has **no `<img>` elements at all** — the stock asset gallery and operator headshots from the source template were deleted (fake students on a real school's page is dishonest, and there are no real ones yet). If a real photo returns (staff, workspace, student work), give it explicit `width` / `height`, `loading="lazy"`, `decoding="async"`, and default to `grayscale opacity-80` with `hover:grayscale-0` over 500ms, matching the removed `AssetCard` convention. Color as a hover reward, never a default state.
+- The only `<img>` is the mentor portrait in `MentorCard`, rendered `grayscale` with an initials fallback when the file is missing. The stock asset gallery and operator headshots from the source template were deleted, because fake students on a real school's page is dishonest and there are no real ones yet. Any new photo needs explicit `width` / `height`, `loading="lazy"`, and `decoding="async"`.
 - There is no photography in a hero role. The hero visual is the course list itself, which is the page's primary conversion path.
 - Program identity (3ds Max, Photoshop) is carried by monochrome vendor glyphs from `~/data/course.ts`'s `programIcons` (`simple-icons:autodesk`, `simple-icons:adobephotoshop`), not by screenshots or box art. Iconify has no dedicated 3ds Max mark, so the Autodesk mark stands in for it. Both inherit `currentColor` like every other icon in the system — never swap to the full-color `logos:` collection.
 
@@ -283,6 +283,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - Don't leave `filter` set after a tween — always `clearProps: 'filter'`.
 - Don't hardcode English in a component.
 - Don't assume Tailwind's stock radius values by name — this project's scale is shifted one step up.
+- Don't hide content behind hover. Cards, including unavailable ones, render at full opacity by default. Hover may shift a colour or nudge an arrow as interaction feedback, but it must never be what makes a block legible. A dimmed card reads as broken on touch devices, which have no hover at all.
 - Don't add `uppercase`. Micro-labels get their character from wide tracking alone. Uppercasing was removed from the whole system: Armenian and Russian both suffer under it, since Armenian capitals are visually heavier and less familiar than their lowercase forms, and uppercase Cyrillic loses the ascender and descender variety that makes it scannable. **One deliberate exception:** the `SiteLangSwitcher` trigger, which renders a two-letter locale code where capitals are the convention (`HY` / `RU` / `EN`). That file should be the only `uppercase` match in the codebase.
 
 ## Responsive Behavior
