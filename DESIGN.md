@@ -27,7 +27,7 @@ Type is a **single family, Manrope**, with hierarchy carried entirely by size, w
 
 ### Brand & Accent
 
-- **Indigo / Primary** (`--primary`, `--ring` — #818cf8): The single brand accent. Hero headline gradient origin, status dots, focus rings, hero corner brackets, glow shadows (`shadow-[0_0_1rem_rgba(129,140,248,0.65)]`). Also the Three.js wireframe accent.
+- **Indigo / Primary** (`--primary`, `--ring` — #818cf8): The single brand accent. Hero headline gradient origin, status dots, focus rings, hero corner brackets, glow shadows (`shadow-[0_0_1rem_rgba(129,140,248,0.65)]`).
 - **Indigo Light** (#c7d2fe — `indigo-200`): The terminal stop of the hero headline gradient (`linear-gradient(to right, #818cf8, #c7d2fe)`). Not used elsewhere.
 Indigo is the **only** chromatic accent. The source template carried a warm gold (#e8c382) and umber pairing; both were removed — a warm accent fights the cold instrument aesthetic, and they had decayed to a single scrollbar-hover rule. Text selection and scrollbar hover now use indigo.
 
@@ -178,7 +178,7 @@ The scale is derived from `--radius` and is monotonic, but it is **shifted one s
 ### Imagery
 
 - The page currently has **no `<img>` elements at all** — the stock asset gallery and operator headshots from the source template were deleted (fake students on a real school's page is dishonest, and there are no real ones yet). If a real photo returns (staff, workspace, student work), give it explicit `width` / `height`, `loading="lazy"`, `decoding="async"`, and default to `grayscale opacity-80` with `hover:grayscale-0` over 500ms, matching the removed `AssetCard` convention. Color as a hover reward, never a default state.
-- There is no photography in a hero role. The hero visual is a live Three.js wireframe.
+- There is no photography in a hero role. The hero visual is the course list itself, which is the page's primary conversion path.
 - Program identity (3ds Max, Photoshop) is carried by monochrome vendor glyphs from `~/data/course.ts`'s `programIcons` (`simple-icons:autodesk`, `simple-icons:adobephotoshop`), not by screenshots or box art. Iconify has no dedicated 3ds Max mark, so the Autodesk mark stands in for it. Both inherit `currentColor` like every other icon in the system — never swap to the full-color `logos:` collection.
 
 ## Components
@@ -237,7 +237,7 @@ Do **not** use shadcn's `Button`. It exists only as a transitive dependency insi
 
 **`LabelPill`** — `.surface-deep` absolutely-positioned floating panel. Shell only; the body is a slot. Position via a `class` prop.
 
-**`ThreeStage`** — Mount point for the hero wireframe. Owns lazy init, resize, offscreen pause, reduced-motion, and full WebGL disposal. **The only WebGL context in the app.** Do not add more.
+**`SectionHero` course panel** — The hero's right column. A `.surface-deep` panel listing every course as a link to its detail page, with status and an arrow affordance. This is the hero's visual anchor and its main conversion path, so it should stay the heaviest element in the section.
 
 ### Forms
 
@@ -278,7 +278,7 @@ All motion routes through `useGSAP()`. Three entry points: `animate()` (uncondit
 - Don't introduce a second accent color, or add semantic status colors without a deliberate decision.
 - Don't write inline `background: linear-gradient(...)` / `box-shadow: inset ...`. Add a `@layer components` recipe instead.
 - Don't use shadcn's `Button`, `Card`, or `Separator` — the bespoke equivalents carry the design.
-- Don't add a second WebGL context. Browsers cap concurrent contexts and kill the oldest under pressure.
+- Don't add WebGL or a 3D canvas. The hero once carried a Three.js wireframe; it was removed because it cost a dependency, a render loop, and mobile battery while communicating nothing about the courses.
 - Don't add a locale-reactive font class. Per-glyph fallback already handles all three locales.
 - Don't leave `filter` set after a tween — always `clearProps: 'filter'`.
 - Don't hardcode English in a component.
@@ -324,7 +324,7 @@ The course bento collapses from 12-column spans to full width at `md`.
 - **Two parallel token systems.** shadcn's semantic variables (`--primary`, `--card`, `--muted`) coexist with the bespoke `--color-*` / `.surface-*` layer, and only a handful of shadcn primitives (Sheet, Input, Checkbox, Select, Accordion, DropdownMenu, Avatar, Label) consume the shadcn side. Anyone adding a shadcn component must theme it into the bespoke palette manually — check its generated `data-*` state attributes against what reka-ui actually emits (`data-state="open"`, not `data-open`) before trusting the CLI output; four components shipped with dead open/close animations from exactly this mismatch.
 - **The semantic tones are unproven.** Success / warning / danger are defined but no surface uses them yet, so they haven't been checked for contrast against `.surface-panel` in context. The registration form's error state uses a plain `text-red-400`, not `--color-danger`, because the two were never reconciled.
 - **No general hover convention.** Ghost button, asset image (removed), and `ContactRow` define hover states ad hoc; there is no shared rule for nav links or cards generally.
-- **Course module cards are CSS placeholders**, standing in for four Three.js scenes that were removed for performance in the source template. Two of the four now carry real program icons (3ds Max, Photoshop) but the panel itself is still a gradient-and-glow placeholder, not a render.
+- **Course module cards are CSS placeholders.** Two of the four carry real program icons, but the panel itself is a gradient-and-glow placeholder rather than artwork.
 - **Heading sizes have not been tuned against rendered Manrope** in all three locales at once. The `leading` fix (see Typography) addressed descender clipping, but full-page visual verification at 375/768/1440 across `/`, `/ru`, `/en` is still the user's pass, not an automated one.
 - **Dark mode only.** There is no light theme, and the inset-bezel depth model assumes a dark canvas.
 - **Email templates (`server/emails/*.vue`) don't share the app's design tokens.** They're plain inline-styled HTML for email-client compatibility, deliberately disconnected from `tailwind.css`. Don't expect Tailwind classes to work there.

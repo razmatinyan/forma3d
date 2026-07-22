@@ -1,15 +1,8 @@
 <script setup lang="ts">
-import { useMediaQuery } from '@vueuse/core'
 import { courses } from '~/data/course'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
-
-// never mount the canvas on mobile, hiding it with css would still cost a webgl context
-const mounted = ref(false)
-onMounted(() => { mounted.value = true })
-const isDesktop = useMediaQuery('(min-width: 1024px)')
-const showCanvas = computed(() => mounted.value && isDesktop.value)
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -43,14 +36,6 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 		delay: 0.45,
 		ease: revealTo.ease,
 		clearProps: 'filter',
-	})
-	gsap.from('.connector-line', {
-		strokeDashoffset: 80,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.12,
-		delay: 0.6,
-		ease: 'power2.out',
 	})
 })
 </script>
@@ -106,104 +91,74 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 				</div>
 			</aside>
 
-			<div class="relative overflow-hidden lg:min-h-[30rem]">
+			<div class="relative flex flex-col justify-center overflow-hidden p-5 sm:p-8">
 				<div
-					class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]"
+					class="grid-overlay pointer-events-none absolute inset-0 opacity-25 mix-blend-overlay [background-size:4rem_4rem]"
 				/>
 
-				<ThreeStage v-if="showCanvas" />
+				<div class="label-pill surface-deep relative rounded-xl border border-white/10">
+					<div class="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
+						<p class="text-sm font-medium tracking-widest text-zinc-200">
+							{{ t('hero.coursesLabel') }}
+						</p>
+						<NuxtLink
+							:to="localePath('/#courses')"
+							class="text-xs text-zinc-500 outline-none transition hover:text-white focus-visible:text-white"
+						>
+							{{ t('hero.coursesLink') }}
+						</NuxtLink>
+					</div>
 
-				<svg
-					class="pointer-events-none absolute inset-0 hidden h-full w-full text-zinc-300/50 lg:block"
-					viewBox="0 0 1000 700"
-					preserveAspectRatio="none"
-					aria-hidden="true"
-				>
-					<path
-						class="connector-line"
-						d="M188 158 H316 V254"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-dasharray="6 8"
-					/>
-					<path
-						class="connector-line"
-						d="M816 172 H686 V278"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-dasharray="6 8"
-					/>
-					<path
-						class="connector-line"
-						d="M196 526 H356 V426"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-dasharray="6 8"
-					/>
-					<path
-						class="connector-line"
-						d="M790 552 H636 V446"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-dasharray="6 8"
-					/>
-				</svg>
-
-				<div class="relative z-20 p-5 sm:p-8 lg:absolute lg:right-8 lg:top-8 lg:w-96 lg:p-0">
-					<div class="label-pill surface-deep rounded-xl border border-white/10 px-5 pt-5">
-						<div class="flex items-center justify-between border-b border-white/10 pb-4">
-							<p class="text-sm font-medium tracking-widest text-zinc-200">
-								{{ t('hero.coursesLabel') }}
-							</p>
+					<ul>
+						<li v-for="course in courses" :key="course.key" class="border-b border-white/10 last:border-b-0">
 							<NuxtLink
-								:to="localePath('/#courses')"
-								class="text-xs text-zinc-500 outline-none transition hover:text-white focus-visible:text-white"
+								:to="localePath(`/courses/${course.slug}`)"
+								class="group flex items-center gap-4 px-5 py-5 outline-none transition hover:bg-white/[0.03] focus-visible:bg-white/[0.03] sm:gap-5 sm:px-6 sm:py-6"
 							>
-								{{ t('hero.coursesLink') }}
-							</NuxtLink>
-						</div>
-
-						<ul class="mt-1">
-							<li v-for="course in courses" :key="course.key" class="border-b border-white/5 last:border-b-0">
-								<NuxtLink
-									:to="localePath(`/courses/${course.slug}`)"
-									class="group flex items-center gap-4 rounded-lg py-4 outline-none transition focus-visible:bg-white/5"
+								<span
+									:class="[
+										'bezel flex size-12 shrink-0 items-center justify-center rounded-xl border sm:size-14',
+										course.status === 'open'
+											? 'border-indigo-400/30 text-indigo-300'
+											: 'border-white/10 text-zinc-600',
+									]"
 								>
+									<Icon :name="course.icon" class="text-xl sm:text-2xl" />
+								</span>
+
+								<span class="min-w-0 flex-1">
 									<span
 										:class="[
-											'bezel flex size-10 shrink-0 items-center justify-center rounded-lg border',
-											course.status === 'open' ? 'border-indigo-400/30 text-indigo-300' : 'border-white/10 text-zinc-600',
+											'block text-base font-medium transition sm:text-lg',
+											course.status === 'open' ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200',
 										]"
 									>
-										<Icon :name="course.icon" class="text-lg" />
+										{{ t(`courses.items.${course.key}.title`) }}
 									</span>
-									<span class="min-w-0 flex-1">
+									<span class="mt-1.5 flex items-center gap-2">
+										<span
+											v-if="course.status === 'open'"
+											class="size-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_0.75rem_rgba(52,211,153,0.8)]"
+										/>
 										<span
 											:class="[
-												'block truncate text-sm transition',
-												course.status === 'open' ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200',
+												'text-xs tracking-widest',
+												course.status === 'open' ? 'text-emerald-300' : 'text-zinc-600',
 											]"
 										>
-											{{ t(`courses.items.${course.key}.title`) }}
-										</span>
-										<span class="mt-1 block text-xs tracking-widest text-zinc-600">
 											{{ t(`courses.status.${course.status}`) }}
 										</span>
 									</span>
-									<Icon
-										name="solar:arrow-right-linear"
-										class="shrink-0 text-base text-zinc-600 transition group-hover:translate-x-0.5 group-hover:text-white"
-									/>
-								</NuxtLink>
-							</li>
-						</ul>
-					</div>
-				</div>
+								</span>
 
+								<Icon
+									name="solar:arrow-right-linear"
+									class="shrink-0 text-lg text-zinc-600 transition group-hover:translate-x-0.5 group-hover:text-white"
+								/>
+							</NuxtLink>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</FrameSection>
