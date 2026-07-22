@@ -97,7 +97,7 @@
 		"steps": {
 			"apply": {
 				"title": "Submit the form",
-				"description": "Fill in the pre-registration form below with your name, phone, and email."
+				"description": "Fill in the registration form below with your name, phone, and email."
 			},
 			"call": {
 				"title": "We call you",
@@ -145,9 +145,9 @@
 	},
 	"cta": {
 		"title": "Seats are limited per group",
-		"description": "Pre-register now to hold a spot in the next intake. We will call you to confirm before you pay anything.",
+		"description": "Register now to hold a spot in the next intake. We will call you to confirm before you pay anything.",
 		"nextGroupLabel": "Next group starts",
-		"button": "Pre-register"
+		"button": "Register"
 	},
 	"contact": {
 		"title": "Talk to us before you enroll",
@@ -173,8 +173,8 @@
 		}
 	},
 	"register": {
-		"title": "Pre-register for the next group",
-		"description": "Leave your details and we will call you to confirm your seat. No payment is required to pre-register.",
+		"title": "Register for the next group",
+		"description": "Leave your details and we will call you to confirm your seat. No payment is required to register.",
 		"form": {
 			"course": {
 				"label": "Course",
@@ -209,7 +209,7 @@
 				"consent": "You must agree to the privacy policy to continue",
 				"generic": "Something went wrong. Please try again or contact us directly."
 			},
-			"submit": "Pre-register",
+			"submit": "Register",
 			"submitting": "Sending..."
 		},
 		"success": {
@@ -226,8 +226,8 @@
 	},
 	"privacy": {
 		"meta": {
-			"title": "Privacy Policy for the Forma 3D Pre-Registration Form",
-			"description": "How Forma 3D collects, uses, and stores the personal information you submit through the pre-registration form on this website, and how to reach us about it."
+			"title": "Privacy Policy for the Forma 3D Registration Form",
+			"description": "How Forma 3D collects, uses, and stores the personal information you submit through the registration form on this website, and how to reach us about it."
 		},
 		"eyebrow": "Legal",
 		"title": "Privacy policy",
@@ -235,7 +235,7 @@
 		"sections": {
 			"dataCollected": {
 				"title": "What we collect",
-				"body": "When you submit the pre-registration form, we collect your full name, phone number, email address, and the course you selected."
+				"body": "When you submit the registration form, we collect your full name, phone number, email address, and the course you selected."
 			},
 			"purpose": {
 				"title": "Why we collect it",
@@ -268,7 +268,7 @@
 			"open": "Enrolling",
 			"soon": "Coming soon"
 		},
-		"enroll": "Pre-register",
+		"enroll": "Register",
 		"notifyHint": "Dates not announced yet",
 		"items": {
 			"threeDsMax": {
