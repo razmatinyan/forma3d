@@ -3,6 +3,8 @@ import type { CourseItem } from '~/data/course'
 
 const props = defineProps<{ course: CourseItem; class?: string }>()
 
+const localePath = useLocalePath()
+
 const isOpen = computed(() => props.course.status === 'open')
 </script>
 
@@ -50,11 +52,16 @@ const isOpen = computed(() => props.course.status === 'open')
 			{{ $t(`courses.items.${course.key}.description`) }}
 		</p>
 
-		<div class="mt-auto pt-8">
-			<AppButton v-if="isOpen" href="#register" variant="solid" size="lg" icon="solar:arrow-right-linear">
-				{{ $t('courses.enroll') }}
+		<div class="mt-auto flex flex-wrap items-center gap-4 pt-8">
+			<AppButton
+				:href="localePath(`/courses/${course.slug}`)"
+				:variant="isOpen ? 'solid' : 'ghost'"
+				size="lg"
+				icon="solar:arrow-right-linear"
+			>
+				{{ isOpen ? $t('courses.enroll') : $t('courses.details') }}
 			</AppButton>
-			<p v-else class="text-xs font-medium tracking-widest text-zinc-600">
+			<p v-if="!isOpen" class="text-xs font-medium tracking-widest text-zinc-600">
 				{{ $t('courses.notifyHint') }}
 			</p>
 		</div>

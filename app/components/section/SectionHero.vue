@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { coursePrograms, courses, heroFeatures } from '~/data/course'
+import { courses } from '~/data/course'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const { gsap, motion, revealTo } = useGSAP()
 
@@ -50,7 +51,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 <template>
 	<FrameSection id="hero" variant="hero" overflow :entrance="false" class="scroll-mt-24">
 		<div
-			class="grid min-h-[calc(100vh-8rem)] grid-cols-1 lg:grid-cols-[0.72fr_1.28fr]"
+			class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]"
 		>
 			<aside
 				class="relative border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r"
@@ -85,33 +86,12 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						{{ t('hero.description') }}
 					</p>
 
-					<div class="mt-5 flex flex-wrap items-center gap-4">
-						<span
-							v-for="program in coursePrograms"
-							:key="program.key"
-							class="flex items-center gap-2 text-xs font-medium tracking-widest text-zinc-500"
-						>
-							<Icon :name="program.icon" class="size-4 shrink-0 text-zinc-400" />
-							{{ t(`common.programs.${program.key}`) }}
-						</span>
-					</div>
-
-					<div
-						class="mt-8 grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2"
-					>
-						<HeroFeature
-							v-for="feature in heroFeatures"
-							:key="feature.key"
-							:feature-key="feature.key"
-						/>
-					</div>
-
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<AppButton
-							href="#register"
+							:href="localePath('/#register')"
 							variant="solid"
-							size="lg"
-							icon="solar:map-arrow-right-linear"
+							size="xl"
+							icon="solar:arrow-right-linear"
 						>
 							{{ t('hero.ctaPrimary') }}
 						</AppButton>
@@ -119,7 +99,7 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 				</div>
 			</aside>
 
-			<div class="relative min-h-[38rem] overflow-hidden">
+			<div class="relative min-h-[30rem] overflow-hidden">
 				<div
 					class="grid-overlay absolute inset-0 opacity-30 mix-blend-overlay [background-size:4rem_4rem]"
 				/>
@@ -166,14 +146,14 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 					/>
 				</svg>
 
-				<div class="absolute inset-x-5 top-6 z-20 sm:inset-x-8 sm:top-8 lg:left-auto lg:right-8 lg:w-80">
-					<div class="label-pill surface-deep rounded-xl border border-white/10 p-4">
-						<div class="flex items-center justify-between border-b border-white/10 pb-3">
-							<p class="text-xs font-medium tracking-widest text-zinc-300">
+				<div class="absolute inset-x-5 top-6 z-20 sm:inset-x-8 sm:top-8 lg:left-auto lg:right-8 lg:w-96">
+					<div class="label-pill surface-deep rounded-xl border border-white/10 px-5 pt-5">
+						<div class="flex items-center justify-between border-b border-white/10 pb-4">
+							<p class="text-sm font-medium tracking-widest text-zinc-200">
 								{{ t('hero.coursesLabel') }}
 							</p>
 							<NuxtLink
-								to="#courses"
+								:to="localePath('/#courses')"
 								class="text-xs text-zinc-500 outline-none transition hover:text-white focus-visible:text-white"
 							>
 								{{ t('hero.coursesLink') }}
@@ -181,27 +161,37 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, context => {
 						</div>
 
 						<ul class="mt-1">
-							<li
-								v-for="course in courses"
-								:key="course.key"
-								class="flex items-center gap-3 border-b border-white/5 py-3 last:border-b-0"
-							>
-								<Icon
-									:name="course.icon"
-									:class="['shrink-0 text-lg', course.status === 'open' ? 'text-indigo-300' : 'text-zinc-600']"
-								/>
-								<span
-									:class="['flex-1 text-sm', course.status === 'open' ? 'text-white' : 'text-zinc-500']"
+							<li v-for="course in courses" :key="course.key" class="border-b border-white/5 last:border-b-0">
+								<NuxtLink
+									:to="localePath(`/courses/${course.slug}`)"
+									class="group flex items-center gap-4 rounded-lg py-4 outline-none transition focus-visible:bg-white/5"
 								>
-									{{ t(`courses.items.${course.key}.title`) }}
-								</span>
-								<span
-									v-if="course.status === 'open'"
-									class="size-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_0.75rem_rgba(52,211,153,0.8)]"
-								/>
-								<span v-else class="shrink-0 text-xs tracking-widest text-zinc-600">
-									{{ t('courses.status.soon') }}
-								</span>
+									<span
+										:class="[
+											'bezel flex size-10 shrink-0 items-center justify-center rounded-lg border',
+											course.status === 'open' ? 'border-indigo-400/30 text-indigo-300' : 'border-white/10 text-zinc-600',
+										]"
+									>
+										<Icon :name="course.icon" class="text-lg" />
+									</span>
+									<span class="min-w-0 flex-1">
+										<span
+											:class="[
+												'block truncate text-sm transition',
+												course.status === 'open' ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200',
+											]"
+										>
+											{{ t(`courses.items.${course.key}.title`) }}
+										</span>
+										<span class="mt-1 block text-xs tracking-widest text-zinc-600">
+											{{ t(`courses.status.${course.status}`) }}
+										</span>
+									</span>
+									<Icon
+										name="solar:arrow-right-linear"
+										class="shrink-0 text-base text-zinc-600 transition group-hover:translate-x-0.5 group-hover:text-white"
+									/>
+								</NuxtLink>
 							</li>
 						</ul>
 					</div>

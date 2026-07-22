@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { navLinks } from '~/data/nav'
+
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -8,20 +10,19 @@ import { navLinks } from '~/data/nav'
 			<SiteBrand variant="header" />
 
 			<nav :aria-label="$t('common.primaryNav')" class="hidden items-stretch lg:flex">
-				<a
+				<NuxtLink
 					v-for="link in navLinks"
 					:key="link.key"
-					:href="link.href"
-					class="flex items-center gap-2 border-r border-white/10 px-5 text-xs font-medium tracking-widest text-zinc-400 outline-none transition hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
+					:to="localePath(link.href)"
+					class="flex items-center border-r border-white/10 px-5 text-xs font-medium tracking-widest text-zinc-400 outline-none transition hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 				>
-					<Icon :name="link.icon" class="text-lg" />
 					{{ $t(`nav.${link.key}`) }}
-				</a>
+				</NuxtLink>
 			</nav>
 
 			<div class="hidden items-center gap-3 py-4 lg:flex">
 				<SiteLangSwitcher />
-				<AppButton href="#courses" variant="solid" size="sm" icon="solar:arrow-right-linear">
+				<AppButton :href="localePath('/#courses')" variant="solid" size="sm" icon="solar:arrow-right-linear">
 					{{ $t('common.ctaCourse') }}
 				</AppButton>
 			</div>

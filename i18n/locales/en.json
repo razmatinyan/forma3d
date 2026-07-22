@@ -14,7 +14,7 @@
 		"menuDescription": "Navigate to a section of the Forma 3D page",
 		"languageLabel": "Change language",
 		"programs": {
-			"threeDsMax": "3ds Max",
+			"threeDsMax": "3D's Max",
 			"photoshop": "Adobe Photoshop"
 		}
 	},
@@ -29,7 +29,7 @@
 		"titleLine1": "Learn 3D modeling,",
 		"titleHighlight": "hands on,",
 		"titleLine3": "in Yerevan",
-		"description": "Forma 3D teaches 3ds Max and Adobe Photoshop in a small offline group. You leave with a finished piece for your portfolio.",
+		"description": "Forma 3D teaches 3D's Max and Adobe Photoshop in a small offline group. You leave with a finished piece for your portfolio.",
 		"features": {
 			"groups": {
 				"title": "Small groups",
@@ -41,18 +41,18 @@
 			}
 		},
 		"ctaPrimary": "Pre-register",
-		"wireframeAlt": "Animated 3ds Max style wireframe model",
+		"wireframeAlt": "Animated 3D's Max style wireframe model",
 		"coursesLabel": "Courses",
 		"coursesLink": "See all"
 	},
 	"course": {
 		"eyebrow": "Curriculum",
 		"title": "One course, four modules",
-		"description": "3ds Max and Adobe Photoshop, taught in sequence so each module builds on the last. You finish able to model, light, render, and retouch a scene end to end.",
+		"description": "3D's Max and Adobe Photoshop, taught in sequence so each module builds on the last. You finish able to model, light, render, and retouch a scene end to end.",
 		"modules": {
 			"modeling": {
 				"title": "Modeling",
-				"description": "Poly modeling and modifiers in 3ds Max, from primitives to a finished object."
+				"description": "Poly modeling and modifiers in 3D's Max, from primitives to a finished object."
 			},
 			"materials": {
 				"title": "Materials and lighting",
@@ -119,10 +119,10 @@
 		"items": {
 			"experience": {
 				"question": "Do I need prior 3D experience?",
-				"answer": "No. The course starts from the 3ds Max interface and basic modeling. If you can use a computer comfortably, you can start."
+				"answer": "No. The course starts from the 3D's Max interface and basic modeling. If you can use a computer comfortably, you can start."
 			},
 			"software": {
-				"question": "Do I need to buy 3ds Max and Photoshop myself?",
+				"question": "Do I need to buy 3D's Max and Photoshop myself?",
 				"answer": "You need access to both during the course. We can point you to student licensing options when you enroll."
 			},
 			"schedule": {
@@ -180,7 +180,7 @@
 				"label": "Course",
 				"placeholder": "Select a course",
 				"options": {
-					"threeDsMax": "3ds Max"
+					"threeDsMax": "3D's Max"
 				}
 			},
 			"fields": {
@@ -218,7 +218,7 @@
 		}
 	},
 	"footer": {
-		"blurb": "Forma 3D is an offline 3D modeling school in Yerevan, teaching 3ds Max and Adobe Photoshop in small groups.",
+		"blurb": "Forma 3D is an offline 3D modeling school in Yerevan, teaching 3D's Max and Adobe Photoshop in small groups.",
 		"platformHeading": "Sections",
 		"contactHeading": "Contact",
 		"legal": "Forma 3D 3D modeling school, Yerevan",
@@ -272,7 +272,7 @@
 		"notifyHint": "Dates not announced yet",
 		"items": {
 			"threeDsMax": {
-				"title": "3ds Max and Adobe Photoshop",
+				"title": "3D's Max and Adobe Photoshop",
 				"description": "Model, light, and render interiors and objects from scratch, then finish the image in Photoshop. Four modules, each ending with a piece for your portfolio."
 			},
 			"archviz": {
@@ -283,6 +283,53 @@
 				"title": "Game Dev Modeling",
 				"description": "Low poly modeling, UV unwrapping, and baking for assets that run inside a game engine."
 			}
+		},
+		"details": "Course details"
+	},
+	"courseDetail": {
+		"metaTitle": "{course} | Forma 3D",
+		"back": "All courses",
+		"mentorLabel": "Your mentor",
+		"mentorYears": "{years} years working in the field",
+		"prosTitle": "What you get",
+		"prosDescription": "The things that decide whether a course is worth your evenings for the next few months.",
+		"pros": {
+			"groups": {
+				"title": "Groups of four",
+				"description": "Small enough that the mentor checks your scene every session, not once a month."
+			},
+			"portfolio": {
+				"title": "Portfolio work",
+				"description": "Every module ends with a finished render you can show to a studio or a client."
+			},
+			"software": {
+				"title": "Two programs",
+				"description": "You leave able to model and render in 3D's Max and finish the image in Photoshop."
+			},
+			"certificate": {
+				"title": "Certificate",
+				"description": "Issued once you complete every module and hand in the final project."
+			},
+			"realProjects": {
+				"title": "Real briefs",
+				"description": "You work from actual architectural drawings rather than invented exercises."
+			},
+			"engineReady": {
+				"title": "Engine ready",
+				"description": "Assets are built to the poly counts and UV rules a real game engine expects."
+			}
+		}
+	},
+	"mentors": {
+		"arman": {
+			"name": "Arman Grigoryan",
+			"role": "3D visualization artist",
+			"bio": "Works on interior and exterior visualization for studios in Yerevan and abroad. Teaches the parts of the job that only show up on real deadlines."
+		},
+		"lilit": {
+			"name": "Lilit Sargsyan",
+			"role": "3D artist for games",
+			"bio": "Builds props and environment assets for indie studios. Spends most of her time on the boring parts that make an asset actually ship."
 		}
 	}
 }

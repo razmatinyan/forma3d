@@ -93,7 +93,8 @@ There is no display face and no monospace face. Technical texture comes from wid
 | Caption | `text-xs leading-5 text-zinc-500` | Card descriptions, captions |
 | **Micro-label** | `text-xs font-medium tracking-widest text-zinc-500` | Eyebrows, stat labels, panel headers. **The signature.** |
 | Eyebrow (wide) | `text-xs font-medium tracking-[0.32em] text-zinc-500` | `FrameHeading` plain eyebrow only |
-| Button | `text-xs font-medium tracking-widest` | All `AppButton` labels |
+| Button | `text-xs font-medium tracking-widest` | `AppButton` at `sm` and `lg` |
+| Button (xl) | `text-sm font-medium tracking-widest` | `AppButton` at `xl`, hero primary CTA only |
 
 ### Principles
 
@@ -209,7 +210,8 @@ Set `:entrance="false"` when the section runs its own intro sequence — the her
 **`AppButton`** — The only button. Props: `href`, `variant` (`solid` | `ghost`), `size` (`sm` | `lg`), `icon`, `type` (`button` | `submit`), `disabled`.
 - `solid`: `.btn-solid` (light `#fafafa → #a3a3a3` gradient), `border-white/20`, black text. Primary CTAs only.
 - `ghost`: `.btn-ghost`, `border-white/10`, zinc-300 text, hovering to `border-white/25` + white.
-- `sm` = `h-10 rounded-lg px-4`; `lg` = `h-12 rounded-xl px-5`.
+- `sm` = `h-10 rounded-lg px-4 text-xs`; `lg` = `h-12 rounded-xl px-5 text-xs`; `xl` = `h-14 rounded-xl px-7 text-sm`.
+- `xl` is the hero primary CTA only. It is the one place button text steps up from `text-xs`, because at 56px tall the smaller label looks stranded.
 - Focus: `focus-visible:ring-2 ring-indigo-400 ring-offset-2 ring-offset-black`.
 - Polymorphic root: renders `<a>` when `href` is set, otherwise a real `<button>` (using `type`/`disabled`). This is what lets the registration form submit through the same component that styles every link CTA — don't reach for shadcn's `Button` just because you need a native submit control.
 

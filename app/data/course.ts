@@ -12,16 +12,63 @@ export type CourseStatus = 'open' | 'soon'
 
 export interface CourseItem {
 	key: 'threeDsMax' | 'archviz' | 'gamedev'
+	slug: string
 	status: CourseStatus
 	icon: string
 	featured: boolean
+	mentor: string
+	pros: string[]
 }
 
 export const courses: CourseItem[] = [
-	{ key: 'threeDsMax', status: 'open', icon: programIcons.threeDsMax, featured: true },
-	{ key: 'archviz', status: 'soon', icon: 'solar:buildings-2-linear', featured: false },
-	{ key: 'gamedev', status: 'soon', icon: 'solar:gamepad-linear', featured: false },
+	{
+		key: 'threeDsMax',
+		slug: '3ds-max',
+		status: 'open',
+		icon: programIcons.threeDsMax,
+		featured: true,
+		mentor: 'arman',
+		pros: ['groups', 'portfolio', 'software', 'certificate'],
+	},
+	{
+		key: 'archviz',
+		slug: 'architectural-visualization',
+		status: 'soon',
+		icon: 'solar:buildings-2-linear',
+		featured: false,
+		mentor: 'arman',
+		pros: ['groups', 'portfolio', 'realProjects', 'certificate'],
+	},
+	{
+		key: 'gamedev',
+		slug: 'game-dev-modeling',
+		status: 'soon',
+		icon: 'solar:gamepad-linear',
+		featured: false,
+		mentor: 'lilit',
+		pros: ['groups', 'portfolio', 'engineReady', 'certificate'],
+	},
 ]
+
+// PLACEHOLDER mentors. Replace names, bios and photos before production.
+export interface MentorItem {
+	key: 'arman' | 'lilit'
+	photo: string
+	years: number
+}
+
+export const mentors: MentorItem[] = [
+	{ key: 'arman', photo: '/mentors/arman.jpg', years: 9 },
+	{ key: 'lilit', photo: '/mentors/lilit.jpg', years: 6 },
+]
+
+export function findCourse(slug: string) {
+	return courses.find(course => course.slug === slug)
+}
+
+export function findMentor(key: string) {
+	return mentors.find(mentor => mentor.key === key)
+}
 
 export interface HeroFeatureItem {
 	key: 'groups' | 'portfolio'

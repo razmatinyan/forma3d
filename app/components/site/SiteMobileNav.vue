@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { navLinks } from '~/data/nav'
 
+const localePath = useLocalePath()
+
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
@@ -36,16 +38,15 @@ function closeAndNavigate() {
 			</SheetHeader>
 
 			<nav :aria-label="$t('common.primaryNav')" class="flex flex-col px-2">
-				<a
+				<NuxtLink
 					v-for="link in navLinks"
 					:key="link.key"
-					:href="link.href"
-					class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
+					:to="localePath(link.href)"
+					class="flex items-center rounded-lg px-3 py-3 text-sm font-medium tracking-widest text-zinc-400 outline-none transition hover:bg-white/5 hover:text-white focus-visible:bg-white/5 focus-visible:text-white"
 					@click="closeAndNavigate"
 				>
-					<Icon :name="link.icon" class="text-lg" />
 					{{ $t(`nav.${link.key}`) }}
-				</a>
+				</NuxtLink>
 			</nav>
 
 			<div class="mt-2 flex flex-wrap gap-2 border-t border-white/10 px-2 pt-4">
@@ -66,7 +67,7 @@ function closeAndNavigate() {
 			</div>
 
 			<SheetFooter class="mt-auto flex-col gap-3">
-				<AppButton href="#courses" variant="solid" size="sm" icon="solar:arrow-right-linear" @click="closeAndNavigate">
+				<AppButton :href="localePath('/#courses')" variant="solid" size="sm" icon="solar:arrow-right-linear" @click="closeAndNavigate">
 					{{ $t('common.ctaCourse') }}
 				</AppButton>
 			</SheetFooter>
