@@ -58,7 +58,7 @@ const isOpen = computed(() => props.course.status === 'open')
 				size="lg"
 				icon="solar:arrow-right-linear"
 			>
-				{{ isOpen ? $t('courses.enroll') : $t('courses.details') }}
+				{{ $t('courses.details') }}
 			</AppButton>
 			<p v-if="!isOpen" class="text-xs font-medium tracking-widest text-zinc-600">
 				{{ $t('courses.notifyHint') }}

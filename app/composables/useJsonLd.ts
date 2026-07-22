@@ -8,8 +8,9 @@ export function useJsonLd() {
 		return {
 			'@context': 'https://schema.org',
 			'@type': 'Course',
-			name: t('course.title'),
-			description: t('course.description'),
+			// the sellable course, not the section heading
+			name: t('courses.items.threeDsMax.title'),
+			description: t('courses.items.threeDsMax.description'),
 			provider: {
 				'@type': 'EducationalOrganization',
 				name: t('common.brandName'),

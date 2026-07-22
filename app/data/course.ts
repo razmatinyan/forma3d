@@ -143,12 +143,12 @@ export const coursePrograms: { key: ProgramKey; icon: string }[] = [
 export const contactRows: { key: 'phone' | 'email' | 'instagram' | 'address'; icon: string; href: string; value?: string }[] = [
 	{ key: 'phone', icon: 'solar:phone-linear', href: site.phoneHref, value: site.phone },
 	{ key: 'email', icon: 'solar:letter-linear', href: `mailto:${site.email}`, value: site.email },
-	{ key: 'instagram', icon: 'solar:hashtag-linear', href: site.instagramUrl, value: site.instagramHandle },
+	{ key: 'instagram', icon: 'simple-icons:instagram', href: site.instagramUrl, value: site.instagramHandle },
 	{ key: 'address', icon: 'solar:map-point-linear', href: site.mapUrl },
 ]
 
 export const footerContactLinks: { key: 'phone' | 'email' | 'instagram'; href: string; icon: string; value: string }[] = [
 	{ key: 'phone', href: site.phoneHref, icon: 'solar:phone-linear', value: site.phone },
 	{ key: 'email', href: `mailto:${site.email}`, icon: 'solar:letter-linear', value: site.email },
-	{ key: 'instagram', href: site.instagramUrl, icon: 'solar:hashtag-linear', value: site.instagramHandle },
+	{ key: 'instagram', href: site.instagramUrl, icon: 'simple-icons:instagram', value: site.instagramHandle },
 ]

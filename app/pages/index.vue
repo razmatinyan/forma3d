@@ -30,7 +30,6 @@ useSeoMeta({
 	<div>
 		<SectionHero />
 		<SectionCourses />
-		<SectionArchitecture />
 		<SectionSignals />
 		<SectionProtocol />
 		<SectionFaq />

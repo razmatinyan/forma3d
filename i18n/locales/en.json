@@ -47,7 +47,7 @@
 	},
 	"course": {
 		"eyebrow": "Curriculum",
-		"title": "One course, four modules",
+		"title": "Four modules, in sequence",
 		"description": "3D's Max and Adobe Photoshop, taught in sequence so each module builds on the last. You finish able to model, light, render, and retouch a scene end to end.",
 		"modules": {
 			"modeling": {
@@ -144,10 +144,11 @@
 		}
 	},
 	"cta": {
-		"title": "Seats are limited per group",
-		"description": "Register now to hold a spot in the next intake. We will call you to confirm before you pay anything.",
-		"nextGroupLabel": "Next group starts",
-		"button": "Register"
+		"title": "Small groups, limited seats",
+		"description": "Every course we run is capped so the mentor can actually look at your work each session. That cap is the reason places go quickly.",
+		"button": "Choose a course",
+		"groupSizeLabel": "Maximum group size",
+		"groupSizeValue": "{max} students"
 	},
 	"contact": {
 		"title": "Talk to us before you enroll",
