@@ -247,7 +247,7 @@ Do **not** use shadcn's `Button`. It exists only as a transitive dependency insi
 
 All motion routes through `useGSAP()`. Three entry points: `animate()` (unconditional), `motion()` (media-query scoped), and the shared `revealFrom` / `revealTo` presets.
 
-**Every reveal is a blur reveal.** The shared presets are `{ y: 32, opacity: 0, filter: 'blur(12px)' }` → `{ y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'expo.out' }`. Always pass `clearProps: 'filter'` — a persistent `filter` forces a GPU layer and degrades scroll performance.
+**Every reveal is a blur reveal.** The shared presets are `{ y: 24, opacity: 0, filter: 'blur(4px)' }` → `{ y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }`. Blocks use `power2.out`, which decelerates evenly; `expo.out` covers most of its distance almost immediately then crawls, which reads as a stutter on anything large. Text reveals (`FrameHeading` words, hero lines) keep `expo.out` on purpose, since that snap suits kinetic type. Always pass `clearProps: 'filter'` — a persistent `filter` forces a GPU layer and degrades scroll performance.
 
 - **Section entrance** — `FrameSection` fades and un-blurs at `top 85%`.
 - **Headings** — `FrameHeading` uses SplitText `{ type: 'words', mask: 'words' }` with `yPercent: 110`, 0.055s stagger. SplitText instances must be `.revert()`-ed manually; GSAP context revert does not do it.

@@ -7,21 +7,16 @@ const featured = computed(() => courses.find(c => c.featured))
 const upcoming = computed(() => courses.filter(c => !c.featured))
 
 const root = ref<HTMLElement | null>(null)
-const { gsap, motion } = useGSAP()
+const { gsap, motion, revealFrom, revealTo } = useGSAP()
 
-// large surfaces need a shorter throw and far less blur than the shared preset
 motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced || !root.value) return
 	gsap.fromTo(
 		root.value.querySelectorAll('.course-card'),
-		{ y: 24, opacity: 0, filter: 'blur(6px)' },
+		revealFrom,
 		{
-			y: 0,
-			opacity: 1,
-			filter: 'blur(0px)',
-			duration: 0.6,
-			stagger: 0.09,
-			ease: 'power3.out',
+			...revealTo,
+			stagger: 0.08,
 			clearProps: 'filter',
 			scrollTrigger: { trigger: root.value, start: 'top 78%', once: true },
 		},

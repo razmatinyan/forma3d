@@ -13,10 +13,9 @@ motion({ reduced: '(prefers-reduced-motion: reduce)' }, (context) => {
 	if (context.conditions.reduced || !root.value) return
 	gsap.fromTo(
 		root.value.querySelectorAll('.contact-row'),
-		{ ...revealFrom, y: 20 },
+		{ ...revealFrom, y: 16 },
 		{
 			...revealTo,
-			duration: 0.7,
 			stagger: 0.06,
 			clearProps: 'filter',
 			scrollTrigger: { trigger: root.value, start: 'top 80%', once: true },

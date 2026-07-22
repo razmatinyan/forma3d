@@ -9,13 +9,15 @@ if (import.meta.client) {
 	gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase, Draggable)
 }
 
-const revealFrom = { y: 32, opacity: 0, filter: 'blur(12px)' }
+// power2.out decelerates evenly. expo.out covers most of its distance almost
+// immediately then crawls, which on a large block reads as a stutter.
+const revealFrom = { y: 24, opacity: 0, filter: 'blur(4px)' }
 const revealTo = {
 	y: 0,
 	opacity: 1,
 	filter: 'blur(0px)',
-	duration: 1.1,
-	ease: 'expo.out',
+	duration: 0.7,
+	ease: 'power2.out',
 }
 
 export const useGSAP = () => {
