@@ -41,7 +41,7 @@ export const previewProps = {
 		<div style="max-width: 480px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 12px; overflow: hidden;">
 			<div style="padding: 24px 32px; border-bottom: 1px solid #e4e4e7;">
 				<span style="display: inline-block; width: 40px; height: 40px; line-height: 40px; text-align: center; background-color: #18181b; color: #ffffff; font-weight: 600; font-size: 13px; border-radius: 10px;">F3D</span>
-				<span style="display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a;">Forma 3D</span>
+				<span style="display: block; margin-top: 12px; font-size: 12px; letter-spacing: 0.08em; color: #71717a;">Forma 3D</span>
 			</div>
 			<div style="padding: 32px;">
 				<h1 style="margin: 0 0 16px; font-size: 20px; font-weight: 600; color: #18181b;">{{ heading }}</h1>
@@ -49,7 +49,7 @@ export const previewProps = {
 				<p style="margin: 0 0 16px; font-size: 14px; line-height: 22px;">{{ intro }}</p>
 				<table style="width: 100%; border-collapse: collapse; margin: 0 0 24px;">
 					<tr>
-						<td style="padding: 12px 16px 0; background-color: #f4f4f5; border-radius: 10px 10px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #71717a;">{{ courseLabel }}</td>
+						<td style="padding: 12px 16px 0; background-color: #f4f4f5; border-radius: 10px 10px 0 0; font-size: 12px; letter-spacing: 0.06em; color: #71717a;">{{ courseLabel }}</td>
 					</tr>
 					<tr>
 						<td style="padding: 4px 16px 16px; background-color: #f4f4f5; border-radius: 0 0 10px 10px; font-size: 15px; font-weight: 600; color: #18181b;">{{ courseName }}</td>

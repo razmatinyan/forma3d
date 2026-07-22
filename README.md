@@ -1,75 +1,41 @@
-# Nuxt Minimal Starter
+# Forma 3D
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Trilingual landing site for a 3D modeling school in Yerevan. Nuxt 4, Vue 3, Tailwind v4.
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+npm run dev        # http://localhost:3000
 ```
 
-## Development Server
+## Scripts
 
-Start the development server on `http://localhost:3000`:
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run build` | Production build. Do not run while `dev` is up, they share a build directory. |
+| `npm run preview` | Serve the production build |
+| `npm run check` | Project conventions: dashes, uppercase, locale parity, punctuation |
 
-```bash
-# npm
-npm run dev
+## Locales
 
-# pnpm
-pnpm dev
+Armenian at `/` (default, unprefixed), Russian at `/ru`, English at `/en`. Every user-facing string lives in `i18n/locales/`, in all three files.
 
-# yarn
-yarn dev
+## Before deploying
 
-# bun
-bun run dev
-```
+`app/data/site.ts` holds placeholder business data. Phone, email, Instagram, address, price, schedule, and start date are invented. Replace them, and add `public/og-image.jpg` at 1200x630.
 
-## Production
+The email provider is set to `console` in `nuxt.config.ts`, so the registration form captures nothing until it is switched to Resend with a verified sending domain.
 
-Build the application for production:
+## Documentation
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+| File | Contents |
+| --- | --- |
+| [`AGENTS.md`](AGENTS.md) | Start here, for AI agents and new contributors |
+| [`RULES.md`](RULES.md) | Hard rules, enforced by `npm run check` |
+| [`DESIGN.md`](DESIGN.md) | The UI contract |
+| [`docs/architecture.md`](docs/architecture.md) | Where everything lives |
+| [`docs/workflows.md`](docs/workflows.md) | Recipes for routine tasks |
+| [`docs/i18n.md`](docs/i18n.md) | Translation rules and traps |
+| [`docs/gotchas.md`](docs/gotchas.md) | Debugging notes that cost real time |
