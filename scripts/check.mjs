@@ -105,7 +105,22 @@ const files = SCAN.flatMap(d => walk(d))
 		: pass('no terminal stop on headings and labels')
 }
 
-// 5. no hardcoded three.js or webgl
+// 5. internal links go through localePath
+{
+	const hits = []
+	for (const f of files.filter(f => f.endsWith('.vue') && !f.includes(`components${path.sep}ui`))) {
+		fs.readFileSync(f, 'utf8').split(/\r?\n/).forEach((line, i) => {
+			if (!/(?:to|href)="\/[^"]*"/.test(line)) return
+			if (/localePath|https?:|mailto:|tel:/.test(line)) return
+			hits.push(`${f.split(path.sep).join('/')}:${i + 1}`)
+		})
+	}
+	hits.length
+		? fail('internal links use localePath', hits.join('\n'))
+		: pass('internal links use localePath')
+}
+
+// 6. no hardcoded three.js or webgl
 {
 	const hits = files
 		.filter(f => !f.startsWith('docs') && /from 'three'|useThreeScene|ThreeStage/.test(fs.readFileSync(f, 'utf8')))

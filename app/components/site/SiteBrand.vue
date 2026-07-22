@@ -1,10 +1,12 @@
 <script setup lang="ts">
 withDefaults(defineProps<{ variant?: 'header' | 'footer' }>(), { variant: 'header' })
+
+const localePath = useLocalePath()
 </script>
 
 <template>
 	<NuxtLink
-		to="/"
+		:to="localePath('/')"
 		:aria-label="$t('common.brandHomeLabel')"
 		:class="[
 			'group relative items-center gap-3',

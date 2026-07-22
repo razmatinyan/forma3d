@@ -3,6 +3,7 @@ import { registrationSchema } from '#shared/registration'
 import { courseOptions } from '~/data/course'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 const form = reactive({
 	course: courseOptions[0]?.value ?? '',
@@ -170,7 +171,7 @@ async function onSubmit() {
 					<Label :for="ids.consent" class="text-sm font-normal tracking-normal text-zinc-400">
 						<i18n-t keypath="register.form.consent.label" tag="span" scope="global">
 							<template #link>
-								<NuxtLink to="/privacy" class="text-indigo-300 underline underline-offset-2 hover:text-indigo-200">
+								<NuxtLink :to="localePath('/privacy')" class="text-indigo-300 underline underline-offset-2 hover:text-indigo-200">
 									{{ t('register.form.consent.linkText') }}
 								</NuxtLink>
 							</template>
